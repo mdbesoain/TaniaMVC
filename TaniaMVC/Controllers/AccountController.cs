@@ -21,9 +21,8 @@ namespace TaniaMVC.Controllers
         // GET: /Account/Login
 
         [AllowAnonymous]
-        public ActionResult Login(string returnUrl)
+        public ActionResult Login()
         {
-            ViewBag.ReturnUrl = returnUrl;
             return View();
         }
 
@@ -33,11 +32,12 @@ namespace TaniaMVC.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult Login(LoginModel model, string returnUrl)
+        public ActionResult Login(LoginModel model)
         {
             if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
             {
-                return RedirectToLocal(returnUrl);
+                Session["usu_nombre"] = model.UserName;
+                return RedirectToAction("Index", "Home");
             }
 
             // Si llegamos a este punto, es que se ha producido un error y volvemos a mostrar el formulario

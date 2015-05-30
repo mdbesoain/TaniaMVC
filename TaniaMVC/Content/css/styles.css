@@ -147,7 +147,7 @@ margin: 0;
 background: transparent !important;
 }
     .navbar-inverse .navbar-toggle .icon-bar {
-        /*background-color: #CC4646;*/;
+        /*background-color: #CC4646;*/
     }
 
     .navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus {
@@ -229,7 +229,7 @@ background: none;
     padding: 16px 15px;
     line-height: 18px;
     height: 50px;
-    /*color:#CC4646;*/;
+    /*color:#CC4646;*/
 }
 
 .navbar-brand b {
@@ -693,7 +693,7 @@ display: inherit;
 
     #portfolio article p {
         margin-bottom: 1.45em;
-        /*set next row on the baseline*/;
+        /*set next row on the baseline*/
     }
 
 nav#filter {
@@ -745,7 +745,7 @@ nav#filter {
         width: 100%;
         left: 0;
         top: 0;
-        color: rgba(220, 220, 220);
+        color: rgb(220, 220, 220);
     }
 
 .fancybox-overlay {
@@ -1139,3 +1139,110 @@ footer {
         user-select: none;
         -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     }
+
+/*Login*/
+.content_login{
+	margin-top:100px;
+}
+
+/*título y subtitulos en login de usuario*/
+p.titulo{
+	font-size:16px;
+	color:#2f537e;	
+	font-weight:bold;
+	text-shadow:1px 1px 0px rgba(255,255,255, 0.9);
+	margin-bottom:0px;
+	margin-top:30px;
+}
+
+p.subtitulo{
+	font-size:18px;
+	color:#4172ad;	
+	font-weight:bold;
+	text-shadow:1px 1px 0px rgba(255,255,255, 0.9);
+	margin-top:5px;
+}
+
+p.subtitulo2{
+	font-size:12px;
+	color:#4172ad;	
+	text-shadow:1px 1px 0px rgba(255,255,255, 0.9);
+	margin:0px 0px 30px 0px;
+}
+
+/*controles para ingreso de usuario*/
+label.log{
+	font-size:14px;
+	font-weight:normal;
+	color:#4172ad;
+}
+
+.form-control{
+	border-radius:6px !important;
+}
+
+/*botón login de usuario*/
+.btn-form-log{
+	border:1px solid #365f91;
+	border-radius:5px;
+	display: inline-block;
+	padding: 15px 20px;
+	margin-bottom: 10px;
+	font-size: 12px;
+	font-weight: normal;
+	line-height: 1.42857;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	cursor: pointer;
+	-moz-user-select: none;
+	background-image: none;	
+	color:#FFF;
+	text-shadow:1px 1px 0px rgba(0,0,0, 0.6);
+	background-color:#4172AD;
+	background-image: -ms-linear-gradient(top, #4172AD 0%, #172C45 100%);
+	background-image: -moz-linear-gradient(top, #4172AD 0%, #172C45 100%);
+	background-image: -o-linear-gradient(top, #4172AD 0%, #172C45 100%);
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #4172AD), color-stop(100, #172C45));
+	background-image: -webkit-linear-gradient(top, #4172AD 0%, #172C45 100%);
+	background-image: linear-gradient(to bottom, #4172AD 0%, #172C45 100%);	
+}
+	
+.btn-form-log:hover{
+	background-color:#2b517e;
+	background-image: -ms-linear-gradient(top, #172C45 0%, #4172AD 100%);
+	background-image: -moz-linear-gradient(top, #172C45 0%, #4172AD 100%);
+	background-image: -o-linear-gradient(top, #172C45 0%, #4172AD 100%);
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #172C45), color-stop(100, #4172AD));
+	background-image: -webkit-linear-gradient(top, #172C45 0%, #4172AD 100%);
+	background-image: linear-gradient(to bottom, #172C45 0%, #4172AD 100%);
+}
+
+/*footer o pie de página */
+.footer {  
+  width: 100%; 
+  min-height: 70px;
+  background-color:#4172ad;
+  border-top:1px solid #2b507e;
+}
+  
+p.foot{
+	color:#fff;
+	font-size:10px;
+	padding:10px 0px 10px 0px;
+	margin:0px;
+}
+  
+p.foot a {
+	color:#FFF;
+	font-size:10px;
+}
+
+p.foot a:hover {
+	color:#89b2e3;
+	text-decoration:none;
+}
+
+.breadcrumb > li > a{
+	font-size:10px;
+}

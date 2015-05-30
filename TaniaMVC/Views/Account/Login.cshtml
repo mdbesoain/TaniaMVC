@@ -1,0 +1,33 @@
+﻿@model TaniaMVC.Models.LoginModel
+
+@{
+    ViewBag.Title = "Iniciar sesión";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+<p class="titulo">Bienvenido</p>
+<p class="subtitulo">Tania González Web Official</p>
+<p class="subtitulo2">Ingrese a su plataforma de administración</p>
+
+
+@using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <p>
+        @Html.LabelFor(m => m.UserName, new {@class = "log" })
+        @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", @id = "box" })
+        @Html.ValidationMessageFor(m => m.UserName)
+    </p>
+    <p>
+        @Html.LabelFor(m => m.Password, new { @class = "log" })
+        @Html.PasswordFor(m => m.Password, new { @class = "form-control", @id = "box" })
+        @Html.ValidationMessageFor(m => m.Password)
+    </p>
+    <p>
+        @Html.CheckBoxFor(m => m.RememberMe)
+        @Html.LabelFor(m => m.RememberMe)
+    </p>
+    <input type="submit" class="btn-form-log pull-right" value="Iniciar sesión" />
+}
