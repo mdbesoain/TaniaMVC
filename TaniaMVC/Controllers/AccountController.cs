@@ -37,7 +37,7 @@ namespace TaniaMVC.Controllers
             if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
             {
                 Session["usu_nombre"] = model.UserName;
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Admin");
             }
 
             // Si llegamos a este punto, es que se ha producido un error y volvemos a mostrar el formulario
