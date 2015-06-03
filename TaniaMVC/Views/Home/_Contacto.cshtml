@@ -1,4 +1,6 @@
-﻿<section id="contactUs" class="page-section secPad">
+﻿@model TaniaMVC.Models.Correo
+
+<section id="contactUs" class="page-section secPad">
     <div class="container">
 
         <div class="row">
@@ -11,33 +13,39 @@
 
         <div class="row mrgn30">
 
-            <form method="post" action="" id="contactfrm" role="form">
-
+            @using (Html.BeginForm("_Contacto","Home", FormMethod.Post)) 
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                
                 <div class="col-sm-4">
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" class="form-control" name="name" id="name" placeholder="Enter name" title="Please enter your name (at least 2 characters)">
-                    </div>
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="email" class="form-control" name="email" id="email" placeholder="Enter email" title="Please enter a valid email address">
+                        @Html.TextBoxFor(model => model.From, new {  @class = "form-control", @type = "email", @name = "email", @id = "email", @placeholder = "Ingresa el email", @title = "Por favor ingresa una dirección de correo valida" })
+                        @Html.ValidationMessageFor(model => model.From)
+                    </div>
+                    <div class="editor-field">
+                        <label for="subject">Asunto</label>
+                        @Html.TextBoxFor(model => model.Subject, new { @type="text", @class="form-control", @name="subject", @id="subject", @placeholder="Enter subject", @title="Por favor ingresa el asunto (al menos 2 caracteres)" })
+                        @Html.ValidationMessageFor(model => model.Subject)
                     </div>
                 </div>
                 <div class="col-sm-4">
                     <div class="form-group">
-                        <label for="comments">Comments</label>
-                        <textarea name="comment" class="form-control" id="comments" cols="3" rows="5" placeholder="Enter your message…" title="Please enter your message (at least 10 characters)"></textarea>
+                        <label for="comments">Commentarios</label>
+                        @Html.TextAreaFor(model => model.Body, new { @name="comment",  @class="form-control", @id="comments", @cols="3", @rows="5", @placeholder="Ingresa tu mensaje…", @title="Por favor ingresa tu mensaje (al menos 10 caracteres)" })
+                        @Html.ValidationMessageFor(model => model.Body)
                     </div>
-                    <button name="submit" type="submit" class="btn btn-lg btn-primary" id="submit">Submit</button>
+                    <button name="submit" type="submit" class="btn btn-lg btn-primary" id="submit">Send</button>
                     <div class="result"></div>
                 </div>
-            </form>
+            }
             <div class="col-sm-4">
                 <h4>Address:</h4>
                 <address>
-                    WebThemez Company<br>
-                    134 Stilla. Tae., 414515<br>
-                    Leorislon, SA 02434-34534 USA
+                    Tania González Web<br>
+                    Curicó<br>
+                    Licantén
                     <br>
                 </address>
                 <h4>Phone:</h4>

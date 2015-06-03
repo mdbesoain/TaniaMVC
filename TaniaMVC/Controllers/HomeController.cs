@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using AccesoDatos.Models;
+using TaniaMVC.Models;
 
 namespace TaniaMVC.Controllers
 {
@@ -46,7 +47,16 @@ namespace TaniaMVC.Controllers
 
         public ActionResult _Contacto()
         {
-            return View();
+            Correo correo = new Correo();
+            return View(correo);
         }
+
+        [HttpPost]
+        public ActionResult _Contacto(Correo correo)
+        {
+            //Aca tienes que trabajar Tio Jonny
+            return RedirectToAction("Index","Home");
+        }
+
     }
 }
