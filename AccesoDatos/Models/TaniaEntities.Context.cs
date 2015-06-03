@@ -31,5 +31,6 @@ namespace AccesoDatos.Models
         public DbSet<Disciplina> Disciplinas { get; set; }
         public DbSet<Logro> Logros { get; set; }
         public DbSet<Categoria> Categorias { get; set; }
+        public DbSet<Reporte> Reportes { get; set; }
     }
 }

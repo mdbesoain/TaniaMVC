@@ -1,0 +1,59 @@
+﻿@model IEnumerable<AccesoDatos.Models.Logro>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.id_logro)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.titulo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fecha)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.descripcion)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.id_logro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.titulo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fecha)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.descripcion)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

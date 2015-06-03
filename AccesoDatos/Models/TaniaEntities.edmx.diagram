@@ -13,6 +13,7 @@
         <EntityTypeShape EntityType="TaniaEntities.Categoria" Width="1.5" PointX="1.625" PointY="2.375" />
         <AssociationConnector Association="TaniaEntities.FotoCategoria" />
         <AssociationConnector Association="TaniaEntities.EventoDisciplina" />
+        <EntityTypeShape EntityType="TaniaEntities.Reporte" Width="1.5" PointX="5" PointY="4.875" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
