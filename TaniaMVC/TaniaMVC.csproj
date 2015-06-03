@@ -164,6 +164,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\AuspiciadorController.cs" />
+    <Compile Include="Controllers\DisciplinaController.cs" />
     <Compile Include="Controllers\EventoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LogroController.cs" />
@@ -443,6 +444,7 @@
     <Content Include="Views\Logro\Index.cshtml" />
     <Content Include="Views\Reporte\Index.cshtml" />
     <Content Include="Views\Evento\Agregar.cshtml" />
+    <Content Include="Views\Disciplina\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
