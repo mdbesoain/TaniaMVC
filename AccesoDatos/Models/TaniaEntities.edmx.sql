@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 06/04/2015 15:52:24
+-- Date Created: 06/04/2015 17:14:43
 -- Generated from EDMX file: C:\Users\juancarlosgonzalezca\documents\visual studio 2013\Projects\TaniaMVC\AccesoDatos\Models\TaniaEntities.edmx
 -- --------------------------------------------------
 
@@ -19,9 +19,6 @@ GO
 
 IF OBJECT_ID(N'[dbo].[FK_FotoCategoria]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Fotos] DROP CONSTRAINT [FK_FotoCategoria];
-GO
-IF OBJECT_ID(N'[dbo].[FK_EventoDisciplina]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Eventos] DROP CONSTRAINT [FK_EventoDisciplina];
 GO
 
 -- --------------------------------------------------
@@ -68,7 +65,7 @@ CREATE TABLE [dbo].[Eventos] (
     [id_evento] int IDENTITY(1,1) NOT NULL,
     [nombre] nvarchar(max)  NOT NULL,
     [direccion] nvarchar(max)  NOT NULL,
-    [fecha] datetime  NOT NULL,
+    [fecha] nvarchar(max)  NOT NULL,
     [url_flayer] nvarchar(max)  NOT NULL
 );
 GO

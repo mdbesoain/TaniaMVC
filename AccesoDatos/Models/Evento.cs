@@ -17,7 +17,7 @@ namespace AccesoDatos.Models
         public int id_evento { get; set; }
         public string nombre { get; set; }
         public string direccion { get; set; }
-        public System.DateTime fecha { get; set; }
+        public string fecha { get; set; }
         public string url_flayer { get; set; }
     }
 }
