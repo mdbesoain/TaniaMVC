@@ -1,6 +1,7 @@
 ﻿using AccesoDatos.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -22,7 +23,7 @@ namespace TaniaMVC.Controllers
         public ActionResult Agregar()
         {
             Disciplina disciplina = new Disciplina();
-            return View();
+            return View(disciplina);
         }
 
         [HttpPost]
@@ -45,5 +46,46 @@ namespace TaniaMVC.Controllers
             }
         }
 
+        public ActionResult Editar(int id)
+        {
+            Disciplina disciplina = db.Disciplinas.Find(id);
+            return View(disciplina);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Editar(Disciplina disciplina)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    db.Entry(disciplina).State = EntityState.Modified;
+                    db.SaveChanges();
+                }
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                TempData["Error"] = ex.Message;
+                return RedirectToAction("Index");
+            }
+        }
+
+        public ActionResult DeleteConfirmed(int id)
+        {
+            try
+            {
+                Disciplina disciplina = db.Disciplinas.Find(id);
+                db.Disciplinas.Remove(disciplina);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                TempData["Error"] = ex.Message;
+                return View("Error");
+            }
+        }
     }
 }

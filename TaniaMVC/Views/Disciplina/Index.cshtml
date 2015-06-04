@@ -34,8 +34,8 @@
                             <td>@Html.DisplayFor(modelItem => item.nombre)</td>
                             <td>@Html.DisplayFor(modelItem => item.descripcion)</td>
                             <td>
-                                @Html.ActionLink(" ", "Edit", new { id = item.id_disciplina }, new { @rel = "tooltip", @title = "Editar", @class = "fa fa-pencil-square-o" })
-                                @Html.ActionLink(" ", "DeleteConfirmed", new { id = item.id_disciplina }, new { @rel = "tooltip", @title = "Eliminar", @class = "glyphicon glyphicon-remove ico-action", onclick = "return confirm('¿Está seguro que desea eliminar al afiliado?');" })
+                                @Html.ActionLink(" ", "Editar", new { id = item.id_disciplina }, new { @rel = "tooltip", @title = "Editar", @class = "fa fa-pencil-square-o" })
+                                @Html.ActionLink(" ", "DeleteConfirmed", new { id = item.id_disciplina }, new { @rel = "tooltip", @title = "Eliminar", @class = "fa fa-trash-o", onclick = "return confirm('¿Está seguro que desea eliminar la disciplina?');" })
                             </td>
                         </tr>
                         }
