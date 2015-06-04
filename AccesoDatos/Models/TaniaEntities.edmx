@@ -17,10 +17,6 @@
       <End Role="Foto" EntitySet="Fotos" />
       <End Role="Categoria" EntitySet="Categorias" />
     </AssociationSet>
-    <AssociationSet Name="EventoDisciplina" Association="TaniaEntities.Store.EventoDisciplina">
-      <End Role="Evento" EntitySet="Eventos" />
-      <End Role="Disciplina" EntitySet="Disciplinas" />
-    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Fotos">
     <Key>
@@ -40,7 +36,6 @@
     <Property Name="direccion" Type="nvarchar(max)" Nullable="false" />
     <Property Name="fecha" Type="datetime" Nullable="false" />
     <Property Name="url_flayer" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Disciplina_id_disciplina" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Auspiciadores">
     <Key>
@@ -94,18 +89,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="EventoDisciplina">
-    <End Role="Evento" Type="TaniaEntities.Store.Eventos" Multiplicity="*" />
-    <End Role="Disciplina" Type="TaniaEntities.Store.Disciplinas" Multiplicity="1" />
-    <ReferentialConstraint>
-      <Principal Role="Disciplina">
-        <PropertyRef Name="id_disciplina" />
-      </Principal>
-      <Dependent Role="Evento">
-        <PropertyRef Name="Disciplina_id_disciplina" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -120,10 +103,6 @@
           <AssociationSet Name="FotoCategoria" Association="TaniaEntities.FotoCategoria">
             <End Role="Foto" EntitySet="Fotos" />
             <End Role="Categoria" EntitySet="Categorias" />
-          </AssociationSet>
-          <AssociationSet Name="EventoDisciplina" Association="TaniaEntities.EventoDisciplina">
-            <End Role="Evento" EntitySet="Eventos" />
-            <End Role="Disciplina" EntitySet="Disciplinas" />
           </AssociationSet>
           <EntitySet Name="Reportes" EntityType="TaniaEntities.Reporte" />
         </EntityContainer>
@@ -145,7 +124,6 @@
           <Property Name="direccion" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="fecha" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="url_flayer" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <NavigationProperty Name="Disciplina" Relationship="TaniaEntities.EventoDisciplina" FromRole="Evento" ToRole="Disciplina" />
         </EntityType>
         <EntityType Name="Auspiciador">
           <Key>
@@ -183,10 +161,6 @@
         <Association Name="FotoCategoria">
           <End Type="TaniaEntities.Foto" Role="Foto" Multiplicity="1" />
           <End Type="TaniaEntities.Categoria" Role="Categoria" Multiplicity="1" />
-        </Association>
-        <Association Name="EventoDisciplina">
-          <End Type="TaniaEntities.Evento" Role="Evento" Multiplicity="1" />
-          <End Type="TaniaEntities.Disciplina" Role="Disciplina" Multiplicity="1" />
         </Association>
         <EntityType Name="Reporte">
           <Key>
@@ -272,14 +246,6 @@
       </EndProperty>
       <EndProperty Name="Foto">
         <ScalarProperty Name="id_foto" ColumnName="id_foto" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="EventoDisciplina" TypeName="TaniaEntities.EventoDisciplina" StoreEntitySet="Eventos">
-      <EndProperty Name="Disciplina">
-        <ScalarProperty Name="id_disciplina" ColumnName="Disciplina_id_disciplina" />
-      </EndProperty>
-      <EndProperty Name="Evento">
-        <ScalarProperty Name="id_evento" ColumnName="id_evento" />
       </EndProperty>
     </AssociationSetMapping>
   </EntityContainerMapping>

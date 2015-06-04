@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 06/03/2015 14:09:45
+-- Date Created: 06/04/2015 15:52:24
 -- Generated from EDMX file: C:\Users\juancarlosgonzalezca\documents\visual studio 2013\Projects\TaniaMVC\AccesoDatos\Models\TaniaEntities.edmx
 -- --------------------------------------------------
 
@@ -69,8 +69,7 @@ CREATE TABLE [dbo].[Eventos] (
     [nombre] nvarchar(max)  NOT NULL,
     [direccion] nvarchar(max)  NOT NULL,
     [fecha] datetime  NOT NULL,
-    [url_flayer] nvarchar(max)  NOT NULL,
-    [Disciplina_id_disciplina] int  NOT NULL
+    [url_flayer] nvarchar(max)  NOT NULL
 );
 GO
 
@@ -177,21 +176,6 @@ GO
 CREATE INDEX [IX_FK_FotoCategoria]
 ON [dbo].[Fotos]
     ([Categoria_id_categoria]);
-GO
-
--- Creating foreign key on [Disciplina_id_disciplina] in table 'Eventos'
-ALTER TABLE [dbo].[Eventos]
-ADD CONSTRAINT [FK_EventoDisciplina]
-    FOREIGN KEY ([Disciplina_id_disciplina])
-    REFERENCES [dbo].[Disciplinas]
-        ([id_disciplina])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_EventoDisciplina'
-CREATE INDEX [IX_FK_EventoDisciplina]
-ON [dbo].[Eventos]
-    ([Disciplina_id_disciplina]);
 GO
 
 -- --------------------------------------------------
