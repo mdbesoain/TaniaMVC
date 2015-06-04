@@ -370,6 +370,15 @@
     <Content Include="Scripts\fancybox\jquery.fancybox.pack.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
+    <Content Include="Scripts\jquery-1.8.2.min.js.map">
+      <DependentUpon>jquery-1.8.2.min.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jquery-ui-1.8.24.min.js.map">
+      <DependentUpon>jquery-ui-1.8.24.min.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js.map">
+      <DependentUpon>jquery.unobtrusive-ajax.min.js</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-ui-1.8.24.js" />
     <Content Include="Scripts\jquery-ui-1.8.24.min.js" />
@@ -445,6 +454,18 @@
     <Content Include="Views\Reporte\Index.cshtml" />
     <Content Include="Views\Evento\Agregar.cshtml" />
     <Content Include="Views\Disciplina\Index.cshtml" />
+    <Content Include="Scripts\owl-carousel\owl.carousel.min.js.map">
+      <DependentUpon>owl.carousel.min.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js.map">
+      <DependentUpon>jquery.validate.unobtrusive.min.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jquery.validate.min.js.map">
+      <DependentUpon>jquery.validate.min.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\plugins\morris\morris.min.js.map">
+      <DependentUpon>morris.min.js</DependentUpon>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
