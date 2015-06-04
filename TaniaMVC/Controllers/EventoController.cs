@@ -12,7 +12,7 @@ namespace TaniaMVC.Controllers
         //
         // GET: /Evento/
         private TaniaEntitiesContainer db = new TaniaEntitiesContainer();
-        [Authorize(Roles="Administrador")]
+       
         public ActionResult Index()
         {
             return View(db.Eventos.ToList());
@@ -22,12 +22,25 @@ namespace TaniaMVC.Controllers
         {
             Evento evento = new Evento();
             return View(evento);
+
         }
         [HttpPost]
         public ActionResult Agregar(Evento evento)
         {
-            db.Eventos.Add(evento);
-            return View();
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    db.Eventos.Add(evento);
+                    db.SaveChanges();
+                }
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                TempData["Error"] = ex.Message;
+                return RedirectToAction("Index");
+            }
         }
 
     }
