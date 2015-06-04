@@ -4,109 +4,92 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="TaniaEntities.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityContainer Name="TaniaEntitiesStoreContainer">
-    <EntitySet Name="Fotos" EntityType="TaniaEntities.Store.Fotos" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Eventos" EntityType="TaniaEntities.Store.Eventos" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Auspiciadores" EntityType="TaniaEntities.Store.Auspiciadores" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Disciplinas" EntityType="TaniaEntities.Store.Disciplinas" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Logros" EntityType="TaniaEntities.Store.Logros" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Categorias" EntityType="TaniaEntities.Store.Categorias" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Reportes" EntityType="TaniaEntities.Store.Reportes" store:Type="Tables" Schema="dbo" />
-    <AssociationSet Name="FotoCategoria" Association="TaniaEntities.Store.FotoCategoria">
-      <End Role="Foto" EntitySet="Fotos" />
-      <End Role="Categoria" EntitySet="Categorias" />
-    </AssociationSet>
-    <AssociationSet Name="EventoDisciplina" Association="TaniaEntities.Store.EventoDisciplina">
-      <End Role="Evento" EntitySet="Eventos" />
-      <End Role="Disciplina" EntitySet="Disciplinas" />
-    </AssociationSet>
-  </EntityContainer>
-  <EntityType Name="Fotos">
-    <Key>
-      <PropertyRef Name="id_foto" />
-    </Key>
-    <Property Name="id_foto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="url" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Categoria_id_categoria" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Eventos">
-    <Key>
-      <PropertyRef Name="id_evento" />
-    </Key>
-    <Property Name="id_evento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="direccion" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="fecha" Type="datetime" Nullable="false" />
-    <Property Name="url_flayer" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Disciplina_id_disciplina" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Auspiciadores">
-    <Key>
-      <PropertyRef Name="id_auspiciador" />
-    </Key>
-    <Property Name="id_auspiciador" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="descripcion" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="url_logo" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Disciplinas">
-    <Key>
-      <PropertyRef Name="id_disciplina" />
-    </Key>
-    <Property Name="id_disciplina" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="descripcion" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Logros">
-    <Key>
-      <PropertyRef Name="id_logro" />
-    </Key>
-    <Property Name="id_logro" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="titulo" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="fecha" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="descripcion" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Categorias">
-    <Key>
-      <PropertyRef Name="id_categoria" />
-    </Key>
-    <Property Name="id_categoria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Nombre" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Reportes">
-    <Key>
-      <PropertyRef Name="reporte_id" />
-    </Key>
-    <Property Name="reporte_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="fecha" Type="datetime" Nullable="false" />
-  </EntityType>
-  <Association Name="FotoCategoria">
-    <End Role="Foto" Type="TaniaEntities.Store.Fotos" Multiplicity="*" />
-    <End Role="Categoria" Type="TaniaEntities.Store.Categorias" Multiplicity="1" />
-    <ReferentialConstraint>
-      <Principal Role="Categoria">
-        <PropertyRef Name="id_categoria" />
-      </Principal>
-      <Dependent Role="Foto">
-        <PropertyRef Name="Categoria_id_categoria" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="EventoDisciplina">
-    <End Role="Evento" Type="TaniaEntities.Store.Eventos" Multiplicity="*" />
-    <End Role="Disciplina" Type="TaniaEntities.Store.Disciplinas" Multiplicity="1" />
-    <ReferentialConstraint>
-      <Principal Role="Disciplina">
-        <PropertyRef Name="id_disciplina" />
-      </Principal>
-      <Dependent Role="Evento">
-        <PropertyRef Name="Disciplina_id_disciplina" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-</Schema></edmx:StorageModels>
+    <Schema Namespace="TaniaEntities.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Auspiciadores">
+          <Key>
+            <PropertyRef Name="id_auspiciador" />
+          </Key>
+          <Property Name="id_auspiciador" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="descripcion" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="url_logo" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Categorias">
+          <Key>
+            <PropertyRef Name="id_categoria" />
+          </Key>
+          <Property Name="id_categoria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Disciplinas">
+          <Key>
+            <PropertyRef Name="id_disciplina" />
+          </Key>
+          <Property Name="id_disciplina" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="descripcion" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Eventos">
+          <Key>
+            <PropertyRef Name="id_evento" />
+          </Key>
+          <Property Name="id_evento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="direccion" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="fecha" Type="datetime" Nullable="false" />
+          <Property Name="url_flayer" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Fotos">
+          <Key>
+            <PropertyRef Name="id_foto" />
+          </Key>
+          <Property Name="id_foto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="url" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Categoria_id_categoria" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Logros">
+          <Key>
+            <PropertyRef Name="id_logro" />
+          </Key>
+          <Property Name="id_logro" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="titulo" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="fecha" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="descripcion" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Reportes">
+          <Key>
+            <PropertyRef Name="reporte_id" />
+          </Key>
+          <Property Name="reporte_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fecha" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_FotoCategoria">
+          <End Role="Categorias" Type="Self.Categorias" Multiplicity="1" />
+          <End Role="Fotos" Type="Self.Fotos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categorias">
+              <PropertyRef Name="id_categoria" />
+            </Principal>
+            <Dependent Role="Fotos">
+              <PropertyRef Name="Categoria_id_categoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TaniaEntitiesStoreContainer">
+          <EntitySet Name="Auspiciadores" EntityType="Self.Auspiciadores" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Categorias" EntityType="Self.Categorias" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Disciplinas" EntityType="Self.Disciplinas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Eventos" EntityType="Self.Eventos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Fotos" EntityType="Self.Fotos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Logros" EntityType="Self.Logros" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reportes" EntityType="Self.Reportes" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_FotoCategoria" Association="Self.FK_FotoCategoria">
+            <End Role="Categorias" EntitySet="Categorias" />
+            <End Role="Fotos" EntitySet="Fotos" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="TaniaEntities" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
@@ -120,10 +103,6 @@
           <AssociationSet Name="FotoCategoria" Association="TaniaEntities.FotoCategoria">
             <End Role="Foto" EntitySet="Fotos" />
             <End Role="Categoria" EntitySet="Categorias" />
-          </AssociationSet>
-          <AssociationSet Name="EventoDisciplina" Association="TaniaEntities.EventoDisciplina">
-            <End Role="Evento" EntitySet="Eventos" />
-            <End Role="Disciplina" EntitySet="Disciplinas" />
           </AssociationSet>
           <EntitySet Name="Reportes" EntityType="TaniaEntities.Reporte" />
         </EntityContainer>
@@ -145,7 +124,6 @@
           <Property Name="direccion" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="fecha" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="url_flayer" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <NavigationProperty Name="Disciplina" Relationship="TaniaEntities.EventoDisciplina" FromRole="Evento" ToRole="Disciplina" />
         </EntityType>
         <EntityType Name="Auspiciador">
           <Key>
@@ -184,16 +162,12 @@
           <End Type="TaniaEntities.Foto" Role="Foto" Multiplicity="1" />
           <End Type="TaniaEntities.Categoria" Role="Categoria" Multiplicity="1" />
         </Association>
-        <Association Name="EventoDisciplina">
-          <End Type="TaniaEntities.Evento" Role="Evento" Multiplicity="1" />
-          <End Type="TaniaEntities.Disciplina" Role="Disciplina" Multiplicity="1" />
-        </Association>
         <EntityType Name="Reporte">
           <Key>
             <PropertyRef Name="reporte_id" />
           </Key>
           <Property Name="reporte_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="fecha" Type="DateTime" Nullable="false" />
+          <Property Name="fecha" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -272,14 +246,6 @@
       </EndProperty>
       <EndProperty Name="Foto">
         <ScalarProperty Name="id_foto" ColumnName="id_foto" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="EventoDisciplina" TypeName="TaniaEntities.EventoDisciplina" StoreEntitySet="Eventos">
-      <EndProperty Name="Disciplina">
-        <ScalarProperty Name="id_disciplina" ColumnName="Disciplina_id_disciplina" />
-      </EndProperty>
-      <EndProperty Name="Evento">
-        <ScalarProperty Name="id_evento" ColumnName="id_evento" />
       </EndProperty>
     </AssociationSetMapping>
   </EntityContainerMapping>
