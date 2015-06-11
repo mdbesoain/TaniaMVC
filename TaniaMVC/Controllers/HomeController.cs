@@ -64,7 +64,6 @@ namespace TaniaMVC.Controllers
         [HttpPost]
         public ActionResult _Contacto(Correo correo)
         {
-            //Aca tienes que trabajar Tio Jonny
             //
             //
             //

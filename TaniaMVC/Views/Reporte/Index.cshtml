@@ -1,19 +1,45 @@
-﻿@model AccesoDatos.Models.Reporte
+﻿@model TaniaMVC.Models.Correo
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
+<div id="wrapper">
+    <div id="page-wrapper">
+        <div class="container-fluid">
+            <div class="row mrgn30">
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
-    <div>
-        
+                @using (Html.BeginForm("Index","Reporte", FormMethod.Post)) 
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true)
+                
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            @Html.TextBoxFor(model => model.From, new {  @class = "form-control", @type = "email", @name = "email", @id = "email", @placeholder = "Ingresa el email", @title = "Por favor ingresa una dirección de correo valida" })
+                            @Html.ValidationMessageFor(model => model.From)
+                        </div>
+                        <div class="editor-field">
+                            <label for="subject">Asunto</label>
+                            @Html.TextBoxFor(model => model.Subject, new { @type="text", @class="form-control", @name="subject", @id="subject", @placeholder="Enter subject", @title="Por favor ingresa el asunto (al menos 2 caracteres)" })
+                            @Html.ValidationMessageFor(model => model.Subject)
+                        </div>
+                        <div class="editor-field">
+                            <label for="subject">Adjuntar</label>
+                            <INPUT id="oFile" type="file" runat="server" NAME="oFile">
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="comments">Comentarios</label>
+                            @Html.TextAreaFor(model => model.Body, new { @name="comment",  @class="form-control", @id="comments", @cols="3", @rows="5", @placeholder="Ingresa tu mensaje…", @title="Por favor ingresa tu mensaje (al menos 10 caracteres)" })
+                            @Html.ValidationMessageFor(model => model.Body)
+                        </div>
+                        <button name="submit" type="submit" class="btn btn-lg btn-primary" id="submit">Send</button>
+                        <div class="result"></div>
+                    </div>
+                }
+            </div>
+        </div>
     </div>
-</body>
-</html>
+</div>
