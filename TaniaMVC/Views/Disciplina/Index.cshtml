@@ -7,10 +7,11 @@
     <div id="page-wrapper">
         <div class="container-fluid">
             <div>
-                @Html.ActionLink("Agregar Disciplina", "Agregar")
+                @Html.ActionLink("Agregar Disciplina", "Agregar", "Disciplina", new { @class = "btn btn-primary" })
             </div>
+            <p></p>
             <div>
-                <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100">
+                <table id="example" class="table table-striped table-bordered" cellspacing="0">
                     <thead>
                         <tr>
                             <th>Nombre</th>
@@ -30,14 +31,14 @@
                     <tbody>
                         @foreach (var item in Model)
                         {
-                        <tr>
-                            <td>@Html.DisplayFor(modelItem => item.nombre)</td>
-                            <td>@Html.DisplayFor(modelItem => item.descripcion)</td>
-                            <td>
-                                @Html.ActionLink(" ", "Editar", new { id = item.id_disciplina }, new { @rel = "tooltip", @title = "Editar", @class = "fa fa-pencil-square-o" })
-                                @Html.ActionLink(" ", "DeleteConfirmed", new { id = item.id_disciplina }, new { @rel = "tooltip", @title = "Eliminar", @class = "fa fa-trash-o", onclick = "return confirm('¿Está seguro que desea eliminar la disciplina?');" })
-                            </td>
-                        </tr>
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.nombre)</td>
+                                <td>@Html.DisplayFor(modelItem => item.descripcion)</td>
+                                <td align="center">
+                                    @Html.ActionLink(" ", "Editar", new { id = item.id_disciplina }, new { @rel = "tooltip", @title = "Editar", @class = "fa fa-pencil-square-o" })
+                                    @Html.ActionLink(" ", "DeleteConfirmed", new { id = item.id_disciplina }, new { @rel = "tooltip", @title = "Eliminar", @class = "fa fa-trash-o", onclick = "return confirm('¿Está seguro que desea eliminar la disciplina?');" })
+                                </td>
+                            </tr>
                         }
                     </tbody>
                 </table>

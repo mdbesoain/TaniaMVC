@@ -10,7 +10,7 @@
             <p>
                 @Html.ActionLink("Create New", "Agregar")
             </p>
-            <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+            <table id="example" class="table table-striped table-bordered" cellspacing="0" >
                 <thead>
                     <tr>
                         <th>ID Evento</th>
@@ -52,7 +52,7 @@
                             <td>
                                 @Html.DisplayFor(modelItem => item.url_flayer)
                             </td>
-                            <td>
+                            <td align="center">
                                @Html.ActionLink(" ", "Editar", new { id = item.id_evento }, new { @rel = "tooltip", @title = "Editar", @class = "fa fa-pencil-square-o" })
                                @Html.ActionLink(" ", "DeleteConfirmed", new { id = item.id_evento }, new { @rel = "tooltip", @title = "Eliminar", @class = "fa fa-trash-o", onclick = "return confirm('¿Está seguro que desea eliminar al evento?');" })
                             </td>
