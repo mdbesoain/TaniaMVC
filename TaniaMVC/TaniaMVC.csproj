@@ -456,6 +456,9 @@
     <Content Include="Views\Disciplina\Index.cshtml" />
     <Content Include="Views\Disciplina\Agregar.cshtml" />
     <Content Include="Views\Disciplina\Editar.cshtml" />
+    <Content Include="Views\Evento\Editar.cshtml" />
+    <Content Include="Views\Auspiciador\Agregar.cshtml" />
+    <Content Include="Views\Auspiciador\Editar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
