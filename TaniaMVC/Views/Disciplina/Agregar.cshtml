@@ -16,7 +16,7 @@
                         @Html.ValidationSummary(true)
                                                 
                         <div class="form-group">
-                            <label for="inputName" class="control-label col-xs-2">Nombre:</label>
+                            <label for="inputNombre" class="control-label col-xs-2">Nombre:</label>
                             <div class="col-xs-5">
                                 @Html.TextBoxFor(model => model.nombre, new { @type = "text", @class = "form-control", @placeholder = "Nombre de la Disciplina", required = "required " })
                                 @Html.ValidationMessageFor(model => model.nombre)
@@ -24,7 +24,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="inputEmail" class="control-label col-xs-2">Descripcion:</label>
+                            <label for="inputDecripcion" class="control-label col-xs-2">Descripcion:</label>
                             <div class="col-xs-5">
                                 @Html.TextBoxFor(model => model.descripcion, new { @type = "text", @class = "form-control", @placeholder = "Descripcion de la Disciplina", required = "required " })
                                 @Html.ValidationMessageFor(model => model.descripcion)

@@ -16,7 +16,7 @@ namespace AccesoDatos.Models
     {
         public int id_logro { get; set; }
         public string titulo { get; set; }
-        public string fecha { get; set; }
+        public System.DateTime fecha { get; set; }
         public string descripcion { get; set; }
     }
 }

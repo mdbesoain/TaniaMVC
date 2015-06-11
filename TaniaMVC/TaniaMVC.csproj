@@ -181,6 +181,7 @@
     <Content Include="Content\css\sb-admin.css" />
     <Content Include="Content\css\styles - login.css" />
     <Content Include="Content\css\dataTables.bootstrap.css" />
+    <Content Include="Content\css\datepicker.css" />
     <Content Include="Content\plugins\morris.css" />
     <Content Include="Content\themes\bootstrap-theme.css" />
     <Content Include="Content\css\bootstrap.min.css" />
@@ -261,6 +262,7 @@
     <Content Include="Images\clients\client-7.png" />
     <Content Include="Images\clients\client-8.png" />
     <Content Include="Images\clients\client-9.png" />
+    <Content Include="Images\evento.jpg" />
     <Content Include="Images\photo-1.jpg" />
     <Content Include="Images\photo-2.jpg" />
     <Content Include="Images\photo-3.jpg" />
@@ -314,6 +316,7 @@
     <Content Include="Images\tania7.jpg" />
     <Content Include="Images\tania8.jpg" />
     <Content Include="Images\tania9.jpg" />
+    <Content Include="Scripts\bootstrap-datepicker.js" />
     <Content Include="Scripts\carousel.js" />
     <Content Include="Scripts\collapse.js" />
     <Content Include="Scripts\dataTables.bootstrap.js" />
@@ -396,6 +399,7 @@
     <Content Include="Scripts\knockout-2.2.0.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\modernizr-latest.js" />
+    <Content Include="Scripts\moment.js" />
     <Content Include="Scripts\owl-carousel\AjaxLoader.gif" />
     <Content Include="Scripts\owl-carousel\grabbing.png" />
     <Content Include="Scripts\owl-carousel\owl.carousel.css" />
@@ -456,6 +460,10 @@
     <Content Include="Views\Disciplina\Index.cshtml" />
     <Content Include="Views\Disciplina\Agregar.cshtml" />
     <Content Include="Views\Disciplina\Editar.cshtml" />
+    <Content Include="Views\Logro\Agregar.cshtml" />
+    <Content Include="Views\Logro\Editar.cshtml" />
+    <Content Include="Views\Home\_Eventos.cshtml" />
+    <Content Include="Views\Home\_Auspiciadores.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

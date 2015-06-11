@@ -68,7 +68,7 @@ namespace TaniaMVC.Controllers
             catch (Exception ex)
             {
                 TempData["Error"] = ex.Message;
-                return RedirectToAction("Index");
+                return View();
             }
         }
 

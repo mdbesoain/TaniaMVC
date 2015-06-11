@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 06/04/2015 17:14:43
+-- Date Created: 06/10/2015 23:30:11
 -- Generated from EDMX file: C:\Users\juancarlosgonzalezca\documents\visual studio 2013\Projects\TaniaMVC\AccesoDatos\Models\TaniaEntities.edmx
 -- --------------------------------------------------
 
@@ -91,7 +91,7 @@ GO
 CREATE TABLE [dbo].[Logros] (
     [id_logro] int IDENTITY(1,1) NOT NULL,
     [titulo] nvarchar(max)  NOT NULL,
-    [fecha] nvarchar(max)  NOT NULL,
+    [fecha] datetime  NOT NULL,
     [descripcion] nvarchar(max)  NOT NULL
 );
 GO

@@ -37,11 +37,20 @@ namespace TaniaMVC.Controllers
 
         public ActionResult _Logros()
         {
-            var logros = db.Logros.Where(x => x.id_logro > 0);
-            return View(logros.ToList());
+            return View(db.Logros.OrderBy(m => m.fecha).ToList());
         }
 
         public ActionResult _Portafolio()
+        {
+            return View();
+        }
+
+        public ActionResult _Eventos()
+        {
+            return View();
+        }
+
+        public ActionResult _Auspiciadores()
         {
             return View();
         }

@@ -1,59 +1,51 @@
 ﻿@model IEnumerable<AccesoDatos.Models.Logro>
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
+<div id="wrapper">
+    <div id="page-wrapper">
+        <div class="container-fluid">
+            <div>
+                @Html.ActionLink("Agregar Logro", "Agregar", "Logro", new { @class = "btn btn-primary" })
+            </div>
+            <p></p>
+            <div>
+                <table id="example" class="table table-striped table-bordered" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Titulo</th>
+                            <th>Fecha</th>
+                            <th>Descripción</th>
+                            <th></th>
+                        </tr>
+                    </thead>
 
-<!DOCTYPE html>
+                    <tfoot>
+                        <tr>
+                            <th>Titulo</th>
+                            <th>Fecha</th>
+                            <th>Descripción</th>
+                            <th></th>
+                        </tr>
+                    </tfoot>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-    <table>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.id_logro)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.titulo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.fecha)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.descripcion)
-            </th>
-            <th></th>
-        </tr>
-    
-    @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.id_logro)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.titulo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.fecha)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.descripcion)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
-        </tr>
-    }
-    
-    </table>
-</body>
-</html>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.titulo)</td>
+                                <td>@Html.DisplayFor(modelItem => item.fecha)</td>
+                                <td>@Html.DisplayFor(modelItem => item.descripcion)</td>
+                                <td align="center">
+                                    @Html.ActionLink(" ", "Editar", new { id = item.id_logro }, new { @rel = "tooltip", @title = "Editar", @class = "fa fa-pencil-square-o" })
+                                    @Html.ActionLink(" ", "DeleteConfirmed", new { id = item.id_logro }, new { @rel = "tooltip", @title = "Eliminar", @class = "fa fa-trash-o", onclick = "return confirm('¿Está seguro que desea eliminar el logro?');" })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

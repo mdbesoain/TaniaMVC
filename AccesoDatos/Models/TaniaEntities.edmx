@@ -60,7 +60,7 @@
     </Key>
     <Property Name="id_logro" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="titulo" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="fecha" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="fecha" Type="datetime" Nullable="false" />
     <Property Name="descripcion" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="Categorias">
@@ -148,7 +148,7 @@
           </Key>
           <Property Name="id_logro" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="titulo" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Name="fecha" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="fecha" Type="DateTime" Nullable="false" />
           <Property Name="descripcion" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
         </EntityType>
         <EntityType Name="Categoria">
