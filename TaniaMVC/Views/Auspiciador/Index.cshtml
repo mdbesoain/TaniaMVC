@@ -1,59 +1,60 @@
 ﻿@model IEnumerable<AccesoDatos.Models.Auspiciador>
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
+<div id="wrapper">
+    <div id="page-wrapper">
+        <div class="container-fluid">
+            <p>
+                @Html.ActionLink("Create New", "Agregar")
+            </p>
+            <table id="example" class="table table-striped table-bordered" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>ID Auspiciador</th>
+                        <th>Nombre</th>
+                        <th>Descripcion</th>
+                        <th>url_logo</th>
+                        <th></th>
+                    </tr>
+                </thead>
 
-<!DOCTYPE html>
+                <tfoot>
+                    <tr>
+                        <th>ID Auspiciador</th>
+                        <th>Nombre</th>
+                        <th>Descripcion</th>
+                        <th>url_logo</th>
+                        <th></th>
+                    </tr>
+                </tfoot>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-    <table>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.id_auspiciador)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.nombre)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.descripcion)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.url_logo)
-            </th>
-            <th></th>
-        </tr>
-    
-    @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.id_auspiciador)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.descripcion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.url_logo)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
-        </tr>
-    }
-    
-    </table>
-</body>
-</html>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.id_auspiciador)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.nombre)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.descripcion)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.url_logo)
+                            </td>
+                            <td align="center">
+                                @Html.ActionLink(" ", "Editar", new { id = item.id_auspiciador }, new { @rel = "tooltip", @title = "Editar", @class = "fa fa-pencil-square-o" })
+                                @Html.ActionLink(" ", "DeleteConfirmed", new { id = item.id_auspiciador }, new { @rel = "tooltip", @title = "Eliminar", @class = "fa fa-trash-o", onclick = "return confirm('¿Está seguro que desea eliminar al evento?');" })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>
