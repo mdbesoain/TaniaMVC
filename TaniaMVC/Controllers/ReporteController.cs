@@ -10,6 +10,7 @@ using iTextSharp.text.html.simpleparser;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using System.IO;
+using System.Text;
 
 
 namespace TaniaMVC.Controllers
@@ -36,9 +37,11 @@ namespace TaniaMVC.Controllers
         public ActionResult Enviar_Correo(Correo correo, int id)
         {
             Reporte reporte = db.Reportes.Find(id);
+
             if (ModelState.IsValid)
             {
                 MailMessage mail = new MailMessage();
+                mail.Attachments.Add(new Attachment(@reporte.url));
                 mail.To.Add("josorese@alumnos.utalca.cl"); // correo de destino!
                 mail.From = new MailAddress(correo.From);
                 mail.Subject = correo.Subject;
