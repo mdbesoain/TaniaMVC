@@ -28,7 +28,7 @@ namespace TaniaMVC.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Agregar(Evento evento)
+        public ActionResult Agregar(Evento evento, HttpPostedFileBase file)
         {
             try
             {
