@@ -52,7 +52,7 @@ namespace TaniaMVC.Controllers
             List<Evento> ultimos = new List<Evento>();
             if ( i > 3)
             {
-                for (int j = 1; j <= i; j++ )
+                for (int j = 1; j <= 3; j++ )
                 {
                     ultimos.Add(eventos[i - j]);
                 }

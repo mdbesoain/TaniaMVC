@@ -36,6 +36,7 @@
     <Property Name="direccion" Type="nvarchar(max)" Nullable="false" />
     <Property Name="fecha" Type="nvarchar(max)" Nullable="false" />
     <Property Name="url_flayer" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="descripcion" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="Auspiciadores">
     <Key>
@@ -126,6 +127,7 @@
           <Property Name="direccion" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="fecha" Type="String" Nullable="false" />
           <Property Name="url_flayer" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="descripcion" Type="String" Nullable="false" />
         </EntityType>
         <EntityType Name="Auspiciador">
           <Key>
@@ -196,6 +198,7 @@
           <ScalarProperty Name="direccion" ColumnName="direccion" />
           <ScalarProperty Name="fecha" ColumnName="fecha" />
           <ScalarProperty Name="url_flayer" ColumnName="url_flayer" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -30,12 +30,21 @@ namespace TaniaMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Agregar(Evento evento, HttpPostedFileBase file)
         {
+            evento.url_flayer = "vacio";
             try
             {
                 if (ModelState.IsValid)
                 {
                     db.Eventos.Add(evento);
                     db.SaveChanges();
+                    string path = AppDomain.CurrentDomain.BaseDirectory;
+                    string filePath = path + "/Images/Subidas/" + evento.id_evento + ".jpg";
+                    evento.url_flayer = "/Images/Subidas/" + evento.id_evento + ".jpg";
+                    file.SaveAs(filePath);
+
+                    db.Entry(evento).State = EntityState.Modified;
+                    db.SaveChanges();
+
                 }
                 return RedirectToAction("Index");
             }

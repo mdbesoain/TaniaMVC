@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 06/18/2015 15:40:56
+-- Date Created: 06/18/2015 16:17:16
 -- Generated from EDMX file: C:\Users\juancarlosgonzalezca\documents\visual studio 2013\Projects\TaniaMVC\AccesoDatos\Models\TaniaEntities.edmx
 -- --------------------------------------------------
 
@@ -66,7 +66,8 @@ CREATE TABLE [dbo].[Eventos] (
     [nombre] nvarchar(max)  NOT NULL,
     [direccion] nvarchar(max)  NOT NULL,
     [fecha] nvarchar(max)  NOT NULL,
-    [url_flayer] nvarchar(max)  NOT NULL
+    [url_flayer] nvarchar(max)  NOT NULL,
+    [descripcion] nvarchar(max)  NOT NULL
 );
 GO
 
