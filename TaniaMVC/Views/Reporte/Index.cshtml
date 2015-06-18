@@ -1,4 +1,4 @@
-﻿@model TaniaMVC.Models.Correo
+﻿@model IEnumerable<AccesoDatos.Models.Reporte>
 
 @{
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
@@ -6,40 +6,46 @@
 <div id="wrapper">
     <div id="page-wrapper">
         <div class="container-fluid">
-            <div class="row mrgn30">
+            <div>
+                @Html.ActionLink("Crear Reporte", "Crear", "Reporte", new { @class = "btn btn-primary" })
+            </div>
+            <p></p>
+            <div>
+                <table id="example" class="table table-striped table-bordered" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Fecha</th>
+                            <th></th>
+                        </tr>
+                    </thead>
 
-                @using (Html.BeginForm("Index","Reporte", FormMethod.Post)) 
-                {
-                    @Html.AntiForgeryToken()
-                    @Html.ValidationSummary(true)
-                
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            @Html.TextBoxFor(model => model.From, new {  @class = "form-control", @type = "email", @name = "email", @id = "email", @placeholder = "Ingresa el email", @title = "Por favor ingresa una dirección de correo valida" })
-                            @Html.ValidationMessageFor(model => model.From)
-                        </div>
-                        <div class="editor-field">
-                            <label for="subject">Asunto</label>
-                            @Html.TextBoxFor(model => model.Subject, new { @type="text", @class="form-control", @name="subject", @id="subject", @placeholder="Enter subject", @title="Por favor ingresa el asunto (al menos 2 caracteres)" })
-                            @Html.ValidationMessageFor(model => model.Subject)
-                        </div>
-                        <div class="editor-field">
-                            <label for="subject">Adjuntar</label>
-                            <INPUT id="oFile" type="file" runat="server" NAME="oFile">
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <label for="comments">Comentarios</label>
-                            @Html.TextAreaFor(model => model.Body, new { @name="comment",  @class="form-control", @id="comments", @cols="3", @rows="5", @placeholder="Ingresa tu mensaje…", @title="Por favor ingresa tu mensaje (al menos 10 caracteres)" })
-                            @Html.ValidationMessageFor(model => model.Body)
-                        </div>
-                        <button name="submit" type="submit" class="btn btn-lg btn-primary" id="submit">Send</button>
-                        <div class="result"></div>
-                    </div>
-                }
+                    <tfoot>
+                        <tr>
+                            <th>#</th>
+                            <th>Fecha</th>
+                            <th></th>
+                        </tr>
+                    </tfoot>
+
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.reporte_id)</td>
+                                <td>@Html.DisplayFor(modelItem => item.fecha.Date)</td>
+                                <td align="center">
+                                    @Html.ActionLink(" ", "verPdf", new { id = item.reporte_id }, new { @rel = "tooltip", @title = "Abrir PDF", @class = "fa fa-file-o" })
+                                    @Html.ActionLink(" ", "Enviar_Correo", new { id = item.reporte_id }, new { @rel = "tooltip", @title = "Enviar por Correo", @class = "fa fa-envelope-o" })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
 </div>
+
+
+

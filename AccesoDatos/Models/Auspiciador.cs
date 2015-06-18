@@ -18,5 +18,6 @@ namespace AccesoDatos.Models
         public string nombre { get; set; }
         public string descripcion { get; set; }
         public string url_logo { get; set; }
+        public string website { get; set; }
     }
 }

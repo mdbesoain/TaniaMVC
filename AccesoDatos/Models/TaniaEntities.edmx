@@ -45,6 +45,7 @@
     <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
     <Property Name="descripcion" Type="nvarchar(max)" Nullable="false" />
     <Property Name="url_logo" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="website" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="Disciplinas">
     <Key>
@@ -76,6 +77,7 @@
     </Key>
     <Property Name="reporte_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="fecha" Type="datetime" Nullable="false" />
+    <Property Name="url" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <Association Name="FotoCategoria">
     <End Role="Foto" Type="TaniaEntities.Store.Fotos" Multiplicity="*" />
@@ -133,6 +135,7 @@
           <Property Name="nombre" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="descripcion" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="url_logo" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="website" Type="String" Nullable="false" />
         </EntityType>
         <EntityType Name="Disciplina">
           <Key>
@@ -168,6 +171,7 @@
           </Key>
           <Property Name="reporte_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="url" Type="String" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -202,6 +206,7 @@
           <ScalarProperty Name="nombre" ColumnName="nombre" />
           <ScalarProperty Name="descripcion" ColumnName="descripcion" />
           <ScalarProperty Name="url_logo" ColumnName="url_logo" />
+          <ScalarProperty Name="website" ColumnName="website" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -237,6 +242,7 @@
         <MappingFragment StoreEntitySet="Reportes">
           <ScalarProperty Name="reporte_id" ColumnName="reporte_id" />
           <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="url" ColumnName="url" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

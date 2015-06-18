@@ -1246,3 +1246,8 @@ p.foot a:hover {
 .breadcrumb > li > a{
 	font-size:10px;
 }
+
+.custom {
+    background-color: rgba(0, 0, 0, .5);
+}
+

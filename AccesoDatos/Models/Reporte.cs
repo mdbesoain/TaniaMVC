@@ -16,5 +16,6 @@ namespace AccesoDatos.Models
     {
         public int reporte_id { get; set; }
         public System.DateTime fecha { get; set; }
+        public string url { get; set; }
     }
 }
