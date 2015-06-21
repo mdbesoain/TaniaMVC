@@ -15,6 +15,7 @@ namespace AccesoDatos.Models
     public partial class Categoria
     {
         public int id_categoria { get; set; }
-        public string Nombre { get; set; }
+        public string nombre { get; set; }
+        public string descripcion { get; set; }
     }
 }

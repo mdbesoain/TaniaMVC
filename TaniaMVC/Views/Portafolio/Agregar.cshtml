@@ -1,40 +1,25 @@
-﻿@model AccesoDatos.Models.Evento
+﻿@model AccesoDatos.Models.Foto
 
 @{
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
+
 <div id="wrapper">
     <div id="page-wrapper">
         <div class="container-fluid">
-            @using (Html.BeginForm("Agregar", "Evento", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            @using (Html.BeginForm("Agregar", "Portafolio", FormMethod.Post, new { enctype = "multipart/form-data" }))
             {
                 @Html.AntiForgeryToken()
                 @Html.ValidationSummary(true)
 
                 <fieldset>
-                    <legend>Evento</legend>
+                    <legend>Foto</legend>
                     <div class="editor-label">
                         @Html.LabelFor(model => model.nombre)
                     </div>
                     <div class="editor-field">
                         @Html.EditorFor(model => model.nombre)
                         @Html.ValidationMessageFor(model => model.nombre)
-                    </div>
-
-                    <div class="editor-label">
-                        @Html.LabelFor(model => model.direccion)
-                    </div>
-                    <div class="editor-field">
-                        @Html.EditorFor(model => model.direccion)
-                        @Html.ValidationMessageFor(model => model.direccion)
-                    </div>
-
-                    <div class="editor-label">
-                        @Html.LabelFor(model => model.fecha)
-                    </div>
-                    <div class="editor-field">
-                        @Html.EditorFor(model => model.fecha)
-                        @Html.ValidationMessageFor(model => model.fecha)
                     </div>
 
                     <div class="editor-label">
@@ -46,15 +31,16 @@
                     </div>
 
                     <div class="editor-label">
-                        @Html.LabelFor(model => model.Disciplina)
+                        @Html.LabelFor(model => model.Categoria)
                     </div>
                     <div class="editor-field">
-                        @Html.DropDownList("Disciplinas", null, new { required = "required" })
-                        @Html.ValidationMessageFor(model => model.Disciplina)
+                        @Html.DropDownList("Categorias", null, new { required = "required" })
+                        @Html.ValidationMessageFor(model => model.Categoria)
                     </div>
 
+
                     <div class="editor-label">
-                        @Html.LabelFor(model => model.url_flayer)
+                        @Html.LabelFor(model => model.url)
                     </div>
                     <div class="editor-field">
                         <label for="subject">Adjuntar</label>

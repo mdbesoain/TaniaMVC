@@ -172,10 +172,12 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\AuspiciadorController.cs" />
+    <Compile Include="Controllers\CategoriaController.cs" />
     <Compile Include="Controllers\DisciplinaController.cs" />
     <Compile Include="Controllers\EventoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LogroController.cs" />
+    <Compile Include="Controllers\PortafolioController.cs" />
     <Compile Include="Controllers\ReporteController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -469,6 +471,11 @@
     <Content Include="Views\Reporte\Crear.cshtml" />
     <Content Include="Views\Reporte\PDF.cshtml" />
     <Content Include="Views\Reporte\Index.cshtml" />
+    <Content Include="Views\Categoria\Agregar.cshtml" />
+    <Content Include="Views\Categoria\Index.cshtml" />
+    <Content Include="Views\Home\_Footer.cshtml" />
+    <Content Include="Views\Portafolio\Index.cshtml" />
+    <Content Include="Views\Portafolio\Agregar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

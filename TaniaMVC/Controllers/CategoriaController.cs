@@ -6,48 +6,35 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-
 namespace TaniaMVC.Controllers
 {
-    public class EventoController : Controller
+    public class CategoriaController : Controller
     {
         //
-        // GET: /Evento/
+        // GET: /Categoria/
+
         private TaniaEntitiesContainer db = new TaniaEntitiesContainer();
-       
+
         public ActionResult Index()
         {
-            return View(db.Eventos.ToList());
+            return View(db.Categorias.ToList());
         }
 
         public ActionResult Agregar()
         {
-            Evento evento = new Evento();
-            ViewBag.Disciplinas = new SelectList(db.Disciplinas, "id_disciplina", "nombre");
-            return View(evento);
-
+            Categoria categoria = new Categoria();
+            return View(categoria);
         }
+
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Agregar(Evento evento, HttpPostedFileBase file, int Disciplinas)
+        public ActionResult Agregar(Categoria categoria)
         {
-            Disciplina disciplina = db.Disciplinas.Find(Disciplinas);
-            evento.Disciplina = disciplina;
-            evento.url_flayer = "vacio";
             try
             {
                 if (ModelState.IsValid)
                 {
-                    db.Eventos.Add(evento);
+                    db.Categorias.Add(categoria);
                     db.SaveChanges();
-                    string path = AppDomain.CurrentDomain.BaseDirectory;
-                    string filePath = path + "/Images/Subidas/" + evento.id_evento + ".jpg";
-                    evento.url_flayer = "/Images/Subidas/" + evento.id_evento + ".jpg";
-                    file.SaveAs(filePath);
-
-                    db.Entry(evento).State = EntityState.Modified;
-                    db.SaveChanges();
-
                 }
                 return RedirectToAction("Index");
             }
@@ -57,21 +44,23 @@ namespace TaniaMVC.Controllers
                 return RedirectToAction("Index");
             }
         }
+
+
         public ActionResult Editar(int id)
         {
-            Evento evento= db.Eventos.Find(id);
-            return View(evento);
+            Categoria categoria = db.Categorias.Find(id);
+            return View(categoria);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Editar(Evento evento)
+        public ActionResult Editar(Categoria categoria)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    db.Entry(evento).State = EntityState.Modified;
+                    db.Entry(categoria).State = EntityState.Modified;
                     db.SaveChanges();
                 }
                 return RedirectToAction("Index");
@@ -87,8 +76,8 @@ namespace TaniaMVC.Controllers
         {
             try
             {
-                Evento evento = db.Eventos.Find(id);
-                db.Eventos.Remove(evento);
+                Categoria categoria = db.Categorias.Find(id);
+                db.Categorias.Remove(categoria);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -98,5 +87,6 @@ namespace TaniaMVC.Controllers
                 return View("Error");
             }
         }
+
     }
 }
