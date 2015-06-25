@@ -1,4 +1,6 @@
-﻿<section id="aboutUs" class="secPad">
+﻿@model IEnumerable<AccesoDatos.Models.Disciplina>
+
+<section id="aboutUs" class="secPad">
     <div class="container">
         <div class="heading text-center">
             <!-- Heading -->
@@ -6,33 +8,18 @@
             <p>Practico distintas disciplinas y tengo varios titulos en ellas</p>
         </div>
         <div class="row">
+            @foreach (var item in Model)
+            {
             <!-- item -->
             <div class="col-md-4 text-center tileBox">
                 <div class="txtHead">
                     <i class="fa fa-rocket"></i>
-                    <h3>Motocross <span class="id-color"></span></h3>
+                    <h3>@item.nombre <span class="id-color"></span></h3>
                 </div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse interdum erat et neque tincidunt volutpat. Cras eget augue id dui varius pretium.</p>
+                <p>@item.descripcion</p>
             </div>
             <!-- end: -->
-            <!-- item -->
-            <div class="col-md-4 text-center tileBox">
-                <div class="txtHead">
-                    <i class="fa fa-css3"></i>
-                    <h3>Enduro <span class="id-color"></span></h3>
-                </div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse interdum erat et neque tincidunt volutpat. Cras eget augue id dui varius pretium.</p>
-            </div>
-            <!-- end: -->
-            <!-- item -->
-            <div class="col-md-4 text-center tileBox">
-                <div class="txtHead">
-                    <i class="fa fa-lightbulb-o"></i>
-                    <h3>Clases de <span class="id-color">manejo</span></h3>
-                </div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse interdum erat et neque tincidunt volutpat. Cras eget augue id dui varius pretium.</p>
-            </div>
-            <!-- end: -->
+            }
         </div>
     </div>
 </section>

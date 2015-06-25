@@ -1,0 +1,64 @@
+﻿@model AccesoDatos.Models.Estadistica
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Agregar</title>
+</head>
+<body>
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+    
+        <fieldset>
+            <legend>Estadistica</legend>
+    
+            <div class="editor-label">
+                @Html.LabelFor(model => model.id_estadistica)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.id_estadistica)
+                @Html.ValidationMessageFor(model => model.id_estadistica)
+            </div>
+    
+            <div class="editor-label">
+                @Html.LabelFor(model => model.pos_manga1)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.pos_manga1)
+                @Html.ValidationMessageFor(model => model.pos_manga1)
+            </div>
+    
+            <div class="editor-label">
+                @Html.LabelFor(model => model.pos_manga2)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.pos_manga2)
+                @Html.ValidationMessageFor(model => model.pos_manga2)
+            </div>
+    
+            <div class="editor-label">
+                @Html.LabelFor(model => model.pos_final)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.pos_final)
+                @Html.ValidationMessageFor(model => model.pos_final)
+            </div>
+    
+            <p>
+                <input type="submit" value="Create" />
+            </p>
+        </fieldset>
+    }
+    
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+</body>
+</html>

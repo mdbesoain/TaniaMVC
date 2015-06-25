@@ -15,36 +15,38 @@ namespace TaniaMVC.Controllers
         // GET: /Home/
 
         private TaniaEntitiesContainer db = new TaniaEntitiesContainer();
+
+        [AllowAnonymous]
         public ActionResult Index()
         {
             return View();
         }
-
+        [AllowAnonymous]
         public ActionResult _Portada()
         {
             return View();
         }
-
+        [AllowAnonymous]
         public ActionResult _About()
         {
-            return View();
+            return View(db.Disciplinas.ToList());
         }
-
+        [AllowAnonymous]
         public ActionResult _Experiencia()
         {
             return View();
         }
-
+        [AllowAnonymous]
         public ActionResult _Logros()
         {
             return View(db.Logros.OrderBy(m => m.fecha).ToList());
         }
-
+        [AllowAnonymous]
         public ActionResult _Portafolio()
         {
             return View();
         }
-
+        [AllowAnonymous]
         public ActionResult _Eventos()
         {
             var eventos = db.Eventos.ToList();
@@ -63,12 +65,12 @@ namespace TaniaMVC.Controllers
                 return View(eventos);
             }
         }
-
+        [AllowAnonymous]
         public ActionResult _Auspiciadores()
         {
-            return View();
+            return View(db.Auspiciadores.ToList());
         }
-
+        [AllowAnonymous]
         public ActionResult _Contacto()
         {
             Correo correo = new Correo();
@@ -76,6 +78,7 @@ namespace TaniaMVC.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public ActionResult _Contacto(Correo correo)
         {
             if (ModelState.IsValid)

@@ -63,6 +63,9 @@
     <Compile Include="Models\Disciplina.cs">
       <DependentUpon>TaniaEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Estadistica.cs">
+      <DependentUpon>TaniaEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Evento.cs">
       <DependentUpon>TaniaEntities.tt</DependentUpon>
     </Compile>

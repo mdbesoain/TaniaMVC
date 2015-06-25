@@ -8,17 +8,19 @@
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing</p>
         </div>
         <div class="row">
+            @foreach (var item in Model)
+            {
             <div class="col-sm-6 col-md-4">
                 <div class="thumbnail">
-                    <img src="~/Images/tio lelo.png" alt="Flayer">
+                    <img src="@item.url_logo" alt="Flayer">
                     <div class="caption">
-                        <h3>Auspiciador Test</h3>
-                        <p>Este es un auspiciador de test</p>
+                        <h3>@item.nombre</h3>
+                        <p>@item.descripcion</p>
                         <p><a href="#" class="btn btn-default" role="button">Button</a></p>
                     </div>
                 </div>
             </div>
-
+            }
             <div class="col-sm-6 col-md-4">
                 <div class="thumbnail">
                     <img src="~/Images/tmracing.png" alt="Flayer">

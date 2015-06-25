@@ -131,6 +131,11 @@
             <End Role="Evento" EntitySet="Eventos" />
             <End Role="Disciplina" EntitySet="Disciplinas" />
           </AssociationSet>
+          <EntitySet Name="Estadisticas" EntityType="TaniaEntities.Estadistica" />
+          <AssociationSet Name="EstadisticaEvento" Association="TaniaEntities.EstadisticaEvento">
+            <End Role="Estadistica" EntitySet="Estadisticas" />
+            <End Role="Evento" EntitySet="Eventos" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Foto">
           <Key>
@@ -214,6 +219,20 @@
               <PropertyRef Name="Disciplina_id_disciplina" />
             </Dependent>
           </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Estadistica">
+          <Key>
+            <PropertyRef Name="id_estadistica" />
+          </Key>
+          <Property Name="id_estadistica" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pos_manga1" Type="String" Nullable="false" />
+          <Property Name="pos_manga2" Type="String" Nullable="false" />
+          <Property Name="pos_final" Type="String" Nullable="false" />
+          <NavigationProperty Name="Evento" Relationship="TaniaEntities.EstadisticaEvento" FromRole="Estadistica" ToRole="Evento" />
+        </EntityType>
+        <Association Name="EstadisticaEvento">
+          <End Type="TaniaEntities.Estadistica" Role="Estadistica" Multiplicity="1" />
+          <End Type="TaniaEntities.Evento" Role="Evento" Multiplicity="1" />
         </Association>
       </Schema>
     </edmx:ConceptualModels>
