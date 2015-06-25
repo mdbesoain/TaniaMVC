@@ -6,70 +6,86 @@
 <div id="wrapper">
     <div id="page-wrapper">
         <div class="container-fluid">
-            @using (Html.BeginForm("Agregar", "Evento", FormMethod.Post, new { enctype = "multipart/form-data" }))
-            {
-                @Html.AntiForgeryToken()
-                @Html.ValidationSummary(true)
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h3>Nuevo Evento</h3>
+                    @using (Html.BeginForm("Agregar", "Evento", FormMethod.Post, new { @class="form-horizontal", enctype = "multipart/form-data" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true)
 
-                <fieldset>
-                    <legend>Evento</legend>
-                    <div class="editor-label">
-                        @Html.LabelFor(model => model.nombre)
-                    </div>
-                    <div class="editor-field">
-                        @Html.EditorFor(model => model.nombre)
-                        @Html.ValidationMessageFor(model => model.nombre)
-                    </div>
 
-                    <div class="editor-label">
-                        @Html.LabelFor(model => model.direccion)
-                    </div>
-                    <div class="editor-field">
-                        @Html.EditorFor(model => model.direccion)
-                        @Html.ValidationMessageFor(model => model.direccion)
-                    </div>
+                        <div class="form-group">
+                            <label for="inputNombre" class="control-label col-xs-2">Nombre:</label>
+                            <div class="col-xs-5">
+                                @Html.TextBoxFor(model => model.nombre, new { @type = "text", @class = "form-control", @placeholder = "Nombre del evento", required = "required " })
+                                @Html.ValidationMessageFor(model => model.nombre)
+                            </div>
+                        </div>
 
-                    <div class="editor-label">
-                        @Html.LabelFor(model => model.fecha)
-                    </div>
-                    <div class="editor-field">
-                        @Html.EditorFor(model => model.fecha)
-                        @Html.ValidationMessageFor(model => model.fecha)
-                    </div>
+                        <div class="form-group">
+                            <label for="inputDireccion" class="control-label col-xs-2">Dirección:</label>
+                            <div class="col-xs-5">
+                                @Html.TextBoxFor(model => model.direccion, new { @type = "text", @class = "form-control", @placeholder = "Dirección del evento", required = "required " })
+                                @Html.ValidationMessageFor(model => model.direccion)
+                            </div>
+                        </div>
 
-                    <div class="editor-label">
-                        @Html.LabelFor(model => model.descripcion)
-                    </div>
-                    <div class="editor-field">
-                        @Html.EditorFor(model => model.descripcion)
-                        @Html.ValidationMessageFor(model => model.descripcion)
-                    </div>
 
-                    <div class="editor-label">
-                        @Html.LabelFor(model => model.Disciplina)
-                    </div>
-                    <div class="editor-field">
-                        @Html.DropDownList("Disciplinas", null, new { required = "required" })
-                        @Html.ValidationMessageFor(model => model.Disciplina)
-                    </div>
+                        <div class="form-group">
+                            <label for="inputFecha" class="control-label col-xs-2">Fecha:</label>
+                            <div class="col-xs-5 date">
+                                <div class="input-group input-append date" id="datePicker">
+                                    @Html.TextBoxFor(model => model.fecha, new { @type = "text", @class = "form-control", @placeholder = "Fecha del evento", @name = "date", required = "required " })
+                                    @Html.ValidationMessageFor(model => model.fecha)
+                                    <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputDescripcion" class="control-label col-xs-2">Descripción:</label>
+                            <div class="col-xs-5">
+                                @Html.TextBoxFor(model => model.descripcion, new { @type = "text", @class = "form-control", @placeholder = "Descripción del evento", required = "required " })
+                                @Html.ValidationMessageFor(model => model.descripcion)
+                            </div>
+                        </div>
 
-                    <div class="editor-label">
-                        @Html.LabelFor(model => model.url_flayer)
-                    </div>
-                    <div class="editor-field">
-                        <label for="subject">Adjuntar</label>
-                        <input id="file" type="file" name="file">
-                    </div>
+                        <div class="form-group">
+                            <label for="inputDisciplina" class="control-label col-xs-2">Disciplina:</label>
+                            <div class="col-xs-5">
+                                @Html.DropDownList( "Disciplinas" , null, new { @type = "text", @class = "btn btn-default dropdown-toggle", required = "required " })
+                                @Html.ValidationMessageFor(model => model.Disciplina)
+                            </div>
+                        </div>
 
-                    <p>
-                        <input type="submit" value="Create" />
-                    </p>
-                </fieldset>
-            }
+                        <div class="form-group">
+                            <label for="inputAdjuntar" class="control-label col-xs-2">Flyer:</label>
+                            <div class="col-xs-5">
+                                <!----input id="file" type="file" name="file"> -->
+                                <input id="file" type="file" name="file" style="display:none">
+                                <div class="input-append">
+                                    <input id="photoCover" class="input-large" type="text" readonly>
+                                    <a class="btn btn-info" onclick="$('input[id=file]').click();">Browse</a>
+                                </div>
+                            </div>
+                        </div>
 
-            <div>
-                @Html.ActionLink("Back to List", "Index")
+                        <div class='wrapper text-center'>
+                            <div class="col-xs-5">
+                                @Html.ActionLink("Atras", "Index", "Evento", new { @class = "btn btn-danger" })
+                                <button type="submit" class="btn btn-primary">Crear</button>
+                            </div>
+                        </div>
+
+                    }
+
+                </div>
             </div>
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    $('input[id=file]').change(function () {
+        $('#photoCover').val($(this).val());
+    });
+</script>
