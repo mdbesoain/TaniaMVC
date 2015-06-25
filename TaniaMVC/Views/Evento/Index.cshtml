@@ -17,7 +17,7 @@
                         <th>Nombre</th>
                         <th>Direccion</th>
                         <th>Fecha</th>
-                        <th>url_flayer</th>
+                        <th>Disciplina</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -28,7 +28,7 @@
                         <th>Nombre</th>
                         <th>Direccion</th>
                         <th>Fecha</th>
-                        <th>url_flayer</th>
+                        <th>Disciplina</th>
                         <th></th>
                     </tr>
                 </tfoot>
@@ -50,7 +50,7 @@
                                 @Html.DisplayFor(modelItem => item.fecha)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.url_flayer)
+                                @Html.DisplayFor(modelItem => item.Disciplina.nombre)
                             </td>
                             <td align="center">
                                @Html.ActionLink(" ", "Editar", new { id = item.id_evento }, new { @rel = "tooltip", @title = "Editar", @class = "fa fa-pencil-square-o" })

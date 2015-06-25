@@ -19,5 +19,8 @@ namespace AccesoDatos.Models
         public string direccion { get; set; }
         public string fecha { get; set; }
         public string url_flayer { get; set; }
+        public string descripcion { get; set; }
+    
+        public virtual Disciplina Disciplina { get; set; }
     }
 }

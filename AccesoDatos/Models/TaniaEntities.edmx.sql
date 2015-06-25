@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 06/18/2015 15:40:56
+-- Date Created: 06/21/2015 13:42:02
 -- Generated from EDMX file: C:\Users\juancarlosgonzalezca\documents\visual studio 2013\Projects\TaniaMVC\AccesoDatos\Models\TaniaEntities.edmx
 -- --------------------------------------------------
 
@@ -56,6 +56,7 @@ CREATE TABLE [dbo].[Fotos] (
     [id_foto] int IDENTITY(1,1) NOT NULL,
     [nombre] nvarchar(max)  NOT NULL,
     [url] nvarchar(max)  NOT NULL,
+    [descripcion] nvarchar(max)  NOT NULL,
     [Categoria_id_categoria] int  NOT NULL
 );
 GO
@@ -66,7 +67,9 @@ CREATE TABLE [dbo].[Eventos] (
     [nombre] nvarchar(max)  NOT NULL,
     [direccion] nvarchar(max)  NOT NULL,
     [fecha] nvarchar(max)  NOT NULL,
-    [url_flayer] nvarchar(max)  NOT NULL
+    [url_flayer] nvarchar(max)  NOT NULL,
+    [descripcion] nvarchar(max)  NOT NULL,
+    [Disciplina_id_disciplina] int  NOT NULL
 );
 GO
 
@@ -100,7 +103,8 @@ GO
 -- Creating table 'Categorias'
 CREATE TABLE [dbo].[Categorias] (
     [id_categoria] int IDENTITY(1,1) NOT NULL,
-    [Nombre] nvarchar(max)  NOT NULL
+    [nombre] nvarchar(max)  NOT NULL,
+    [descripcion] nvarchar(max)  NOT NULL
 );
 GO
 
@@ -175,6 +179,21 @@ GO
 CREATE INDEX [IX_FK_FotoCategoria]
 ON [dbo].[Fotos]
     ([Categoria_id_categoria]);
+GO
+
+-- Creating foreign key on [Disciplina_id_disciplina] in table 'Eventos'
+ALTER TABLE [dbo].[Eventos]
+ADD CONSTRAINT [FK_EventoDisciplina]
+    FOREIGN KEY ([Disciplina_id_disciplina])
+    REFERENCES [dbo].[Disciplinas]
+        ([id_disciplina])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_EventoDisciplina'
+CREATE INDEX [IX_FK_EventoDisciplina]
+ON [dbo].[Eventos]
+    ([Disciplina_id_disciplina]);
 GO
 
 -- --------------------------------------------------

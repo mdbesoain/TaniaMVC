@@ -172,10 +172,12 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\AuspiciadorController.cs" />
+    <Compile Include="Controllers\CategoriaController.cs" />
     <Compile Include="Controllers\DisciplinaController.cs" />
     <Compile Include="Controllers\EventoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LogroController.cs" />
+    <Compile Include="Controllers\PortafolioController.cs" />
     <Compile Include="Controllers\ReporteController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -277,15 +279,6 @@
     <Content Include="Images\photo-2.jpg" />
     <Content Include="Images\photo-3.jpg" />
     <Content Include="Images\photo-4.jpg" />
-    <Content Include="Images\portfolio\img1.jpg" />
-    <Content Include="Images\portfolio\img2.jpg" />
-    <Content Include="Images\portfolio\img3.jpg" />
-    <Content Include="Images\portfolio\img4.jpg" />
-    <Content Include="Images\portfolio\img5.jpg" />
-    <Content Include="Images\portfolio\img6.jpg" />
-    <Content Include="Images\portfolio\img7.jpg" />
-    <Content Include="Images\portfolio\img8.jpg" />
-    <Content Include="Images\portfolio\img9.jpg" />
     <Content Include="Images\sort_asc.png" />
     <Content Include="Images\sort_asc_disabled.png" />
     <Content Include="Images\sort_both.png" />
@@ -336,7 +329,6 @@
     <Content Include="Scripts\fancybox\Descr.WD3" />
     <Content Include="Scripts\fancybox\Thumbs.db" />
     <Content Include="Images\clients\Thumbs.db" />
-    <Content Include="Images\portfolio\Thumbs.db" />
     <Content Include="Images\Thumbs.db" />
     <Content Include="Fonts\fontawesome-webfont.eot" />
     <Content Include="Fonts\fontawesome-webfont.ttf" />
@@ -479,9 +471,15 @@
     <Content Include="Views\Reporte\Crear.cshtml" />
     <Content Include="Views\Reporte\PDF.cshtml" />
     <Content Include="Views\Reporte\Index.cshtml" />
+    <Content Include="Views\Categoria\Agregar.cshtml" />
+    <Content Include="Views\Categoria\Index.cshtml" />
+    <Content Include="Views\Home\_Footer.cshtml" />
+    <Content Include="Views\Portafolio\Index.cshtml" />
+    <Content Include="Views\Portafolio\Agregar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Images\portafolio\" />
     <Folder Include="Images\Subidas\" />
     <Folder Include="Reportes\" />
   </ItemGroup>

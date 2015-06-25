@@ -17,6 +17,7 @@ namespace AccesoDatos.Models
         public int id_foto { get; set; }
         public string nombre { get; set; }
         public string url { get; set; }
+        public string descripcion { get; set; }
     
         public virtual Categoria Categoria { get; set; }
     }

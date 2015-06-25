@@ -17,6 +17,10 @@
       <End Role="Foto" EntitySet="Fotos" />
       <End Role="Categoria" EntitySet="Categorias" />
     </AssociationSet>
+    <AssociationSet Name="EventoDisciplina" Association="TaniaEntities.Store.EventoDisciplina">
+      <End Role="Evento" EntitySet="Eventos" />
+      <End Role="Disciplina" EntitySet="Disciplinas" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Fotos">
     <Key>
@@ -25,6 +29,7 @@
     <Property Name="id_foto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
     <Property Name="url" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="descripcion" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Categoria_id_categoria" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Eventos">
@@ -36,6 +41,8 @@
     <Property Name="direccion" Type="nvarchar(max)" Nullable="false" />
     <Property Name="fecha" Type="nvarchar(max)" Nullable="false" />
     <Property Name="url_flayer" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="descripcion" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Disciplina_id_disciplina" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Auspiciadores">
     <Key>
@@ -69,7 +76,8 @@
       <PropertyRef Name="id_categoria" />
     </Key>
     <Property Name="id_categoria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Nombre" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="descripcion" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="Reportes">
     <Key>
@@ -91,6 +99,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="EventoDisciplina">
+    <End Role="Evento" Type="TaniaEntities.Store.Eventos" Multiplicity="*" />
+    <End Role="Disciplina" Type="TaniaEntities.Store.Disciplinas" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Disciplina">
+        <PropertyRef Name="id_disciplina" />
+      </Principal>
+      <Dependent Role="Evento">
+        <PropertyRef Name="Disciplina_id_disciplina" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -102,11 +122,15 @@
           <EntitySet Name="Disciplinas" EntityType="TaniaEntities.Disciplina" />
           <EntitySet Name="Logros" EntityType="TaniaEntities.Logro" />
           <EntitySet Name="Categorias" EntityType="TaniaEntities.Categoria" />
+          <EntitySet Name="Reportes" EntityType="TaniaEntities.Reporte" />
           <AssociationSet Name="FotoCategoria" Association="TaniaEntities.FotoCategoria">
             <End Role="Foto" EntitySet="Fotos" />
             <End Role="Categoria" EntitySet="Categorias" />
           </AssociationSet>
-          <EntitySet Name="Reportes" EntityType="TaniaEntities.Reporte" />
+          <AssociationSet Name="EventoDisciplina" Association="TaniaEntities.EventoDisciplina">
+            <End Role="Evento" EntitySet="Eventos" />
+            <End Role="Disciplina" EntitySet="Disciplinas" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Foto">
           <Key>
@@ -115,6 +139,7 @@
           <Property Name="id_foto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombre" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="url" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="descripcion" Type="String" Nullable="false" />
           <NavigationProperty Name="Categoria" Relationship="TaniaEntities.FotoCategoria" FromRole="Foto" ToRole="Categoria" />
         </EntityType>
         <EntityType Name="Evento">
@@ -126,6 +151,8 @@
           <Property Name="direccion" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="fecha" Type="String" Nullable="false" />
           <Property Name="url_flayer" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="descripcion" Type="String" Nullable="false" />
+          <NavigationProperty Name="Disciplina" Relationship="TaniaEntities.EventoDisciplina" FromRole="Evento" ToRole="Disciplina" />
         </EntityType>
         <EntityType Name="Auspiciador">
           <Key>
@@ -159,12 +186,9 @@
             <PropertyRef Name="id_categoria" />
           </Key>
           <Property Name="id_categoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="descripcion" Type="String" Nullable="false" />
         </EntityType>
-        <Association Name="FotoCategoria">
-          <End Type="TaniaEntities.Foto" Role="Foto" Multiplicity="1" />
-          <End Type="TaniaEntities.Categoria" Role="Categoria" Multiplicity="1" />
-        </Association>
         <EntityType Name="Reporte">
           <Key>
             <PropertyRef Name="reporte_id" />
@@ -173,6 +197,14 @@
           <Property Name="fecha" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="url" Type="String" Nullable="false" />
         </EntityType>
+        <Association Name="FotoCategoria">
+          <End Type="TaniaEntities.Foto" Role="Foto" Multiplicity="0..1" />
+          <End Type="TaniaEntities.Categoria" Role="Categoria" Multiplicity="1" />
+        </Association>
+        <Association Name="EventoDisciplina">
+          <End Type="TaniaEntities.Evento" Role="Evento" Multiplicity="0..1" />
+          <End Type="TaniaEntities.Disciplina" Role="Disciplina" Multiplicity="1" />
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -185,6 +217,7 @@
           <ScalarProperty Name="id_foto" ColumnName="id_foto" />
           <ScalarProperty Name="nombre" ColumnName="nombre" />
           <ScalarProperty Name="url" ColumnName="url" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -196,6 +229,7 @@
           <ScalarProperty Name="direccion" ColumnName="direccion" />
           <ScalarProperty Name="fecha" ColumnName="fecha" />
           <ScalarProperty Name="url_flayer" ColumnName="url_flayer" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -233,7 +267,8 @@
       <EntityTypeMapping TypeName="IsTypeOf(TaniaEntities.Categoria)">
         <MappingFragment StoreEntitySet="Categorias">
           <ScalarProperty Name="id_categoria" ColumnName="id_categoria" />
-          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -252,6 +287,14 @@
       </EndProperty>
       <EndProperty Name="Foto">
         <ScalarProperty Name="id_foto" ColumnName="id_foto" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="EventoDisciplina" TypeName="TaniaEntities.EventoDisciplina" StoreEntitySet="Eventos">
+      <EndProperty Name="Disciplina">
+        <ScalarProperty Name="id_disciplina" ColumnName="Disciplina_id_disciplina" />
+      </EndProperty>
+      <EndProperty Name="Evento">
+        <ScalarProperty Name="id_evento" ColumnName="id_evento" />
       </EndProperty>
     </AssociationSetMapping>
   </EntityContainerMapping>
