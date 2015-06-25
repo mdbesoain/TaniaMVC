@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 06/21/2015 13:42:02
+-- Date Created: 06/25/2015 13:59:43
 -- Generated from EDMX file: C:\Users\juancarlosgonzalezca\documents\visual studio 2013\Projects\TaniaMVC\AccesoDatos\Models\TaniaEntities.edmx
 -- --------------------------------------------------
 
@@ -19,6 +19,9 @@ GO
 
 IF OBJECT_ID(N'[dbo].[FK_FotoCategoria]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Fotos] DROP CONSTRAINT [FK_FotoCategoria];
+GO
+IF OBJECT_ID(N'[dbo].[FK_EventoDisciplina]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Eventos] DROP CONSTRAINT [FK_EventoDisciplina];
 GO
 
 -- --------------------------------------------------

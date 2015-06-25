@@ -14,8 +14,15 @@ namespace AccesoDatos.Models
     
     public partial class Disciplina
     {
+        public Disciplina()
+        {
+            this.Eventos = new HashSet<Evento>();
+        }
+    
         public int id_disciplina { get; set; }
         public string nombre { get; set; }
         public string descripcion { get; set; }
+    
+        public virtual ICollection<Evento> Eventos { get; set; }
     }
 }
