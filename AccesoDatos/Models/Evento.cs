@@ -20,6 +20,7 @@ namespace AccesoDatos.Models
         public string fecha { get; set; }
         public string url_flayer { get; set; }
         public string descripcion { get; set; }
+        public int Disciplina_id_disciplina { get; set; }
     
         public virtual Disciplina Disciplina { get; set; }
     }
