@@ -30,12 +30,17 @@ namespace TaniaMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Agregar(Evento evento, HttpPostedFileBase file)
         {
+            string path = AppDomain.CurrentDomain.BaseDirectory;
+            string filePath = path + "/Images/Subidas/"+ evento.id_evento + ".jpg";
+            evento.url_flayer = filePath;
+            file.SaveAs(filePath);
             try
-            {
+            {   
                 if (ModelState.IsValid)
                 {
                     db.Eventos.Add(evento);
                     db.SaveChanges();
+                    
                 }
                 return RedirectToAction("Index");
             }
@@ -85,6 +90,28 @@ namespace TaniaMVC.Controllers
                 TempData["Error"] = ex.Message;
                 return View("Error");
             }
+        }
+        public ActionResult Crear(FormCollection form, Evento evento)
+        {
+
+                       //string file = @"C:\Users\juancarlosgonzalezca\Documents\Documento.pdf";
+
+            
+
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    db.Eventos.Add(evento);
+                    db.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["Error"] = ex.Message;
+            }
+
+            return RedirectToAction("Index");
         }
     }
 }

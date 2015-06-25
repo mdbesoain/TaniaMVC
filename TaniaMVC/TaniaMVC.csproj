@@ -63,8 +63,16 @@
       <HintPath>..\packages\DotNetOpenAuth.OpenId.RelyingParty.4.3.4.13329\lib\net45-full\DotNetOpenAuth.OpenId.RelyingParty.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="itextsharp, Version=5.0.5.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.0.5\lib\itextsharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Web.WebPages.OAuth, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="RazorPDF, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RazorPDF.1.0.0\lib\net45\RazorPDF.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
@@ -175,6 +183,7 @@
     </Compile>
     <Compile Include="Models\AccountModel.cs" />
     <Compile Include="Models\Correo.cs" />
+    <Compile Include="Models\Columna.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -263,6 +272,7 @@
     <Content Include="Images\clients\client-8.png" />
     <Content Include="Images\clients\client-9.png" />
     <Content Include="Images\evento.jpg" />
+    <Content Include="Images\newart.jpg" />
     <Content Include="Images\photo-1.jpg" />
     <Content Include="Images\photo-2.jpg" />
     <Content Include="Images\photo-3.jpg" />
@@ -316,6 +326,8 @@
     <Content Include="Images\tania7.jpg" />
     <Content Include="Images\tania8.jpg" />
     <Content Include="Images\tania9.jpg" />
+    <Content Include="Images\tio lelo.png" />
+    <Content Include="Images\tmracing.png" />
     <Content Include="Scripts\bootstrap-datepicker.js" />
     <Content Include="Scripts\carousel.js" />
     <Content Include="Scripts\collapse.js" />
@@ -455,7 +467,7 @@
     <Content Include="Views\Auspiciador\Index.cshtml" />
     <Content Include="Views\Evento\Index.cshtml" />
     <Content Include="Views\Logro\Index.cshtml" />
-    <Content Include="Views\Reporte\Index.cshtml" />
+    <Content Include="Views\Reporte\Enviar_Correo.cshtml" />
     <Content Include="Views\Evento\Agregar.cshtml" />
     <Content Include="Views\Disciplina\Index.cshtml" />
     <Content Include="Views\Disciplina\Agregar.cshtml" />
@@ -464,9 +476,14 @@
     <Content Include="Views\Logro\Editar.cshtml" />
     <Content Include="Views\Home\_Eventos.cshtml" />
     <Content Include="Views\Home\_Auspiciadores.cshtml" />
+    <Content Include="Views\Reporte\Crear.cshtml" />
+    <Content Include="Views\Reporte\PDF.cshtml" />
+    <Content Include="Views\Reporte\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Images\Subidas\" />
+    <Folder Include="Reportes\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

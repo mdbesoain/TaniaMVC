@@ -45,36 +45,27 @@
                 // Revalidate the date field
                 $('#eventForm').formValidation('revalidateField', 'date');
             });
+        var i = 1;
+        $("#add_row").click(function () {
+            $('#addr' + i).html("<td>" + (i + 1) + "</td><td><input type='text' name='fecha" + i + "' placeholder='Ingrese la fecha' class='form-control' /></td><td><input name='detalle" + i + "' type='text' placeholder='Ingrese el detalle del gasto' class='form-control input-md'  /> </td><td><input type='text' name='boleta" + i  +"' placeholder='Ingrese el numero de boleta' class='form-control' /></td><td><input  name='costo" + i + "' type='text' placeholder='Ingrese el monto del gasto'  class='form-control input-md'></td>");
 
-        $('#eventForm').formValidation({
-            framework: 'bootstrap',
-            icon: {
-                valid: 'glyphicon glyphicon-ok',
-                invalid: 'glyphicon glyphicon-remove',
-                validating: 'glyphicon glyphicon-refresh'
-            },
-            fields: {
-                name: {
-                    validators: {
-                        notEmpty: {
-                            message: 'The name is required'
-                        }
-                    }
-                },
-                date: {
-                    validators: {
-                        notEmpty: {
-                            message: 'The date is required'
-                        },
-                        date: {
-                            format: 'DD/MM/YYYY',
-                            message: 'The date is not a valid'
-                        }
-                    }
-                }
+            $('#tab_logic').append('<tr id="addr' + (i + 1) + '"></tr>');
+            i++;
+        });
+        $("#delete_row").click(function () {
+            if (i > 1) {
+                $("#addr" + (i - 1)).html('');
+                i--;
             }
         });
     });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            
+
+        });
     </script>
 
     <!-- Morris Charts JavaScript -->

@@ -47,7 +47,21 @@ namespace TaniaMVC.Controllers
 
         public ActionResult _Eventos()
         {
-            return View();
+            var eventos = db.Eventos.ToList();
+            int i = eventos.Count;
+            List<Evento> ultimos = new List<Evento>();
+            if ( i > 3)
+            {
+                for (int j = 1; j <= i; j++ )
+                {
+                    ultimos.Add(eventos[i - j]);
+                }
+                return View(ultimos);
+            }
+            else
+            {
+                return View(eventos);
+            }
         }
 
         public ActionResult _Auspiciadores()
@@ -64,10 +78,6 @@ namespace TaniaMVC.Controllers
         [HttpPost]
         public ActionResult _Contacto(Correo correo)
         {
-            //
-            //
-            //
-
             if (ModelState.IsValid)
             {
                 MailMessage mail = new MailMessage();

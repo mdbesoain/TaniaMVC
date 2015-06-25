@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 06/10/2015 23:30:11
+-- Date Created: 06/18/2015 15:40:56
 -- Generated from EDMX file: C:\Users\juancarlosgonzalezca\documents\visual studio 2013\Projects\TaniaMVC\AccesoDatos\Models\TaniaEntities.edmx
 -- --------------------------------------------------
 
@@ -75,7 +75,8 @@ CREATE TABLE [dbo].[Auspiciadores] (
     [id_auspiciador] int IDENTITY(1,1) NOT NULL,
     [nombre] nvarchar(max)  NOT NULL,
     [descripcion] nvarchar(max)  NOT NULL,
-    [url_logo] nvarchar(max)  NOT NULL
+    [url_logo] nvarchar(max)  NOT NULL,
+    [website] nvarchar(max)  NOT NULL
 );
 GO
 
@@ -106,7 +107,8 @@ GO
 -- Creating table 'Reportes'
 CREATE TABLE [dbo].[Reportes] (
     [reporte_id] int IDENTITY(1,1) NOT NULL,
-    [fecha] datetime  NOT NULL
+    [fecha] datetime  NOT NULL,
+    [url] nvarchar(max)  NOT NULL
 );
 GO
 

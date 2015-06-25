@@ -1,0 +1,69 @@
+﻿@model AccesoDatos.Models.Reporte
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    Model.fecha = DateTime.Now;
+}
+
+<div id="wrapper">
+    <div id="page-wrapper">
+        <div class="container-fluid">
+            <div class="container">
+                <h3>Nuevo Reporte</h3>
+                @using (Html.BeginForm())
+                {                   
+                <div class="row clearfix">
+                    <div class="col-md-12 column">
+                        <table class="table table-bordered table-hover" id="tab_logic">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">
+                                        #
+                                    </th>
+                                    <th class="text-center">
+                                        Fecha
+                                    </th>
+                                    <th class="text-center">
+                                        Detalle
+                                    </th>
+                                    <th class="text-center">
+                                        # Boleta
+                                    </th>
+                                    <th class="text-center">
+                                        Costo
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr id='addr0'>
+                                    <td>
+                                        1
+                                    </td>
+                                    <td>
+                                        <input type="text" name='fecha0' placeholder='Ingrese la fecha' class="form-control" />
+                                    </td>
+                                    <td>
+                                        <input type="text" name='detalle0' placeholder='Ingrese el detalle del gasto' class="form-control" />
+                                    </td>
+                                    <td>
+                                        <input type="text" name='boleta0' placeholder='Ingrese el numero de boleta' class="form-control" />
+                                    </td>
+                                    <td>
+                                        <input type="text" name='costo0' placeholder='Ingrese el monto del gasto' class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr id='addr1'></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <a id="add_row" class="btn btn-default pull-left">Agregar Fila</a><a id='delete_row' class="pull-right btn btn-default">Borrar Fila</a>
+                <div>
+                    <button id='submit' type="submit" class="pull-right btn btn-primary">Crear PDF</button>
+                </div>
+                @Html.HiddenFor(x => x.reporte_id)
+                @Html.HiddenFor(x => x.fecha)
+                }
+            </div>
+        </div>
+    </div>
+</div>
