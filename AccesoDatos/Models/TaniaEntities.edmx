@@ -13,6 +13,7 @@
     <EntitySet Name="Logros" EntityType="TaniaEntities.Store.Logros" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Categorias" EntityType="TaniaEntities.Store.Categorias" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Reportes" EntityType="TaniaEntities.Store.Reportes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Estadisticas" EntityType="TaniaEntities.Store.Estadisticas" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="FotoCategoria" Association="TaniaEntities.Store.FotoCategoria">
       <End Role="Foto" EntitySet="Fotos" />
       <End Role="Categoria" EntitySet="Categorias" />
@@ -20,6 +21,10 @@
     <AssociationSet Name="EventoDisciplina" Association="TaniaEntities.Store.EventoDisciplina">
       <End Role="Evento" EntitySet="Eventos" />
       <End Role="Disciplina" EntitySet="Disciplinas" />
+    </AssociationSet>
+    <AssociationSet Name="EstadisticaEvento" Association="TaniaEntities.Store.EstadisticaEvento">
+      <End Role="Estadistica" EntitySet="Estadisticas" />
+      <End Role="Evento" EntitySet="Eventos" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Fotos">
@@ -87,6 +92,16 @@
     <Property Name="fecha" Type="datetime" Nullable="false" />
     <Property Name="url" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
+  <EntityType Name="Estadisticas">
+    <Key>
+      <PropertyRef Name="id_estadistica" />
+    </Key>
+    <Property Name="id_estadistica" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="pos_manga1" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="pos_manga2" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="pos_final" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Evento_id_evento" Type="int" Nullable="false" />
+  </EntityType>
   <Association Name="FotoCategoria">
     <End Role="Foto" Type="TaniaEntities.Store.Fotos" Multiplicity="*" />
     <End Role="Categoria" Type="TaniaEntities.Store.Categorias" Multiplicity="1" />
@@ -108,6 +123,18 @@
       </Principal>
       <Dependent Role="Evento">
         <PropertyRef Name="Disciplina_id_disciplina" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EstadisticaEvento">
+    <End Role="Estadistica" Type="TaniaEntities.Store.Estadisticas" Multiplicity="*" />
+    <End Role="Evento" Type="TaniaEntities.Store.Eventos" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Evento">
+        <PropertyRef Name="id_evento" />
+      </Principal>
+      <Dependent Role="Estadistica">
+        <PropertyRef Name="Evento_id_evento" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -311,12 +338,30 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Estadisticas">
+      <EntityTypeMapping TypeName="IsTypeOf(TaniaEntities.Estadistica)">
+        <MappingFragment StoreEntitySet="Estadisticas">
+          <ScalarProperty Name="id_estadistica" ColumnName="id_estadistica" />
+          <ScalarProperty Name="pos_manga1" ColumnName="pos_manga1" />
+          <ScalarProperty Name="pos_manga2" ColumnName="pos_manga2" />
+          <ScalarProperty Name="pos_final" ColumnName="pos_final" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <AssociationSetMapping Name="FotoCategoria" TypeName="TaniaEntities.FotoCategoria" StoreEntitySet="Fotos">
       <EndProperty Name="Categoria">
         <ScalarProperty Name="id_categoria" ColumnName="Categoria_id_categoria" />
       </EndProperty>
       <EndProperty Name="Foto">
         <ScalarProperty Name="id_foto" ColumnName="id_foto" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="EstadisticaEvento" TypeName="TaniaEntities.EstadisticaEvento" StoreEntitySet="Estadisticas">
+      <EndProperty Name="Evento">
+        <ScalarProperty Name="id_evento" ColumnName="Evento_id_evento" />
+      </EndProperty>
+      <EndProperty Name="Estadistica">
+        <ScalarProperty Name="id_estadistica" ColumnName="id_estadistica" />
       </EndProperty>
     </AssociationSetMapping>
   </EntityContainerMapping>
