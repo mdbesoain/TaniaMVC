@@ -26,17 +26,17 @@ namespace TaniaMVC
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            if (!WebSecurity.Initialized)
+            /*if (!WebSecurity.Initialized)
             {
-                /*WebSecurity.InitializeDatabaseConnection("DefaultConnection", "UserProfile", "UserId", "UserName", true);
+                WebSecurity.InitializeDatabaseConnection("DefaultConnection", "UserProfile", "UserId", "UserName", true);
                 WebSecurity.CreateUserAndAccount("Admin", "Admin");
                 WebSecurity.CreateUserAndAccount("Tania", "Tania");
                 Roles.CreateRole("Administrador");
                 Roles.AddUserToRole("Admin", "Administrador");
-                Roles.AddUserToRole("Tania", "Administrador");*/
+                Roles.AddUserToRole("Tania", "Administrador");
 
             }
-            
+            */
 
         }
     }

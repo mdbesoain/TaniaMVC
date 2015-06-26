@@ -1,4 +1,15 @@
-﻿<!DOCTYPE html>
+﻿@{  string login;
+    bool loged = false;
+    if (Session["usu_nombre"] == null){
+       login = "Login";
+       loged = false;
+    }
+    else { 
+       login = "Perfil";
+       loged = true;
+    }
+ }
+<!DOCTYPE html>
 <html class="no-js">
 <head>
     <meta charset="utf-8">
@@ -52,8 +63,14 @@
                         <li><a href="#eventos" class="scroll-link">Eventos</a></li>
                         <li><a href="#auspiciadores" class="scroll-link">Auspiciadores</a></li>
                         <li><a href="#contactUs" class="scroll-link">Contactame</a></li>
-                        <li><a href="@Url.Action("Login", "Account")">Login</a></li>
-                        
+                        @{if (loged == true)
+                          {
+                              <li><a href="@Url.Action("Perfil", "Account")">@login</a></li>
+                          }
+                          else { 
+                          <li><a href="@Url.Action("Login", "Account")">@login</a></li>
+                          }
+                        }                        
                     </ul>
                 </div>
                 <!--/.navbar-collapse-->

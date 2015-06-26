@@ -18,6 +18,7 @@ namespace AccesoDatos.Models
         public string nombre { get; set; }
         public string url { get; set; }
         public string descripcion { get; set; }
+        public int id_categoria { get; set; }
     
         public virtual Categoria Categoria { get; set; }
     }

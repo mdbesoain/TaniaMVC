@@ -481,6 +481,8 @@
     <Content Include="Views\Auspiciador\Editar.cshtml" />
     <Content Include="Views\Estadistica\Agregar.cshtml" />
     <Content Include="Views\Estadistica\Index.cshtml" />
+    <Content Include="Views\Evento\Editar.cshtml" />
+    <Content Include="Views\Account\Perfil.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

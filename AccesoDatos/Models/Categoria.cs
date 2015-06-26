@@ -14,8 +14,15 @@ namespace AccesoDatos.Models
     
     public partial class Categoria
     {
+        public Categoria()
+        {
+            this.Fotos = new HashSet<Foto>();
+        }
+    
         public int id_categoria { get; set; }
         public string nombre { get; set; }
         public string descripcion { get; set; }
+    
+        public virtual ICollection<Foto> Fotos { get; set; }
     }
 }

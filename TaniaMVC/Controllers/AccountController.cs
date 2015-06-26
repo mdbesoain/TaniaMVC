@@ -20,6 +20,15 @@ namespace TaniaMVC.Controllers
         //
         // GET: /Account/Login
 
+        [Authorize]
+        public ActionResult Perfil()
+        {
+            UserProfile usuario = new UserProfile();
+            usuario.UserId = WebSecurity.CurrentUserId;
+            usuario.UserName = WebSecurity.CurrentUserName;
+            return View(usuario);
+        }
+
         [AllowAnonymous]
         public ActionResult Login()
         {
@@ -37,7 +46,14 @@ namespace TaniaMVC.Controllers
             if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
             {
                 Session["usu_nombre"] = model.UserName;
-                return RedirectToAction("Index", "Admin");
+                String[] rol = Roles.GetRolesForUser(model.UserName);
+                Session["usu_rol"] = rol[0];
+                if (rol[0].Equals("Usuario"))
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+                else if(rol[0].Equals("Administrador"))
+                    return RedirectToAction("Index", "Admin");
             }
 
             // Si llegamos a este punto, es que se ha producido un error y volvemos a mostrar el formulario
@@ -63,6 +79,7 @@ namespace TaniaMVC.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+            Roles.CreateRole("Usuario");
             return View();
         }
 
@@ -81,6 +98,7 @@ namespace TaniaMVC.Controllers
                 {
                     WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
                     WebSecurity.Login(model.UserName, model.Password);
+                    Roles.AddUserToRole(model.UserName, "Usuario");
                     return RedirectToAction("Index", "Home");
                 }
                 catch (MembershipCreateUserException e)
@@ -270,7 +288,7 @@ namespace TaniaMVC.Controllers
                     if (user == null)
                     {
                         // Insertar el nombre en la tabla de perfiles
-                        db.UserProfiles.Add(new UserProfile { UserName = model.UserName });
+                        db.UserProfiles.Add(new UserProfile { UserName = model.UserName});
                         db.SaveChanges();
 
                         OAuthWebSecurity.CreateOrUpdateAccount(provider, providerUserId, model.UserName);

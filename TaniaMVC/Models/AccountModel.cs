@@ -32,6 +32,8 @@ namespace TaniaMVC.Models
         [Required]
         [Display(Name = "Nombre de usuario")]
         public string UserName { get; set; }
+        [Required]
+        [Display(Name = "Email")]
 
         public string ExternalLoginData { get; set; }
     }

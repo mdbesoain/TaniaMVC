@@ -1,0 +1,30 @@
+﻿@model TaniaMVC.Models.UserProfile
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Perfil</title>
+</head>
+<body>
+    <fieldset>
+        <legend>UserProfile</legend>
+    
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.UserName)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.UserName)
+        </div>
+    </fieldset>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id=Model.UserId }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>
