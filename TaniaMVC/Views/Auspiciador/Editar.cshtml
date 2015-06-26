@@ -8,53 +8,54 @@
 <div id="wrapper">
     <div id="page-wrapper">
         <div class="container-fluid">
-            <h2>Editar</h2>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h3>EditarAuspiciador</h3>
 
-            @using (Html.BeginForm())
-            {
-                @Html.AntiForgeryToken()
-                @Html.ValidationSummary(true)
+                    @using (Html.BeginForm("Editar", "Auspiciador", FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true)
+                        @Html.HiddenFor(model => model.id_auspiciador);
+                        @Html.HiddenFor(model => model.url_logo);
+                        
 
-                <fieldset>
-                    <legend>Auspiciador</legend>
-                    <div class="editor-label">
-                        @Html.LabelFor(model => model.id_auspiciador)
-                    </div>
-                    <div class="editor-field">
-                        @Html.EditorFor(model => model.id_auspiciador)
-                        @Html.ValidationMessageFor(model => model.id_auspiciador)
-                    </div>
-                    <div class="editor-label">
-                        @Html.LabelFor(model => model.nombre)
-                    </div>
-                    <div class="editor-field">
-                        @Html.EditorFor(model => model.nombre)
-                        @Html.ValidationMessageFor(model => model.nombre)
-                    </div>
+                        <div class="form-group">
+                            <label for="inputNombre" class="control-label col-xs-2">Nombre:</label>
+                            <div class="col-xs-5">
+                                @Html.TextBoxFor(model => model.nombre, new { @type = "text", @class = "form-control", @placeholder = "Nombre del auspiciador", required = "required " })
+                                @Html.ValidationMessageFor(model => model.nombre)
+                            </div>
+                        </div>
 
-                    <div class="editor-label">
-                        @Html.LabelFor(model => model.descripcion)
-                    </div>
-                    <div class="editor-field">
-                        @Html.EditorFor(model => model.descripcion)
-                        @Html.ValidationMessageFor(model => model.descripcion)
-                    </div>
 
-                    <div class="editor-label">
-                        @Html.LabelFor(model => model.url_logo)
-                    </div>
-                    <div class="editor-field">
-                        @Html.EditorFor(model => model.url_logo)
-                        @Html.ValidationMessageFor(model => model.url_logo)
-                    </div>
-                    <p>
-                        <input type="submit" value="Save" />
-                    </p>
-                </fieldset>
-            }
+                        <div class="form-group">
+                            <label for="inputDescripcion" class="control-label col-xs-2">Descripción:</label>
+                            <div class="col-xs-5">
+                                @Html.TextBoxFor(model => model.descripcion, new { @type = "text", @class = "form-control", @placeholder = "Descripción del auspiciador", required = "required " })
+                                @Html.ValidationMessageFor(model => model.descripcion)
+                            </div>
+                        </div>
 
-            <div>
-                @Html.ActionLink("Back to List", "Index")
+                        <div class="form-group">
+                            <label for="inputDescripcion" class="control-label col-xs-2">Sitio Web:</label>
+                            <div class="col-xs-5">
+                                @Html.TextBoxFor(model => model.website, new { @type = "text", @class = "form-control", @placeholder = "Sitio Web del auspiciador" })
+                                @Html.ValidationMessageFor(model => model.website)
+                            </div>
+                        </div>
+
+                        <div class='wrapper text-center'>
+                            <div class="col-xs-5">
+                                @Html.ActionLink("Atras", "Index", "Auspiciador", new { @class = "btn btn-danger" })
+                                <button type="submit" class="btn btn-primary">Editar</button>
+                            </div>
+                        </div>
+
+                    }
+
+
+                </div>
             </div>
         </div>
     </div>

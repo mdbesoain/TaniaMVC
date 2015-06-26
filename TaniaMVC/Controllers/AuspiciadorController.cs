@@ -27,13 +27,21 @@ namespace TaniaMVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Agregar(Auspiciador auspiciador)
+        public ActionResult Agregar(Auspiciador auspiciador, HttpPostedFileBase file)
         {
+            
+            auspiciador.url_logo= "vacio";
             try
             {
                 if (ModelState.IsValid)
                 {
                     db.Auspiciadores.Add(auspiciador);
+                    db.SaveChanges();
+                    string path = AppDomain.CurrentDomain.BaseDirectory;
+                    string filePath = path + "/Images/auspiciadores/" + auspiciador.id_auspiciador+ ".jpg";
+                    auspiciador.url_logo = "/Images/auspiciadores/" + auspiciador.id_auspiciador + ".jpg";
+                    file.SaveAs(filePath);
+                    db.Entry(auspiciador).State = EntityState.Modified;
                     db.SaveChanges();
                 }
                 return RedirectToAction("Index");

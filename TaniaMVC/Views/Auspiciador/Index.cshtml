@@ -15,7 +15,6 @@
                         <th>ID Auspiciador</th>
                         <th>Nombre</th>
                         <th>Descripcion</th>
-                        <th>url_logo</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -25,7 +24,6 @@
                         <th>ID Auspiciador</th>
                         <th>Nombre</th>
                         <th>Descripcion</th>
-                        <th>url_logo</th>
                         <th></th>
                     </tr>
                 </tfoot>
@@ -43,12 +41,9 @@
                             <td>
                                 @Html.DisplayFor(modelItem => item.descripcion)
                             </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.url_logo)
-                            </td>
                             <td align="center">
                                 @Html.ActionLink(" ", "Editar", new { id = item.id_auspiciador }, new { @rel = "tooltip", @title = "Editar", @class = "fa fa-pencil-square-o" })
-                                @Html.ActionLink(" ", "DeleteConfirmed", new { id = item.id_auspiciador }, new { @rel = "tooltip", @title = "Eliminar", @class = "fa fa-trash-o", onclick = "return confirm('¿Está seguro que desea eliminar al evento?');" })
+                                @Html.ActionLink(" ", "DeleteConfirmed", new { id = item.id_auspiciador }, new { @rel = "tooltip", @title = "Eliminar", @class = "fa fa-trash-o", onclick = "return confirm('¿Está seguro que desea eliminar al auspiciador?');" })
                             </td>
                         </tr>
                     }

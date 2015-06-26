@@ -66,19 +66,14 @@ namespace TaniaMVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Editar(Evento evento, HttpPostedFileBase file, int Disciplinas)
+        public ActionResult Editar(Evento evento, int Disciplinas)
         {
             Disciplina disciplina = db.Disciplinas.Find(Disciplinas);
             evento.Disciplina = disciplina;
-            evento.url_flayer = "vacio";
             try
             {
                 if (ModelState.IsValid)
                 {
-                    string path = AppDomain.CurrentDomain.BaseDirectory;
-                    string filePath = path + "/Images/Subidas/" + evento.id_evento + ".jpg";
-                    evento.url_flayer = "/Images/Subidas/" + evento.id_evento + ".jpg";
-                    file.SaveAs(filePath);
                     db.Entry(evento).State = EntityState.Modified;
                     db.SaveChanges();
                 }

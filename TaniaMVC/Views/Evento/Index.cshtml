@@ -17,6 +17,7 @@
                     <tr>
                         <th>ID Evento</th>
                         <th>Nombre</th>
+                        <th>Descripción</th>
                         <th>Direccion</th>
                         <th>Fecha</th>
                         <th>Disciplina</th>
@@ -28,6 +29,7 @@
                     <tr>
                         <th>ID Evento</th>
                         <th>Nombre</th>
+                        <th>Descripción</th>
                         <th>Direccion</th>
                         <th>Fecha</th>
                         <th>Disciplina</th>
@@ -46,6 +48,9 @@
                                 @Html.DisplayFor(modelItem => item.nombre)
                             </td>
                             <td>
+                                @Html.DisplayFor(modelItem => item.descripcion)
+                            </td>
+                            <td>
                                 @Html.DisplayFor(modelItem => item.direccion)
                             </td>
                             <td>
@@ -55,6 +60,7 @@
                                 @Html.DisplayFor(modelItem => item.Disciplina.nombre)
                             </td>
                             <td align="center">
+                                @Html.ActionLink(" ", "Detalles", new { id = item.id_evento }, new { @rel = "tooltip", @title = "Editar", @class = "fa fa-info" })
                                 @Html.ActionLink(" ", "Editar", new { id = item.id_evento }, new { @rel = "tooltip", @title = "Editar", @class = "fa fa-pencil-square-o" })
                                 @Html.ActionLink(" ", "DeleteConfirmed", new { id = item.id_evento }, new { @rel = "tooltip", @title = "Eliminar", @class = "fa fa-trash-o", onclick = "return confirm('¿Está seguro que desea eliminar al evento?');" })
                             </td>
