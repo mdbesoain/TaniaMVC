@@ -1,6 +1,7 @@
 ﻿using AccesoDatos.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -15,25 +16,35 @@ namespace TaniaMVC.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            return View(db.Estadisticas.ToList());
         }
 
-        public ActionResult Agregar()
+        public ActionResult Agregar(int id)
         {
             Estadistica estadistica = new Estadistica();
+            Evento evento = db.Eventos.Find(id);
+            estadistica.Evento = evento;
             return View(estadistica);
         }
         [HttpPost]
-        public ActionResult Agregar(Estadistica estadistica)
+        public ActionResult Agregar(Estadistica estadistica, int id)
         {
+            Evento evento = db.Eventos.Find(id);
+            estadistica.Evento = evento;
             try
             {
                 if (ModelState.IsValid)
                 {
                     db.Estadisticas.Add(estadistica);
                     db.SaveChanges();
+
+                    evento = estadistica.Evento;
+                    evento.Estadistica = estadistica;
+                    db.Entry(evento).State = EntityState.Modified;
+                    db.SaveChanges();
+
                 }
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Evento", null);
             }
             catch (Exception ex)
             {

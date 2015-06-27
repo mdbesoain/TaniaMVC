@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 06/25/2015 13:59:43
+-- Date Created: 06/26/2015 19:23:22
 -- Generated from EDMX file: C:\Users\juancarlosgonzalezca\documents\visual studio 2013\Projects\TaniaMVC\AccesoDatos\Models\TaniaEntities.edmx
 -- --------------------------------------------------
 
@@ -17,11 +17,14 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[FK_FotoCategoria]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Fotos] DROP CONSTRAINT [FK_FotoCategoria];
-GO
 IF OBJECT_ID(N'[dbo].[FK_EventoDisciplina]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Eventos] DROP CONSTRAINT [FK_EventoDisciplina];
+GO
+IF OBJECT_ID(N'[dbo].[FK_EventoEstadistica]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Estadisticas] DROP CONSTRAINT [FK_EventoEstadistica];
+GO
+IF OBJECT_ID(N'[dbo].[FK_CategoriaFoto]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Fotos] DROP CONSTRAINT [FK_CategoriaFoto];
 GO
 
 -- --------------------------------------------------
@@ -49,6 +52,9 @@ GO
 IF OBJECT_ID(N'[dbo].[Reportes]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Reportes];
 GO
+IF OBJECT_ID(N'[dbo].[Estadisticas]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Estadisticas];
+GO
 
 -- --------------------------------------------------
 -- Creating all tables
@@ -60,7 +66,7 @@ CREATE TABLE [dbo].[Fotos] (
     [nombre] nvarchar(max)  NOT NULL,
     [url] nvarchar(max)  NOT NULL,
     [descripcion] nvarchar(max)  NOT NULL,
-    [Categoria_id_categoria] int  NOT NULL
+    [id_categoria] int  NOT NULL
 );
 GO
 
@@ -72,7 +78,7 @@ CREATE TABLE [dbo].[Eventos] (
     [fecha] nvarchar(max)  NOT NULL,
     [url_flayer] nvarchar(max)  NOT NULL,
     [descripcion] nvarchar(max)  NOT NULL,
-    [Disciplina_id_disciplina] int  NOT NULL
+    [id_disciplina] int  NOT NULL
 );
 GO
 
@@ -116,6 +122,16 @@ CREATE TABLE [dbo].[Reportes] (
     [reporte_id] int IDENTITY(1,1) NOT NULL,
     [fecha] datetime  NOT NULL,
     [url] nvarchar(max)  NOT NULL
+);
+GO
+
+-- Creating table 'Estadisticas'
+CREATE TABLE [dbo].[Estadisticas] (
+    [id_estadistica] int IDENTITY(1,1) NOT NULL,
+    [pos_manga1] nvarchar(max)  NOT NULL,
+    [pos_manga2] nvarchar(max)  NOT NULL,
+    [pos_final] nvarchar(max)  NOT NULL,
+    [Evento_id_evento] int  NOT NULL
 );
 GO
 
@@ -165,29 +181,20 @@ ADD CONSTRAINT [PK_Reportes]
     PRIMARY KEY CLUSTERED ([reporte_id] ASC);
 GO
 
+-- Creating primary key on [id_estadistica] in table 'Estadisticas'
+ALTER TABLE [dbo].[Estadisticas]
+ADD CONSTRAINT [PK_Estadisticas]
+    PRIMARY KEY CLUSTERED ([id_estadistica] ASC);
+GO
+
 -- --------------------------------------------------
 -- Creating all FOREIGN KEY constraints
 -- --------------------------------------------------
 
--- Creating foreign key on [Categoria_id_categoria] in table 'Fotos'
-ALTER TABLE [dbo].[Fotos]
-ADD CONSTRAINT [FK_FotoCategoria]
-    FOREIGN KEY ([Categoria_id_categoria])
-    REFERENCES [dbo].[Categorias]
-        ([id_categoria])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_FotoCategoria'
-CREATE INDEX [IX_FK_FotoCategoria]
-ON [dbo].[Fotos]
-    ([Categoria_id_categoria]);
-GO
-
--- Creating foreign key on [Disciplina_id_disciplina] in table 'Eventos'
+-- Creating foreign key on [id_disciplina] in table 'Eventos'
 ALTER TABLE [dbo].[Eventos]
 ADD CONSTRAINT [FK_EventoDisciplina]
-    FOREIGN KEY ([Disciplina_id_disciplina])
+    FOREIGN KEY ([id_disciplina])
     REFERENCES [dbo].[Disciplinas]
         ([id_disciplina])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
@@ -196,7 +203,37 @@ GO
 -- Creating non-clustered index for FOREIGN KEY 'FK_EventoDisciplina'
 CREATE INDEX [IX_FK_EventoDisciplina]
 ON [dbo].[Eventos]
-    ([Disciplina_id_disciplina]);
+    ([id_disciplina]);
+GO
+
+-- Creating foreign key on [Evento_id_evento] in table 'Estadisticas'
+ALTER TABLE [dbo].[Estadisticas]
+ADD CONSTRAINT [FK_EventoEstadistica]
+    FOREIGN KEY ([Evento_id_evento])
+    REFERENCES [dbo].[Eventos]
+        ([id_evento])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_EventoEstadistica'
+CREATE INDEX [IX_FK_EventoEstadistica]
+ON [dbo].[Estadisticas]
+    ([Evento_id_evento]);
+GO
+
+-- Creating foreign key on [id_categoria] in table 'Fotos'
+ALTER TABLE [dbo].[Fotos]
+ADD CONSTRAINT [FK_CategoriaFoto]
+    FOREIGN KEY ([id_categoria])
+    REFERENCES [dbo].[Categorias]
+        ([id_categoria])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_CategoriaFoto'
+CREATE INDEX [IX_FK_CategoriaFoto]
+ON [dbo].[Fotos]
+    ([id_categoria]);
 GO
 
 -- --------------------------------------------------

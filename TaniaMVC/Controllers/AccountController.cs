@@ -68,6 +68,8 @@ namespace TaniaMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
+            Session["usu_nombre"] = null;
+            Session["usu_rol"] = null;
             WebSecurity.Logout();
 
             return RedirectToAction("Index", "Home");
@@ -79,7 +81,7 @@ namespace TaniaMVC.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            Roles.CreateRole("Usuario");
+           
             return View();
         }
 

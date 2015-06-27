@@ -1,6 +1,7 @@
 ﻿@model AccesoDatos.Models.Logro
 
 @{
+    ViewBag.Title = "Nuevo Logro";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
@@ -8,48 +9,51 @@
 <div id="wrapper">
     <div id="page-wrapper">
         <div class="container-fluid">
-            <div class="panel panel-default">
+            <div class="panel panel-success">
+                <div class="panel-heading"><h4>@ViewBag.Title</h4></div>
                 <div class="panel-body">
-                    <h3>Nuevo Logro</h3>
                     @using (Html.BeginForm("Agregar", "Logro", FormMethod.Post, new { @class = "form-horizontal" }))
                     {
                         @Html.AntiForgeryToken()
                         @Html.ValidationSummary(true)
 
-                        <div class="form-group">
-                            <label for="inputTitulo" class="control-label col-xs-2">Nombre:</label>
-                            <div class="col-xs-5">
-                                @Html.TextBoxFor(model => model.titulo, new { @type = "text", @class = "form-control", @placeholder = "Titulo del Logro", required = "required " })
-                                @Html.ValidationMessageFor(model => model.titulo)
-                            </div>
-                        </div>
-
-
-                        <div class="form-group">
-                            <label for="inputFecha" class="control-label col-xs-2">Fecha:</label>
-                            <div class="col-xs-5 date">
-                                <div class="input-group input-append date" id="datePicker">
-                                    @Html.TextBoxFor(model => model.fecha, new { @type="text", @class="form-control", @name="date", required = "required " })
-                                    @Html.ValidationMessageFor(model => model.fecha)
-                                    <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
+                        <fieldset>
+                            <legend>Formulario del logro</legend>
+                            <div class="form-group">
+                                <label for="inputTitulo" class="control-label col-xs-2">Nombre:</label>
+                                <div class="col-xs-5">
+                                    @Html.TextBoxFor(model => model.titulo, new { @type = "text", @class = "form-control", @placeholder = "Titulo del Logro", required = "required " })
+                                    @Html.ValidationMessageFor(model => model.titulo)
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="form-group">
-                            <label for="inputDescripcion" class="control-label col-xs-2">Descripcion:</label>
-                            <div class="col-xs-5">
-                                @Html.TextBoxFor(model => model.descripcion, new { @type = "text", @class = "form-control", @placeholder = "Descripcion de la Disciplina", required = "required " })
-                                @Html.ValidationMessageFor(model => model.descripcion)
-                            </div>
-                        </div>
 
-                        <div class='wrapper text-center'>
-                            <div class="col-xs-5">
-                                @Html.ActionLink("Atras", "Index", "Logro", new { @class = "btn btn-danger" })
-                                <button type="submit" class="btn btn-primary">Crear</button>
+                            <div class="form-group">
+                                <label for="inputFecha" class="control-label col-xs-2">Fecha:</label>
+                                <div class="col-xs-5 date">
+                                    <div class="input-group input-append date" id="datePicker">
+                                        @Html.TextBoxFor(model => model.fecha, new { @type = "text", @class = "form-control", @placeholder = "Fecha del evento", @name = "date", required = "required " })
+                                        @Html.ValidationMessageFor(model => model.fecha)
+                                        <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+
+                            <div class="form-group">
+                                <label for="inputDescripcion" class="control-label col-xs-2">Descripcion:</label>
+                                <div class="col-xs-5">
+                                    @Html.TextBoxFor(model => model.descripcion, new { @type = "text", @class = "form-control", @placeholder = "Descripcion de la Disciplina", required = "required " })
+                                    @Html.ValidationMessageFor(model => model.descripcion)
+                                </div>
+                            </div>
+
+                            <div class='wrapper text-center'>
+                                <div class="col-xs-5">
+                                    @Html.ActionLink("Atras", "Index", "Logro", new { @class = "btn btn-danger" })
+                                    <button type="submit" class="btn btn-primary">Crear</button>
+                                </div>
+                            </div>
+                        </fieldset>
                     }
                 </div>
             </div>

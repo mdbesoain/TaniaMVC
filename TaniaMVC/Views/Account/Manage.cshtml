@@ -1,32 +1,34 @@
 ﻿@model TaniaMVC.Models.LocalPasswordModel
 @{
     ViewBag.Title = "Administrar cuenta";
+    Layout = "~/Views/Shared/_LayoutAccount.cshtml";
 }
+<section class="secPad">
+    <div class="container">
+        <p></p>
+        <div class="panel panel-info">
+            <div class="panel-heading"><h3>@ViewBag.Title</h3></div>
+            <div class="panel-body">
+                
+                <p class="message-success">@ViewBag.StatusMessage</p>
 
-<hgroup class="title">
-    <h1>@ViewBag.Title.</h1>
-</hgroup>
+                <div class="alert alert-success" role="alert">
+                    <h4>Ha iniciado sesión como <strong>@User.Identity.Name</strong>.</h4>
+                </div>
 
-<p class="message-success">@ViewBag.StatusMessage</p>
+                @if (ViewBag.HasLocalPassword)
+                {
+                    @Html.Partial("_ChangePasswordPartial")
+                }
+                else
+                {
+                    @Html.Partial("_SetPasswordPartial")
+                }
 
-<p>Ha iniciado sesión como <strong>@User.Identity.Name</strong>.</p>
-
-@if (ViewBag.HasLocalPassword)
-{
-    @Html.Partial("_ChangePasswordPartial")
-}
-else
-{ 
-    @Html.Partial("_SetPasswordPartial")
-}
-
-<section id="externalLogins">
-    @Html.Action("RemoveExternalLogins")
-
-    <h3>Agregar un inicio de sesión externo</h3>
-    @Html.Action("ExternalLoginsList", new { ReturnUrl = ViewBag.ReturnUrl })
+            </div>
+        </div>
+    </div>
 </section>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }

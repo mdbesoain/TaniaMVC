@@ -1,74 +1,85 @@
 ﻿@model IEnumerable<AccesoDatos.Models.Evento>
 
 @{
+    ViewBag.Title = "Eventos";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
 <div id="wrapper">
     <div id="page-wrapper">
         <div class="container-fluid">
-            <div>
-                @Html.ActionLink("Agregar Evento", "Agregar","Evento", new { @class = "btn btn-primary" })
+            <div class="panel panel-info">
+                <div class="panel-heading"><h4>@ViewBag.Title</h4></div>
+                <div class="panel-body">
+                    <div>
+                        @Html.ActionLink("Agregar Evento", "Agregar", "Evento", null ,new { @class = "btn btn-primary" })
+                    </div>
+                    <p>
+                    </p>
+                    <table id="example" class="table table-striped table-bordered" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>ID Evento</th>
+                                <th>Nombre</th>
+                                <th>Descripción</th>
+                                <th>Direccion</th>
+                                <th>Fecha</th>
+                                <th>Disciplina</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+
+                        <tfoot>
+                            <tr>
+                                <th>ID Evento</th>
+                                <th>Nombre</th>
+                                <th>Descripción</th>
+                                <th>Direccion</th>
+                                <th>Fecha</th>
+                                <th>Disciplina</th>
+                                <th></th>
+                            </tr>
+                        </tfoot>
+
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.id_evento)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.nombre)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.descripcion)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.direccion)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.fecha)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Disciplina.nombre)
+                                    </td>
+                                    <td align="center">
+                                        @{ if (item.Estadistica == null)
+                                         {
+                                            @Html.ActionLink(" ", "Agregar", "Estadistica", new { id = item.id_evento }, new { @rel = "tooltip", @title = "Editar", @class = "fa fa-star-o" })
+                                         }
+                                        }
+                                        @Html.ActionLink(" ", "Detalles", new { id = item.id_evento }, new { @rel = "tooltip", @title = "Editar", @class = "fa fa-info" })
+                                        @Html.ActionLink(" ", "Editar", new { id = item.id_evento }, new { @rel = "tooltip", @title = "Editar", @class = "fa fa-pencil-square-o" })
+                                        @Html.ActionLink(" ", "DeleteConfirmed", new { id = item.id_evento }, new { @rel = "tooltip", @title = "Eliminar", @class = "fa fa-trash-o", onclick = "return confirm('¿Está seguro que desea eliminar al evento?');" })
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+
+                    </table>
+                </div>
             </div>
-            <p>
-            </p>
-            <table id="example" class="table table-striped table-bordered" cellspacing="0">
-                <thead>
-                    <tr>
-                        <th>ID Evento</th>
-                        <th>Nombre</th>
-                        <th>Descripción</th>
-                        <th>Direccion</th>
-                        <th>Fecha</th>
-                        <th>Disciplina</th>
-                        <th></th>
-                    </tr>
-                </thead>
-
-                <tfoot>
-                    <tr>
-                        <th>ID Evento</th>
-                        <th>Nombre</th>
-                        <th>Descripción</th>
-                        <th>Direccion</th>
-                        <th>Fecha</th>
-                        <th>Disciplina</th>
-                        <th></th>
-                    </tr>
-                </tfoot>
-
-                <tbody>
-                    @foreach (var item in Model)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.id_evento)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.nombre)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.descripcion)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.direccion)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.fecha)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Disciplina.nombre)
-                            </td>
-                            <td align="center">
-                                @Html.ActionLink(" ", "Detalles", new { id = item.id_evento }, new { @rel = "tooltip", @title = "Editar", @class = "fa fa-info" })
-                                @Html.ActionLink(" ", "Editar", new { id = item.id_evento }, new { @rel = "tooltip", @title = "Editar", @class = "fa fa-pencil-square-o" })
-                                @Html.ActionLink(" ", "DeleteConfirmed", new { id = item.id_evento }, new { @rel = "tooltip", @title = "Eliminar", @class = "fa fa-trash-o", onclick = "return confirm('¿Está seguro que desea eliminar al evento?');" })
-                            </td>
-                        </tr>
-                    }
-                </tbody>
-
-            </table>
         </div>
     </div>
 </div>

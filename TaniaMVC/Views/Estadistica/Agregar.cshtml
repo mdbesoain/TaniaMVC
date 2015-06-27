@@ -1,20 +1,62 @@
 ﻿@model AccesoDatos.Models.Estadistica
-
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
+<div id="wrapper">
+    <div id="page-wrapper">
+        <div class="container-fluid">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h3>Estadistica: @Html.DisplayFor(model => model.Evento.nombre)</h3>
+                    @using (Html.BeginForm("Agregar", "Estadistica", FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true)
+                        @Html.HiddenFor(model => model.Evento)
 
-<!DOCTYPE html>
+                        <div class="form-group">
+                            <label for="inputNombre" class="control-label col-xs-2">Posición 1ra Manga:</label>
+                            <div class="col-xs-5">
+                                @Html.TextBoxFor(model => model.pos_manga1, new { @type = "text", @class = "form-control", @placeholder = "Posición 1ra Manga", required = "required " })
+                                @Html.ValidationMessageFor(model => model.pos_manga1)
+                            </div>
+                        </div>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Agregar</title>
-</head>
-<body>
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-        @Html.ValidationSummary(true)
+                        <div class="form-group">
+                            <label for="inputDireccion" class="control-label col-xs-2">Posición 2da Manga:</label>
+                            <div class="col-xs-5">
+                                @Html.TextBoxFor(model => model.pos_manga2, new { @type = "text", @class = "form-control", @placeholder = "Posición 2da Manga", required = "required " })
+                                @Html.ValidationMessageFor(model => model.pos_manga2)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputDescripcion" class="control-label col-xs-2">Posición Final:</label>
+                            <div class="col-xs-5">
+                                @Html.TextBoxFor(model => model.pos_final, new { @type = "text", @class = "form-control", @placeholder = "Posición Final", required = "required " })
+                                @Html.ValidationMessageFor(model => model.pos_final)
+                            </div>
+                        </div>
+
+                        <div class='wrapper text-center'>
+                            <div class="col-xs-5">
+                                @Html.ActionLink("Atras", "Index", "Evento", new { @class = "btn btn-danger" })
+                                <button type="submit" class="btn btn-primary">Agregar</button>
+                            </div>
+                        </div>
+
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $('input[id=file]').change(function () {
+        $('#photoCover').val($(this).val());
+    });
+</script>
     
         <fieldset>
             <legend>Estadistica</legend>

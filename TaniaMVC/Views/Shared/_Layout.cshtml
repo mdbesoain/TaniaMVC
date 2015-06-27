@@ -65,7 +65,7 @@
                         <li><a href="#contactUs" class="scroll-link">Contactame</a></li>
                         @{if (loged == true)
                           {
-                              <li><a href="@Url.Action("Perfil", "Account")">@login</a></li>
+                              <li><a href="@Url.Action("Manage", "Account")">@login</a></li>
                           }
                           else { 
                           <li><a href="@Url.Action("Login", "Account")">@login</a></li>

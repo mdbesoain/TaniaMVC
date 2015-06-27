@@ -8,9 +8,8 @@
 <div class="panel panel-default" style="background-color: rgba(255,255,255,.7)">
     <div class="panel-body">
 
-
-        <p class="titulo">Bienvenido</p>
-        <p class="subtitulo">Tania González Web Official</p>
+        <p class="titulo">Bienvenido @Html.ActionLink(" ", "Index", "Home", null , new { @rel = "tooltip", @title = "Home",  @class = "fa fa-home"})</p>
+        <p class="subtitulo">Tania González Web Official </p>
         <p class="subtitulo2">Ingrese a su plataforma de administración</p>
 
 
@@ -33,8 +32,13 @@
                 @Html.CheckBoxFor(m => m.RememberMe)
                 @Html.LabelFor(m => m.RememberMe)
             </p>
-            <input type="submit" class="btn-form-log pull-right" value="Iniciar sesión" />
-
+            <p>
+                <input type="submit" class="btn-form-log pull-right" value="Iniciar sesión" />
+            </p>
+            <p>
+                @Html.ActionLink("Registrarse", "Register", "Account", null ,new { @class = "btn btn-warning" })
+            </p>
+            
         }
     </div>
 </div>

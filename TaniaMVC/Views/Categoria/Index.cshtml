@@ -1,54 +1,60 @@
 ﻿@model IEnumerable<AccesoDatos.Models.Categoria>
 
 @{
+    ViewBag.Title = "Categorias";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
 <div id="wrapper">
     <div id="page-wrapper">
         <div class="container-fluid">
-            <div>
-                @Html.ActionLink("Agregar Categoria", "Agregar", null, new { @class = "btn btn-primary" })
-                @Html.ActionLink("Atras", "Index", "Portafolio", null, new { @class = "btn btn-danger" })
-            </div>
-            <p></p>
-            <div>
-                <table id="example" class="table table-striped table-bordered" cellspacing="0">
-                    <thead>
-                        <tr>
-                            <th>Nombre</th>
-                            <th>Descripcion</th>
-                            <th></th>
-                        </tr>
-                    </thead>
+            <div class="panel panel-info">
+                <div class="panel-heading"><h4>@ViewBag.Title</h4></div>
+                <div class="panel-body">
+                    <div>
+                        @Html.ActionLink("Agregar Categoria", "Agregar", null, new { @class = "btn btn-primary" })
+                        @Html.ActionLink("Atras", "Index", "Portafolio", null, new { @class = "btn btn-danger" })
+                    </div>
+                    <p></p>
+                    <div>
+                        <table id="example" class="table table-striped table-bordered" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Descripcion</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
 
-                    <tfoot>
-                        <tr>
-                            <th>Nombre</th>
-                            <th>Descripcion</th>
-                            <th></th>
-                        </tr>
-                    </tfoot>
+                            <tfoot>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Descripcion</th>
+                                    <th></th>
+                                </tr>
+                            </tfoot>
 
-                    <tbody>
-                        @foreach (var item in Model)
-                        {
-                            <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.nombre)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.descripcion)
-                                </td>
-                                <td align="center">
-                                    @Html.ActionLink(" ", "Editar", new { id = item.id_categoria }, new { @rel = "tooltip", @title = "Editar", @class = "fa fa-pencil-square-o" })
-                                    @Html.ActionLink(" ", "DeleteConfirmed", new { id = item.id_categoria }, new { @rel = "tooltip", @title = "Eliminar", @class = "fa fa-trash-o", onclick = "return confirm('¿Está seguro que desea eliminar al evento?');" })
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.nombre)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.descripcion)
+                                        </td>
+                                        <td align="center">
+                                            @Html.ActionLink(" ", "Editar", new { id = item.id_categoria }, new { @rel = "tooltip", @title = "Editar", @class = "fa fa-pencil-square-o" })
+                                            @Html.ActionLink(" ", "DeleteConfirmed", new { id = item.id_categoria }, new { @rel = "tooltip", @title = "Eliminar", @class = "fa fa-trash-o", onclick = "return confirm('¿Está seguro que desea eliminar al evento?');" })
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
 
-                </table>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

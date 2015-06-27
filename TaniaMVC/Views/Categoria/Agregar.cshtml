@@ -1,45 +1,44 @@
 ﻿@model AccesoDatos.Models.Categoria
 
 @{
+    ViewBag.Title = "Nueva Categoria";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 <div id="wrapper">
     <div id="page-wrapper">
         <div class="container-fluid">
-            <div class="panel panel-default">
+            <div class="panel panel-success">
+                <div class="panel-heading"><h4>@ViewBag.Title</h4></div>
                 <div class="panel-body">
-                    <h3>Nuevo Evento</h3>
-                    @using (Html.BeginForm("Agregar", "Categoria", FormMethod.Post))
+                    @using (Html.BeginForm("Agregar", "Categoria", FormMethod.Post, new { @class = "form-horizontal"}))
                     {
                         @Html.AntiForgeryToken()
                         @Html.ValidationSummary(true)
 
                         <fieldset>
-                            <legend>Categoria</legend>
-                            <div class="editor-label">
-                                @Html.LabelFor(model => model.nombre)
+                            <legend>Fomulario de la categoria</legend>
+                            <div class="form-group">
+                                <label for="inputNombre" class="control-label col-xs-2">Nombre:</label>
+                                <div class="col-xs-5">
+                                    @Html.TextBoxFor(model => model.nombre, new { @type = "text", @class = "form-control", @placeholder = "Nombre la categoria", required = "required " })
+                                    @Html.ValidationMessageFor(model => model.nombre)
+                                </div>
                             </div>
-                            <div class="editor-field">
-                                @Html.EditorFor(model => model.nombre)
-                                @Html.ValidationMessageFor(model => model.nombre)
+                            <div class="form-group">
+                                <label for="inputNombre" class="control-label col-xs-2">Descripción:</label>
+                                <div class="col-xs-5">
+                                    @Html.TextBoxFor(model => model.descripcion, new { @type = "text", @class = "form-control", @placeholder = "Descripción de la categoria", required = "required " })
+                                    @Html.ValidationMessageFor(model => model.descripcion)
+                                </div>
                             </div>
-
-                            <div class="editor-label">
-                                @Html.LabelFor(model => model.descripcion)
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    @Html.ActionLink("Atras", "Index", "Portafolio", null, new { @class = "btn btn-danger" })
+                                    <button type="submit" class="btn btn-primary">Crear</button>
+                                </div>
                             </div>
-                            <div class="editor-field">
-                                @Html.EditorFor(model => model.descripcion)
-                                @Html.ValidationMessageFor(model => model.descripcion)
-                            </div>
-                            <p>
-                                <input type="submit" value="Create" />
-                            </p>
                         </fieldset>
                     }
-
-                    <div>
-                        @Html.ActionLink("Back to List", "Index")
-                    </div>
                 </div>
             </div>
         </div>
