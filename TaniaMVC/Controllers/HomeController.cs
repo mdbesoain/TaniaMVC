@@ -65,6 +65,12 @@ namespace TaniaMVC.Controllers
                 return View(eventos);
             }
         }
+        public ActionResult _AllEventos()
+        {
+            var eventos = db.Eventos.ToList();
+            return View(eventos);
+            
+        }
         [AllowAnonymous]
         public ActionResult _Auspiciadores()
         {

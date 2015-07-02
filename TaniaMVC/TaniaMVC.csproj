@@ -488,6 +488,7 @@
     <Content Include="Views\Habilidad\Index.cshtml" />
     <Content Include="Views\Habilidad\Agregar.cshtml" />
     <Content Include="Views\Habilidad\Editar.cshtml" />
+    <Content Include="Views\Home\_AllEventos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

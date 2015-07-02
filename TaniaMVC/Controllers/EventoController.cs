@@ -20,7 +20,6 @@ namespace TaniaMVC.Controllers
             return View(db.Eventos.ToList());
         }
 
-        [Authorize(Roles = "Adminstrador")]
         public ActionResult Agregar()
         {
             Evento evento = new Evento();
@@ -30,7 +29,6 @@ namespace TaniaMVC.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Adminstrador")]
         public ActionResult Agregar(Evento evento, HttpPostedFileBase file, int Disciplinas)
         {
             Disciplina disciplina = db.Disciplinas.Find(Disciplinas);
@@ -59,7 +57,6 @@ namespace TaniaMVC.Controllers
                 return RedirectToAction("Index");
             }
         }
-        [Authorize(Roles = "Adminstrador")]
         public ActionResult Editar(int id)
         {
             Evento evento= db.Eventos.Find(id);
@@ -69,7 +66,6 @@ namespace TaniaMVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Adminstrador")]
         public ActionResult Editar(Evento evento, int Disciplinas)
         {
             Disciplina disciplina = db.Disciplinas.Find(Disciplinas);
@@ -89,7 +85,6 @@ namespace TaniaMVC.Controllers
                 return RedirectToAction("Index");
             }
         }
-        [Authorize(Roles = "Adminstrador")]
         public ActionResult DeleteConfirmed(int id)
         {
             try
