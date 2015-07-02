@@ -176,6 +176,7 @@
     <Compile Include="Controllers\DisciplinaController.cs" />
     <Compile Include="Controllers\EstadisticaController.cs" />
     <Compile Include="Controllers\EventoController.cs" />
+    <Compile Include="Controllers\HabilidadController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LogroController.cs" />
     <Compile Include="Controllers\PortafolioController.cs" />
@@ -484,6 +485,9 @@
     <Content Include="Views\Evento\Editar.cshtml" />
     <Content Include="Views\Account\Perfil.cshtml" />
     <Content Include="Views\Shared\_LayoutAccount.cshtml" />
+    <Content Include="Views\Habilidad\Index.cshtml" />
+    <Content Include="Views\Habilidad\Agregar.cshtml" />
+    <Content Include="Views\Habilidad\Editar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
