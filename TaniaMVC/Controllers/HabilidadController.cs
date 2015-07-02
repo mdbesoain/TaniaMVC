@@ -8,43 +8,33 @@ using System.Web.Mvc;
 
 namespace TaniaMVC.Controllers
 {
-    public class PortafolioController : Controller
+    public class HabilidadController : Controller
     {
         //
-        // GET: /Portafolio/
+        // GET: /Habilidad/
         private TaniaEntitiesContainer db = new TaniaEntitiesContainer();
 
         public ActionResult Index()
         {
-            return View(db.Fotos.ToList());
+            return View(db.Habilidades.ToList());
         }
 
         public ActionResult Agregar()
         {
-            Foto foto = new Foto();
-            ViewBag.Categorias = new SelectList(db.Categorias, "id_categoria", "nombre");
-            return View(foto);
-        }
+            Habilidad habilidad = new  Habilidad();
+            return View(habilidad);
 
+        }
         [HttpPost]
-        public ActionResult Agregar(Foto foto, int Categorias, HttpPostedFileBase file)
+        [ValidateAntiForgeryToken]
+        public ActionResult Agregar(Habilidad habilidad)
         {
-            Categoria categoria = db.Categorias.Find(Categorias);
-            foto.Categoria = categoria;
             try
             {
                 if (ModelState.IsValid)
                 {
-                    db.Fotos.Add(foto);
+                    db.Habilidades.Add(habilidad);
                     db.SaveChanges();
-
-                    string path = AppDomain.CurrentDomain.BaseDirectory;
-                    string filePath = path + "/Images/portafolio/" + categoria.id_categoria + ".jpg";
-                    file.SaveAs(filePath);
-                    db.Entry(categoria).State = EntityState.Modified;
-                    db.SaveChanges();
-
-
                 }
                 return RedirectToAction("Index");
             }
@@ -54,23 +44,22 @@ namespace TaniaMVC.Controllers
                 return RedirectToAction("Index");
             }
         }
-
-
         public ActionResult Editar(int id)
         {
-            Foto foto = db.Fotos.Find(id);
-            return View(foto);
+           Habilidad habilidad = db.Habilidades.Find(id);
+            return View(habilidad);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Editar(Foto foto)
+        public ActionResult Editar(Habilidad habilidad)
         {
+            
             try
             {
                 if (ModelState.IsValid)
                 {
-                    db.Entry(foto).State = EntityState.Modified;
+                    db.Entry(habilidad).State = EntityState.Modified;
                     db.SaveChanges();
                 }
                 return RedirectToAction("Index");
@@ -81,13 +70,12 @@ namespace TaniaMVC.Controllers
                 return RedirectToAction("Index");
             }
         }
-
         public ActionResult DeleteConfirmed(int id)
         {
             try
             {
-                Foto foto = db.Fotos.Find(id);
-                db.Fotos.Remove(foto);
+                Habilidad habilidad = db.Habilidades.Find(id);
+                db.Habilidades.Remove(habilidad);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -97,6 +85,5 @@ namespace TaniaMVC.Controllers
                 return View("Error");
             }
         }
-
     }
 }
