@@ -186,6 +186,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModel.cs" />
+    <Compile Include="Models\contadorVisitas.cs" />
     <Compile Include="Models\Correo.cs" />
     <Compile Include="Models\Columna.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

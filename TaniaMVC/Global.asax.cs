@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using System.Web.Security;
+using TaniaMVC.Models;
 using WebMatrix.WebData;
 
 namespace TaniaMVC
@@ -38,6 +39,11 @@ namespace TaniaMVC
             }
             */
 
+        }
+
+        private void Page_Load(object sender, System.EventArgs e)
+        {
+            contadorVisitas.CountNewVisitor();
         }
     }
 }
