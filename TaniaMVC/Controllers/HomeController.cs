@@ -19,6 +19,7 @@ namespace TaniaMVC.Controllers
         [AllowAnonymous]
         public ActionResult Index()
         {
+            contadorVisitas.CountNewVisitor();
             return View();
         }
         [AllowAnonymous]

@@ -8,15 +8,10 @@ using System.IO;
 
 namespace TaniaMVC.Models
 {
-    public class contadorVisitas
+    public static class contadorVisitas
     {
-        const string counterfile = @"Content\Counter.txt";
+        const string counterfile = "Models/Counter.txt";
         const string sessionvar = "checkCounter";
-
-        public contadorVisitas()
-        {
-            //constructor
-        }
 
         public static bool CountNewVisitor()
         {

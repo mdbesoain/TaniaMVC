@@ -4,6 +4,8 @@ using System.Linq;
 using System.Transactions;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
+using TaniaMVC.Models;
 
 namespace TaniaMVC.Controllers
 {
@@ -14,6 +16,10 @@ namespace TaniaMVC.Controllers
         [Authorize(Roles="Administrador")]
         public ActionResult Index()
         {
+            ViewBag.Lconteo = Convert.ToString(contadorVisitas.GetNumberVisitor(), 10);
+            var userRoles = Roles.Provider;
+            var userName = userRoles.GetUsersInRole("Usuario");
+            ViewBag.countUser = userName.Count();
             return View();
         }
     }

@@ -41,9 +41,5 @@ namespace TaniaMVC
 
         }
 
-        private void Page_Load(object sender, System.EventArgs e)
-        {
-            contadorVisitas.CountNewVisitor();
-        }
     }
 }
