@@ -72,6 +72,9 @@
     <Compile Include="Models\Foto.cs">
       <DependentUpon>TaniaEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Habilidad.cs">
+      <DependentUpon>TaniaEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Logro.cs">
       <DependentUpon>TaniaEntities.tt</DependentUpon>
     </Compile>

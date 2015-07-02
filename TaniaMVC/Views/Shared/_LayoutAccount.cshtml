@@ -42,7 +42,7 @@
                                 @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
                                 {
                                     @Html.AntiForgeryToken()
-                                    <a style="color:white" class="fa fa-sign-out" href="javascript:document.getElementById('logoutForm').submit()"></a>
+                                    <a style="color:white" class="fa fa-sign-out" href="javascript:document.getElementById('logoutForm').submit()">Cerrar Sesión</a>
                                 }
                             </li>
                           }

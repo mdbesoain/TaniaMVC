@@ -39,7 +39,7 @@ namespace TaniaMVC.Controllers
         [AllowAnonymous]
         public ActionResult _Logros()
         {
-            return View(db.Logros.OrderBy(m => m.fecha).ToList());
+            return View(db.Logros.OrderBy(m => m.fecha).Take(10).ToList());
         }
         [AllowAnonymous]
         public ActionResult _Portafolio()
