@@ -27,7 +27,7 @@ namespace TaniaMVC.Controllers
         }
 
         [HttpPost]
-        public ActionResult Agregar(Foto foto, int Categorias)
+        public ActionResult Agregar(Foto foto, int Categorias, HttpPostedFileBase file)
         {
             Categoria categoria = db.Categorias.Find(Categorias);
             foto.Categoria = categoria;
@@ -37,6 +37,14 @@ namespace TaniaMVC.Controllers
                 {
                     db.Fotos.Add(foto);
                     db.SaveChanges();
+
+                    string path = AppDomain.CurrentDomain.BaseDirectory;
+                    string filePath = path + "/Images/portafolio/" + categoria.id_categoria + ".jpg";
+                    file.SaveAs(filePath);
+                    db.Entry(categoria).State = EntityState.Modified;
+                    db.SaveChanges();
+
+
                 }
                 return RedirectToAction("Index");
             }
