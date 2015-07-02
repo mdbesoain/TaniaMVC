@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 06/26/2015 19:23:22
--- Generated from EDMX file: C:\Users\juancarlosgonzalezca\documents\visual studio 2013\Projects\TaniaMVC\AccesoDatos\Models\TaniaEntities.edmx
+-- Date Created: 07/02/2015 15:38:59
+-- Generated from EDMX file: C:\Users\mdbesoain\Source\Repos\TaniaMVC\AccesoDatos\Models\TaniaEntities.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -135,6 +135,13 @@ CREATE TABLE [dbo].[Estadisticas] (
 );
 GO
 
+-- Creating table 'Habilidades'
+CREATE TABLE [dbo].[Habilidades] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [nombre] nvarchar(max)  NOT NULL
+);
+GO
+
 -- --------------------------------------------------
 -- Creating all PRIMARY KEY constraints
 -- --------------------------------------------------
@@ -185,6 +192,12 @@ GO
 ALTER TABLE [dbo].[Estadisticas]
 ADD CONSTRAINT [PK_Estadisticas]
     PRIMARY KEY CLUSTERED ([id_estadistica] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'Habilidades'
+ALTER TABLE [dbo].[Habilidades]
+ADD CONSTRAINT [PK_Habilidades]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
 -- --------------------------------------------------
