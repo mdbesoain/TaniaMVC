@@ -7,55 +7,80 @@
 <div id="wrapper">
     <div id="page-wrapper">
         <div class="container-fluid">
-            @using (Html.BeginForm("Agregar", "Portafolio", FormMethod.Post, new { enctype = "multipart/form-data" }))
-            {
-                @Html.AntiForgeryToken()
-                @Html.ValidationSummary(true)
+            <div class="panel panel-success">
+                <div class="panel-heading"><h4>@ViewBag.Title</h4></div>
+                <div class="panel-body">
+                    @using (Html.BeginForm("Agregar", "Portafolio", FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true)
 
-                <fieldset>
-                    <legend>Foto</legend>
-                    <div class="editor-label">
-                        @Html.LabelFor(model => model.nombre)
-                    </div>
-                    <div class="editor-field">
-                        @Html.EditorFor(model => model.nombre)
-                        @Html.ValidationMessageFor(model => model.nombre)
-                    </div>
-
-                    <div class="editor-label">
-                        @Html.LabelFor(model => model.descripcion)
-                    </div>
-                    <div class="editor-field">
-                        @Html.EditorFor(model => model.descripcion)
-                        @Html.ValidationMessageFor(model => model.descripcion)
-                    </div>
-
-                    <div class="editor-label">
-                        @Html.LabelFor(model => model.Categoria)
-                    </div>
-                    <div class="editor-field">
-                        @Html.DropDownList("Categorias", null, new { required = "required" })
-                        @Html.ValidationMessageFor(model => model.Categoria)
-                    </div>
+                    
+                        <fieldset>
+                            <legend>Agregar una imagen</legend>
+                            <div class="form-group">
+                                <label for="inputNombre" class="control-label col-xs-2">Nombre:</label>
+                                <div class="col-xs-5">
+                                    @Html.TextBoxFor(model => model.nombre, new { @type = "text", @class = "form-control", @placeholder = "Nombre", required = "required " })
+                                    @Html.ValidationMessageFor(model => model.nombre)
+                                </div>
+                            </div>
 
 
-                    <div class="editor-label">
-                        @Html.LabelFor(model => model.url)
-                    </div>
-                    <div class="editor-field">
-                        <label for="subject">Adjuntar</label>
-                        <input id="file" type="file" name="file">
-                    </div>
+                            <div class="form-group">
+                                <label for="inputDescripcion" class="control-label col-xs-2">Descripción:</label>
+                                <div class="col-xs-5">
+                                    @Html.TextBoxFor(model => model.descripcion, new { @type = "text", @class = "form-control", @placeholder = "Descripción", required = "required " })
+                                    @Html.ValidationMessageFor(model => model.descripcion)
+                                </div>
+                            </div>
 
-                    <p>
-                        <input type="submit" value="Create" />
-                    </p>
-                </fieldset>
-            }
+                            <div class="form-group">
+                                <label for="inputDescripcion" class="control-label col-xs-2">Sitio Web:</label>
+                                <div class="col-xs-5">
+                                    @Html.TextBoxFor(model => model.url, new { @type = "text", @class = "form-control", @placeholder = "Sitio Web del auspiciador" })
+                                    @Html.ValidationMessageFor(model => model.url)
+                                </div>
+                            </div>
 
-            <div>
-                @Html.ActionLink("Back to List", "Index")
+                            <div class="form-group">
+                                <label for="inputDescripcion" class="control-label col-xs-2">Categoria:</label>
+                                <div class="col-xs-5">
+                                    <div class="editor-field">
+                                        @Html.DropDownList("Categorias", null, new { required = "required" })
+                                        @Html.ValidationMessageFor(model => model.Categoria)
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="inputAdjuntar" class="control-label col-xs-2">Imagen:</label>
+                                <div class="col-xs-5">
+                                    <!----input id="file" type="file" name="file"> -->
+                                    <input id="file" type="file" name="file" style="display:none">
+                                    <div class="input-append">
+                                        <input id="photoCover" class="input-large" type="text" readonly>
+                                        <a class="btn btn-info" onclick="$('input[id=file]').click();">Browse</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    @Html.ActionLink("Atras", "Index", "Portafolio", null , new { @class = "btn btn-danger" })
+                                    <button type="submit" class="btn btn-primary">Agregar</button>
+                                </div>
+                            </div>
+                        </fieldset>
+                    }
+                </div>
             </div>
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    $('input[id=file]').change(function () {
+        $('#photoCover').val($(this).val());
+    });
+</script>
