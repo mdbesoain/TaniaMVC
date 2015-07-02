@@ -16,6 +16,7 @@
         <EntityTypeShape EntityType="TaniaEntities.Estadistica" Width="1.5" PointX="10.875" PointY="2.375" />
         <AssociationConnector Association="TaniaEntities.EventoEstadistica" />
         <AssociationConnector Association="TaniaEntities.CategoriaFoto" />
+        <EntityTypeShape EntityType="TaniaEntities.Habilidad" Width="1.5" PointX="5.5" PointY="7.5" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
