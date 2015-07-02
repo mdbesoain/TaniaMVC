@@ -33,5 +33,6 @@ namespace AccesoDatos.Models
         public DbSet<Categoria> Categorias { get; set; }
         public DbSet<Reporte> Reportes { get; set; }
         public DbSet<Estadistica> Estadisticas { get; set; }
+        public DbSet<Habilidad> Habilidades { get; set; }
     }
 }
