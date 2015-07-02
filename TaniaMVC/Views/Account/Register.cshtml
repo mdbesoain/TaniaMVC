@@ -30,18 +30,19 @@
                                 <div class="form-group">
                                     <label for="inputNombre" class="control-label col-xs-2">@Html.LabelFor(m => m.Password)</label>
                                     <div class="col-xs-10">
-                                        @Html.PasswordFor(m => m.Password, new { @type = "text", @class = "form-control", @placeholder = "Ingrese su contraseña", required = "required " })
+                                        @Html.PasswordFor(m => m.Password, new { @type = "password", @class = "form-control", @placeholder = "Ingrese su contraseña", required = "required " })
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputNombre" class="control-label col-xs-2">@Html.LabelFor(m => m.ConfirmPassword)</label>
                                     <div class="col-xs-10">
-                                        @Html.PasswordFor(m => m.ConfirmPassword, new { @type = "text", @class = "form-control", @placeholder = "Comfirme su contraseña", required = "required " })
+                                        @Html.PasswordFor(m => m.ConfirmPassword, new { @type = "password", @class = "form-control", @placeholder = "Comfirme su contraseña", required = "required " })
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-offset-2 col-sm-10">
                                         <button type="submit" class="btn btn-success">Registrase</button>
+                                        @Html.ActionLink("Cancelar", "Index", "Home", null, new { @class = "btn btn-warning" })
                                     </div>
                                 </div>
                             </fieldset>
