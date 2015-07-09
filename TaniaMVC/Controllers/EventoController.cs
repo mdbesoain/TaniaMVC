@@ -10,6 +10,7 @@ using TaniaMVC.Filters;
 
 namespace TaniaMVC.Controllers
 {
+    [Authorize]
     [InitializeSimpleMembership]
     public class EventoController : Controller
     {

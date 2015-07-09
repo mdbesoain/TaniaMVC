@@ -15,6 +15,7 @@
     <EntitySet Name="Reportes" EntityType="TaniaEntities.Store.Reportes" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Estadisticas" EntityType="TaniaEntities.Store.Estadisticas" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Habilidades" EntityType="TaniaEntities.Store.Habilidades" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Abouts" EntityType="TaniaEntities.Store.Abouts" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="EventoDisciplina" Association="TaniaEntities.Store.EventoDisciplina">
       <End Role="Evento" EntitySet="Eventos" />
       <End Role="Disciplina" EntitySet="Disciplinas" />
@@ -104,6 +105,14 @@
     <Property Name="Evento_id_evento" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Habilidades">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="descripcion" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Abouts">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
@@ -390,6 +399,15 @@
     <EntitySetMapping Name="Habilidades">
       <EntityTypeMapping TypeName="IsTypeOf(TaniaEntities.Habilidad)">
         <MappingFragment StoreEntitySet="Habilidades">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Abouts">
+      <EntityTypeMapping TypeName="IsTypeOf(TaniaEntities.About)">
+        <MappingFragment StoreEntitySet="Abouts">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="nombre" ColumnName="nombre" />
           <ScalarProperty Name="descripcion" ColumnName="descripcion" />

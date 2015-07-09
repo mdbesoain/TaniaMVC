@@ -9,6 +9,7 @@ using TaniaMVC.Filters;
 
 namespace TaniaMVC.Controllers
 {
+    [Authorize]
     [InitializeSimpleMembership]
     public class AboutController : Controller
     {
@@ -18,7 +19,7 @@ namespace TaniaMVC.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            return View(db.Abouts.ToList());
         }
 
         public ActionResult Agregar()

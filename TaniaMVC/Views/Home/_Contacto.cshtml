@@ -6,8 +6,8 @@
         <div class="row">
             <div class="heading text-center">
                 <!-- Heading -->
-                <h2>Let's Keep In Touch!</h2>
-                <p>Thank you for visiting out my profile. If you would like to get into contact with me, please fill out the form below.</p>
+                <h2>Enviame un mensaje!</h2>
+                <p>Gracias por visitar mi página Web. Si tú quieres, puedes contactarte conmigo, solo debes llevar los siguientes campos .</p>
             </div>
         </div>
 
@@ -32,7 +32,7 @@
                 </div>
                 <div class="col-sm-4">
                     <div class="form-group">
-                        <label for="comments">Commentarios</label>
+                        <label for="comments">Comentarios</label>
                         @Html.TextAreaFor(model => model.Body, new { @name="comment",  @class="form-control", @id="comments", @cols="3", @rows="5", @placeholder="Ingresa tu mensaje…", @title="Por favor ingresa tu mensaje (al menos 10 caracteres)" })
                         @Html.ValidationMessageFor(model => model.Body)
                     </div>
@@ -41,7 +41,7 @@
                 </div>
             }
             <div class="col-sm-4">
-                <h4>Address:</h4>
+                <h4>Dirección:</h4>
                 <address>
                     Tania González Web<br>
                     Curicó<br>

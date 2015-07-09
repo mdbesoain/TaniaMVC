@@ -30,7 +30,15 @@ namespace TaniaMVC.Controllers
         [AllowAnonymous]
         public ActionResult _About()
         {
-            return View(db.Abouts.ToList());
+            var abouts = db.Abouts.ToList();
+            if (abouts.Count == 0)
+            {
+                About about = new About();
+                about.nombre = "Tania González Cabello";
+                about.descripcion = "Oriunda de Licantén, Piloto Oficial TM Racing - Imoto";
+                abouts.Add(about);
+            }
+            return View(abouts);
         }
         [AllowAnonymous]
         public ActionResult _Experiencia()

@@ -5,20 +5,23 @@ using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TaniaMVC.Filters;
 
 namespace TaniaMVC.Controllers
 {
+    [Authorize]
+    [InitializeSimpleMembership]
     public class LogroController : Controller
     {
         private TaniaEntitiesContainer db = new TaniaEntitiesContainer();
         //
         // GET: /Logro/
-
+        [Authorize(Roles = "Administrador")]
         public ActionResult Index()
         {
             return View(db.Logros.ToList());
         }
-
+        [Authorize(Roles = "Administrador")]
         public ActionResult Agregar()
         {
             Logro logro = new Logro();
@@ -27,6 +30,7 @@ namespace TaniaMVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrador")]
         public ActionResult Agregar(Logro logro)
         {
             try
@@ -44,7 +48,7 @@ namespace TaniaMVC.Controllers
                 return RedirectToAction("Index");
             }
         }
-
+        [Authorize(Roles = "Administrador")]
         public ActionResult Editar(int id)
         {
             Logro logro = db.Logros.Find(id);
@@ -53,6 +57,7 @@ namespace TaniaMVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrador")]
         public ActionResult Editar(Logro logro)
         {
             try
@@ -70,7 +75,7 @@ namespace TaniaMVC.Controllers
                 return RedirectToAction("Index");
             }
         }
-
+        [Authorize(Roles = "Administrador")]
         public ActionResult DeleteConfirmed(int id)
         {
             try

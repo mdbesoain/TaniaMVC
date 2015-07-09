@@ -49,8 +49,6 @@
                                         @Html.DisplayFor(modelItem => item.descripcion)
                                     </td>
                                     <td align="center">
-                                        }
-                                        @Html.ActionLink(" ", "Detalles", new { id = item.Id }, new { @rel = "tooltip", @title = "Editar", @class = "fa fa-info" })
                                         @Html.ActionLink(" ", "Editar", new { id = item.Id }, new { @rel = "tooltip", @title = "Editar", @class = "fa fa-pencil-square-o" })
                                         @Html.ActionLink(" ", "DeleteConfirmed", new { id = item.Id }, new { @rel = "tooltip", @title = "Eliminar", @class = "fa fa-trash-o", onclick = "return confirm('¿Está seguro que desea eliminar al evento?');" })
                                     </td>

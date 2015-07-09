@@ -5,20 +5,23 @@ using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TaniaMVC.Filters;
 
 namespace TaniaMVC.Controllers
 {
+    [Authorize]
+    [InitializeSimpleMembership]
     public class EstadisticaController : Controller
     {
         //
         // GET: /Estadistica/
         private TaniaEntitiesContainer db = new TaniaEntitiesContainer();
-
+        [Authorize(Roles = "Administrador")]
         public ActionResult Index()
         {
             return View(db.Estadisticas.ToList());
         }
-
+        [Authorize(Roles = "Administrador")]
         public ActionResult Agregar(int id)
         {
             Estadistica estadistica = new Estadistica();
@@ -27,6 +30,8 @@ namespace TaniaMVC.Controllers
             return View(estadistica);
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrador")]
         public ActionResult Agregar(Estadistica estadistica, int id)
         {
             Evento evento = db.Eventos.Find(id);

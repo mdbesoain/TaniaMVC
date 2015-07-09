@@ -5,21 +5,24 @@ using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TaniaMVC.Filters;
 
 namespace TaniaMVC.Controllers
 {
+    [Authorize]
+    [InitializeSimpleMembership]
     public class CategoriaController : Controller
     {
         //
         // GET: /Categoria/
 
         private TaniaEntitiesContainer db = new TaniaEntitiesContainer();
-
+        [Authorize(Roles = "Administrador")]
         public ActionResult Index()
         {
             return View(db.Categorias.ToList());
         }
-
+        [Authorize(Roles = "Administrador")]
         public ActionResult Agregar()
         {
             Categoria categoria = new Categoria();
@@ -27,6 +30,8 @@ namespace TaniaMVC.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrador")]
         public ActionResult Agregar(Categoria categoria)
         {
             try
@@ -45,7 +50,7 @@ namespace TaniaMVC.Controllers
             }
         }
 
-
+        [Authorize(Roles = "Administrador")]
         public ActionResult Editar(int id)
         {
             Categoria categoria = db.Categorias.Find(id);
@@ -54,6 +59,7 @@ namespace TaniaMVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrador")]
         public ActionResult Editar(Categoria categoria)
         {
             try
@@ -71,7 +77,7 @@ namespace TaniaMVC.Controllers
                 return RedirectToAction("Index");
             }
         }
-
+        [Authorize(Roles = "Administrador")]
         public ActionResult DeleteConfirmed(int id)
         {
             try
