@@ -445,6 +445,7 @@
     <Content Include="Views\About\Index.cshtml" />
     <Content Include="Views\About\Agregar.cshtml" />
     <Content Include="Views\About\Editar.cshtml" />
+    <Content Include="Views\Home\_Videos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
