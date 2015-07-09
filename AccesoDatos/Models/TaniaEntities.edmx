@@ -109,6 +109,7 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="descripcion" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <Association Name="EventoDisciplina">
     <End Role="Evento" Type="TaniaEntities.Store.Eventos" Multiplicity="*" />
@@ -172,6 +173,7 @@
             <End Role="Foto" EntitySet="Fotos" />
           </AssociationSet>
           <EntitySet Name="Habilidades" EntityType="TaniaEntities.Habilidad" />
+          <EntitySet Name="Abouts" EntityType="TaniaEntities.About" />
         </EntityContainer>
         <EntityType Name="Foto">
           <Key>
@@ -287,6 +289,15 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombre" Type="String" Nullable="false" />
+          <Property Name="descripcion" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="About">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" Nullable="false" />
+          <Property Name="descripcion" Type="String" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -381,6 +392,7 @@
         <MappingFragment StoreEntitySet="Habilidades">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

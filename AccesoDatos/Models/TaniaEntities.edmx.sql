@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 07/02/2015 17:27:30
+-- Date Created: 07/08/2015 14:23:38
 -- Generated from EDMX file: C:\Users\juancarlosgonzalezca\documents\visual studio 2013\Projects\TaniaMVC\AccesoDatos\Models\TaniaEntities.edmx
 -- --------------------------------------------------
 
@@ -141,7 +141,8 @@ GO
 -- Creating table 'Habilidades'
 CREATE TABLE [dbo].[Habilidades] (
     [Id] int IDENTITY(1,1) NOT NULL,
-    [nombre] nvarchar(max)  NOT NULL
+    [nombre] nvarchar(max)  NOT NULL,
+    [descripcion] nvarchar(max)  NOT NULL
 );
 GO
 

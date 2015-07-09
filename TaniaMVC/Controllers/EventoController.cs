@@ -5,21 +5,23 @@ using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TaniaMVC.Filters;
 
 
 namespace TaniaMVC.Controllers
 {
+    [InitializeSimpleMembership]
     public class EventoController : Controller
     {
         //
         // GET: /Evento/
-        private TaniaEntitiesContainer db = new TaniaEntitiesContainer();
-       
+        private TaniaEntitiesContainer db = new TaniaEntitiesContainer();    
         public ActionResult Index()
         {
             return View(db.Eventos.ToList());
         }
 
+        [Authorize(Roles = "Administrador")]
         public ActionResult Agregar()
         {
             Evento evento = new Evento();
@@ -29,6 +31,7 @@ namespace TaniaMVC.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrador")]
         public ActionResult Agregar(Evento evento, HttpPostedFileBase file, int Disciplinas)
         {
             Disciplina disciplina = db.Disciplinas.Find(Disciplinas);
@@ -57,6 +60,7 @@ namespace TaniaMVC.Controllers
                 return RedirectToAction("Index");
             }
         }
+        [Authorize(Roles = "Administrador")]
         public ActionResult Editar(int id)
         {
             Evento evento= db.Eventos.Find(id);
@@ -66,6 +70,7 @@ namespace TaniaMVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrador")]
         public ActionResult Editar(Evento evento, int Disciplinas)
         {
             Disciplina disciplina = db.Disciplinas.Find(Disciplinas);
@@ -85,6 +90,7 @@ namespace TaniaMVC.Controllers
                 return RedirectToAction("Index");
             }
         }
+        [Authorize(Roles = "Administrador")]
         public ActionResult DeleteConfirmed(int id)
         {
             try
@@ -100,6 +106,5 @@ namespace TaniaMVC.Controllers
                 return View("Error");
             }
         }
-
     }
 }

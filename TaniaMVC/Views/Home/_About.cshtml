@@ -1,24 +1,26 @@
-﻿@model IEnumerable<AccesoDatos.Models.Disciplina>
+﻿@model IEnumerable<AccesoDatos.Models.About>
 
 <section id="aboutUs" class="secPad">
     <div class="container">
         <div class="heading text-center">
             <!-- Heading -->
-            <h2>Soy Tania González Cabello, Una piloto Chilena de Motrocross</h2>
-            <p>Practico distintas disciplinas y tengo varios titulos en ellas</p>
+            <h2>@Model.FirstOrDefault().nombre</h2>
+            <p>@Model.FirstOrDefault().descripcion</p>
         </div>
         <div class="row">
             @foreach (var item in Model)
             {
-            <!-- item -->
-            <div class="col-md-4 text-center tileBox">
-                <div class="txtHead">
-                    <i class="fa fa-rocket"></i>
-                    <h3>@item.nombre <span class="id-color"></span></h3>
-                </div>
-                <p>@item.descripcion</p>
-            </div>
-            <!-- end: -->
+                if (item != Model.FirstOrDefault())
+                {
+                    <!-- item -->
+                    <div class="col-md-4 text-center tileBox">
+                        <div class="txtHead">
+                            <h3>@item.nombre <span class="id-color"></span></h3>
+                        </div>
+                        <p>@item.descripcion</p>
+                    </div>
+                    <!-- end: -->
+                }
             }
         </div>
     </div>

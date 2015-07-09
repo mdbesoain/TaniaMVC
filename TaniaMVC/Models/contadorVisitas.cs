@@ -10,7 +10,7 @@ namespace TaniaMVC.Models
 {
     public static class contadorVisitas
     {
-        const string counterfile = "Models/Counter.txt";
+        const string counterfile = "Reportes/Counter.txt";
         const string sessionvar = "checkCounter";
 
         public static bool CountNewVisitor()

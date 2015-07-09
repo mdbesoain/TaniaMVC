@@ -30,12 +30,12 @@ namespace TaniaMVC.Controllers
         [AllowAnonymous]
         public ActionResult _About()
         {
-            return View(db.Disciplinas.ToList());
+            return View(db.Abouts.ToList());
         }
         [AllowAnonymous]
         public ActionResult _Experiencia()
         {
-            return View();
+            return View(db.Habilidades.ToList());
         }
         [AllowAnonymous]
         public ActionResult _Logros()
@@ -45,7 +45,8 @@ namespace TaniaMVC.Controllers
         [AllowAnonymous]
         public ActionResult _Portafolio()
         {
-            return View();
+            ViewBag.categorias = db.Categorias.ToList();
+            return View(db.Fotos.ToList());
         }
         [AllowAnonymous]
         public ActionResult _Eventos()

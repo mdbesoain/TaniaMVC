@@ -54,6 +54,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\About.cs">
+      <DependentUpon>TaniaEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Auspiciador.cs">
       <DependentUpon>TaniaEntities.tt</DependentUpon>
     </Compile>
