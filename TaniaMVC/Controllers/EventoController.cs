@@ -53,7 +53,7 @@ namespace TaniaMVC.Controllers
                     db.SaveChanges();
 
                 }
-                return RedirectToAction("Index");
+                return RedirectToAction("EnvioMasivo", "Reporte", evento);
             }
             catch (Exception ex)
             {

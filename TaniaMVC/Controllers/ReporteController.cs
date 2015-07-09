@@ -12,6 +12,8 @@ using iTextSharp.text.pdf;
 using System.IO;
 using System.Text;
 using TaniaMVC.Filters;
+using System.Net.Mime;
+using System.Web.Security;
 
 
 namespace TaniaMVC.Controllers
@@ -147,6 +149,68 @@ namespace TaniaMVC.Controllers
         {
             Reporte reporte = db.Reportes.Find(id);
             return File(reporte.url, "application/pdf");
+        }
+
+        public ActionResult EnvioMasivo(Evento evento)
+        {
+            MailMessage mail = new MailMessage();
+            var userRoles = Roles.Provider;
+            var userName = userRoles.GetUsersInRole("Usuario");
+
+            string emails = "";
+            int i = 0;
+            foreach (string correo in userName)
+            {
+                if (i == 0)
+                {
+                    emails = correo;
+                }
+                else
+                {
+                    emails = correo + "," + emails;
+                }
+                i += 1;
+            }
+
+            mail.To.Add(emails); // correo de destino!
+            mail.From = new MailAddress("webtania.contacto@gmail.com");
+            mail.Subject = evento.nombre + " " + evento.fecha;
+
+            string html = "<h2>Tania González te invita a:</h2>" + "<img src='cid:imagen' />" +
+                          "<h3>Visita mi página Web: http://grupoe-001-site1.smarterasp.net</h3>";
+
+            AlternateView htmlView = AlternateView.CreateAlternateViewFromString(html, Encoding.UTF8, MediaTypeNames.Text.Html);
+
+            // Creamos el recurso a incrustar. Observad
+            // que el ID que le asignamos (arbitrario) está
+            // referenciado desde el código HTML como origen
+            // de la imagen (resaltado en amarillo)...
+
+            string path = AppDomain.CurrentDomain.BaseDirectory;
+
+            LinkedResource img = new LinkedResource(path + evento.url_flayer, MediaTypeNames.Image.Jpeg);
+            img.ContentId = "imagen";
+
+            // Lo incrustamos en la vista HTML...
+
+            htmlView.LinkedResources.Add(img);
+
+            // Por último, vinculamos ambas vistas al mensaje...
+
+            mail.AlternateViews.Add(htmlView);
+
+
+            mail.IsBodyHtml = true;
+            SmtpClient smtp = new SmtpClient();
+            smtp.Host = "smtp.gmail.com";
+            smtp.Port = 587;
+            smtp.UseDefaultCredentials = false;
+            smtp.Credentials = new System.Net.NetworkCredential
+            ("webtania.contacto@gmail.com", "webtania");// Sender email, correo solo para enviar.
+            smtp.EnableSsl = true;
+            smtp.Send(mail);
+
+            return RedirectToAction("Index", "Evento");
         }
 
     }
