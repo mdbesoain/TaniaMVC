@@ -35,5 +35,6 @@ namespace AccesoDatos.Models
         public DbSet<Estadistica> Estadisticas { get; set; }
         public DbSet<Habilidad> Habilidades { get; set; }
         public DbSet<About> Abouts { get; set; }
+        public DbSet<Video> Videos { get; set; }
     }
 }

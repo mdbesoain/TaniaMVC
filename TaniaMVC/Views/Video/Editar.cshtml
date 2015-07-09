@@ -1,0 +1,50 @@
+﻿@model AccesoDatos.Models.Video
+@{
+    ViewBag.Title = "Editar Video";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<div id="wrapper">
+    <div id="page-wrapper">
+        <div class="container-fluid">
+            <div class="panel panel-success">
+                <div class="panel-heading"><h4>@ViewBag.Title</h4></div>
+                <div class="panel-body">
+                    @using (Html.BeginForm("Editar", "Video", FormMethod.Post, new { @class = "form-horizontal" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true)
+                        @Html.HiddenFor(model => model.id_video)
+
+                        <fieldset>
+                            <legend>Formulario del logro</legend>
+                            <div class="form-group">
+                                <label for="inputTitulo" class="control-label col-xs-2">Nombre:</label>
+                                <div class="col-xs-5">
+                                    @Html.TextBoxFor(model => model.nombre, new { @type = "text", @class = "form-control", @placeholder = "Nombre del video", required = "required " })
+                                    @Html.ValidationMessageFor(model => model.nombre)
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="inputDescripcion" class="control-label col-xs-2">Url:</label>
+                                <div class="col-xs-5">
+                                    @Html.TextBoxFor(model => model.url, new { @type = "text", @class = "form-control", @placeholder = "Url para el video", required = "required " })
+                                    @Html.ValidationMessageFor(model => model.url)
+                                </div>
+                            </div>
+
+                            <div class='wrapper text-center'>
+                                <div class="col-xs-5">
+                                    @Html.ActionLink("Atras", "Index", "Video", new { @class = "btn btn-danger" })
+                                    <button type="submit" class="btn btn-primary">Guardar</button>
+                                </div>
+                            </div>
+                        </fieldset>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

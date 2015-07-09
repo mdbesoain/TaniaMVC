@@ -28,7 +28,7 @@
                             <div class="form-group">
                                 <label for="inputDireccion" class="control-label col-xs-2">Descripción:</label>
                                 <div class="col-xs-5">
-                                    @Html.TextBoxFor(model => model.descripcion, new { @type = "text", @class = "form-control", @placeholder = "Descripción", required = "required " })
+                                    @Html.TextAreaFor(model => model.descripcion, new { @type = "text", @class = "form-control", @placeholder = "Descripción", required = "required " })
                                     @Html.ValidationMessageFor(model => model.descripcion)
                                 </div>
                             </div>

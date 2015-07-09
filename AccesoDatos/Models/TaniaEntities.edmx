@@ -15,6 +15,7 @@
     <EntitySet Name="Reportes" EntityType="TaniaEntities.Store.Reportes" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Estadisticas" EntityType="TaniaEntities.Store.Estadisticas" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Habilidades" EntityType="TaniaEntities.Store.Habilidades" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Abouts" EntityType="TaniaEntities.Store.Abouts" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="EventoDisciplina" Association="TaniaEntities.Store.EventoDisciplina">
       <End Role="Evento" EntitySet="Eventos" />
       <End Role="Disciplina" EntitySet="Disciplinas" />
@@ -111,6 +112,14 @@
     <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
     <Property Name="descripcion" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
+  <EntityType Name="Abouts">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="descripcion" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
   <Association Name="EventoDisciplina">
     <End Role="Evento" Type="TaniaEntities.Store.Eventos" Multiplicity="*" />
     <End Role="Disciplina" Type="TaniaEntities.Store.Disciplinas" Multiplicity="1" />
@@ -174,6 +183,7 @@
           </AssociationSet>
           <EntitySet Name="Habilidades" EntityType="TaniaEntities.Habilidad" />
           <EntitySet Name="Abouts" EntityType="TaniaEntities.About" />
+          <EntitySet Name="Videos" EntityType="TaniaEntities.Video" />
         </EntityContainer>
         <EntityType Name="Foto">
           <Key>
@@ -299,6 +309,14 @@
           <Property Name="nombre" Type="String" Nullable="false" />
           <Property Name="descripcion" Type="String" Nullable="false" />
         </EntityType>
+        <EntityType Name="Video">
+          <Key>
+            <PropertyRef Name="id_video" />
+          </Key>
+          <Property Name="id_video" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" Nullable="false" />
+          <Property Name="url" Type="String" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -390,6 +408,15 @@
     <EntitySetMapping Name="Habilidades">
       <EntityTypeMapping TypeName="IsTypeOf(TaniaEntities.Habilidad)">
         <MappingFragment StoreEntitySet="Habilidades">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Abouts">
+      <EntityTypeMapping TypeName="IsTypeOf(TaniaEntities.About)">
+        <MappingFragment StoreEntitySet="Abouts">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="nombre" ColumnName="nombre" />
           <ScalarProperty Name="descripcion" ColumnName="descripcion" />

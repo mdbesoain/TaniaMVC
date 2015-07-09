@@ -11,21 +11,24 @@ using iTextSharp.text;
 using iTextSharp.text.pdf;
 using System.IO;
 using System.Text;
+using TaniaMVC.Filters;
 
 
 namespace TaniaMVC.Controllers
 {
+    [Authorize]
+    [InitializeSimpleMembership]
     public class ReporteController : Controller
     {
         //
         // GET: /Reporte/
         private TaniaEntitiesContainer db = new TaniaEntitiesContainer();
-
+        [Authorize(Roles = "Administrador")]
         public ActionResult Index()
         {
             return View(db.Reportes.ToList());
         }
-
+        [Authorize(Roles = "Administrador")]
         public ActionResult Enviar_Correo(int id)
         {
             Correo correo = new Correo();
@@ -34,6 +37,8 @@ namespace TaniaMVC.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrador")]
         public ActionResult Enviar_Correo(Correo correo, int id)
         {
             Reporte reporte = db.Reportes.Find(id);
@@ -63,7 +68,7 @@ namespace TaniaMVC.Controllers
                 return RedirectToAction("Index", "Reporte");
             }
         }
-
+        [Authorize(Roles = "Administrador")]
         public ActionResult Crear()
         {
             Reporte reporte = new Reporte();
@@ -71,6 +76,8 @@ namespace TaniaMVC.Controllers
             return View(reporte);
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrador")]
         public ActionResult Crear(FormCollection form, Reporte reporte)
         {
             
@@ -105,6 +112,7 @@ namespace TaniaMVC.Controllers
             catch (Exception ex)
             {
                 TempData["Error"] = ex.Message;
+                return View("Error");
             }
 
             string html;
@@ -128,13 +136,13 @@ namespace TaniaMVC.Controllers
 
             return RedirectToAction("Index");
         }
-        
+        [Authorize(Roles = "Administrador")]
         public ActionResult PDF(List<Columna> datos)
         {
             ViewBag.Columnas = datos;
             return View();
         }
-
+        [Authorize(Roles = "Administrador")]
         public FileResult verPdf(int id)
         {
             Reporte reporte = db.Reportes.Find(id);

@@ -5,20 +5,24 @@ using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TaniaMVC.Filters;
 
 namespace TaniaMVC.Controllers
 {
+    [Authorize]
+    [InitializeSimpleMembership]
     public class AuspiciadorController : Controller
     {
         private TaniaEntitiesContainer db = new TaniaEntitiesContainer();
 
         //
         // GET: /Auspiciador/
-
+        [Authorize(Roles = "Administrador")]
         public ActionResult Index()
         {
             return View(db.Auspiciadores.ToList());
         }
+        [Authorize(Roles = "Administrador")]
         public ActionResult Agregar()
         {
             Auspiciador auspiciador = new Auspiciador();
@@ -27,6 +31,7 @@ namespace TaniaMVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrador")]
         public ActionResult Agregar(Auspiciador auspiciador, HttpPostedFileBase file)
         {
             
@@ -49,10 +54,10 @@ namespace TaniaMVC.Controllers
             catch (Exception ex)
             {
                 TempData["Error"] = ex.Message;
-                return RedirectToAction("Index");
+                return View("Error");
             }
         }
-
+        [Authorize(Roles = "Administrador")]
         public ActionResult Editar(int id)
         {
             Auspiciador auspiciador = db.Auspiciadores.Find(id);
@@ -61,6 +66,7 @@ namespace TaniaMVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrador")]
         public ActionResult Editar(Auspiciador auspiciador)
         {
             try
@@ -75,10 +81,10 @@ namespace TaniaMVC.Controllers
             catch (Exception ex)
             {
                 TempData["Error"] = ex.Message;
-                return RedirectToAction("Index");
+                return View("Error");
             }
         }
-
+        [Authorize(Roles = "Administrador")]
         public ActionResult DeleteConfirmed(int id)
         {
             try

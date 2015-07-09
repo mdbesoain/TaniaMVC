@@ -5,20 +5,23 @@ using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TaniaMVC.Filters;
 
 namespace TaniaMVC.Controllers
 {
+    [Authorize]
+    [InitializeSimpleMembership]
     public class PortafolioController : Controller
     {
         //
         // GET: /Portafolio/
         private TaniaEntitiesContainer db = new TaniaEntitiesContainer();
-
+        [Authorize(Roles = "Administrador")]
         public ActionResult Index()
         {
             return View(db.Fotos.ToList());
         }
-
+        [Authorize(Roles = "Administrador")]
         public ActionResult Agregar()
         {
             Foto foto = new Foto();
@@ -27,6 +30,8 @@ namespace TaniaMVC.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrador")]
         public ActionResult Agregar(Foto foto, int Categorias, HttpPostedFileBase file)
         {
             Categoria categoria = db.Categorias.Find(Categorias);
@@ -53,11 +58,11 @@ namespace TaniaMVC.Controllers
             catch (Exception ex)
             {
                 TempData["Error"] = ex.Message;
-                return RedirectToAction("Index");
+                return View("Error");
             }
         }
 
-
+        [Authorize(Roles = "Administrador")]
         public ActionResult Editar(int id)
         {
             Foto foto = db.Fotos.Find(id);
@@ -66,6 +71,7 @@ namespace TaniaMVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrador")]
         public ActionResult Editar(Foto foto)
         {
             try
@@ -80,10 +86,10 @@ namespace TaniaMVC.Controllers
             catch (Exception ex)
             {
                 TempData["Error"] = ex.Message;
-                return RedirectToAction("Index");
+                return View("Error");
             }
         }
-
+        [Authorize(Roles = "Administrador")]
         public ActionResult DeleteConfirmed(int id)
         {
             try

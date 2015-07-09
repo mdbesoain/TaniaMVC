@@ -11,6 +11,7 @@ using TaniaMVC.Models;
 
 namespace TaniaMVC.Controllers
 {
+    [Authorize]
     [InitializeSimpleMembership]  
     public class AdminController : Controller
     {
@@ -26,6 +27,7 @@ namespace TaniaMVC.Controllers
             var userName = userRoles.GetUsersInRole("Usuario");
             ViewBag.countUser = userName.Count();
             ViewBag.carreras = db.Estadisticas.Count();
+            ViewBag.evntos = db.Eventos.Count();
             return View();
         }
     }
