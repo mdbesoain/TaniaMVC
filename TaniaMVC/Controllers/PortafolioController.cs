@@ -106,5 +106,11 @@ namespace TaniaMVC.Controllers
             }
         }
 
+        public FileResult verFoto(int id)
+        {
+            Foto foto = db.Fotos.Find(id);
+            return File(foto.url, "image/jpg");
+        }
+
     }
 }

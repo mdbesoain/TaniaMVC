@@ -36,6 +36,7 @@ namespace TaniaMVC.Controllers
         [Authorize(Roles = "Administrador")]
         public ActionResult Agregar(Video video)
         {
+            video.url = video.url.Replace("watch", "embed");
             try
             {
                 if (ModelState.IsValid)
@@ -63,6 +64,7 @@ namespace TaniaMVC.Controllers
         [Authorize(Roles = "Administrador")]
         public ActionResult Editar(Video video)
         {
+            video.url = video.url.Replace("watch", "embed");
             try
             {
                 if (ModelState.IsValid)

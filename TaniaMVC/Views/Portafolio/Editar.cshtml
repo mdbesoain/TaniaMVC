@@ -1,9 +1,9 @@
-﻿@model AccesoDatos.Models.Disciplina
-
+﻿@model AccesoDatos.Models.Foto
 @{
-    ViewBag.Title = "Nueva Disciplina";
+    ViewBag.Title = "Editar Logro";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
+
 
 <div id="wrapper">
     <div id="page-wrapper">
@@ -11,23 +11,26 @@
             <div class="panel panel-success">
                 <div class="panel-heading"><h4>@ViewBag.Title</h4></div>
                 <div class="panel-body">
-                    @using (Html.BeginForm("Agregar", "Disciplina", FormMethod.Post, new { @class = "form-horizontal" }))
+                    @using (Html.BeginForm("Editar", "Portafolio", FormMethod.Post, new { @class = "form-horizontal" }))
                     {
                         @Html.AntiForgeryToken()
                         @Html.ValidationSummary(true)
+                        @Html.HiddenFor(model => model.id_foto)
+                        @Html.HiddenFor(model => model.id_categoria)
+                        @Html.HiddenFor(model => model.url)
 
                         <fieldset>
-                            <legend>Formulario de la disciplina</legend>
+                            <legend>Formulario del logro</legend>
                             <div class="form-group">
-                                <label for="inputNombre" class="control-label col-xs-2">Nombre:</label>
+                                <label for="inputTitulo" class="control-label col-xs-2">Nombre:</label>
                                 <div class="col-xs-5">
-                                    @Html.TextBoxFor(model => model.nombre, new { @type = "text", @class = "form-control", @placeholder = "Nombre de la Disciplina", required = "required " })
+                                    @Html.TextBoxFor(model => model.nombre, new { @type = "text", @class = "form-control", @placeholder = "Titulo del Logro", required = "required " })
                                     @Html.ValidationMessageFor(model => model.nombre)
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="inputDecripcion" class="control-label col-xs-2">Descripcion:</label>
+                                <label for="inputDescripcion" class="control-label col-xs-2">Descripcion:</label>
                                 <div class="col-xs-5">
                                     @Html.TextBoxFor(model => model.descripcion, new { @type = "text", @class = "form-control", @placeholder = "Descripcion de la Disciplina", required = "required " })
                                     @Html.ValidationMessageFor(model => model.descripcion)
@@ -36,8 +39,8 @@
 
                             <div class="form-group">
                                 <div class="col-sm-offset-2 col-sm-10">
-                                    @Html.ActionLink("Atras", "Index", "Disciplina", null, new { @class = "btn btn-danger" })
-                                    <button type="submit" class="btn btn-primary">Crear</button>
+                                    @Html.ActionLink("Atras", "Index", "Portafolio", null, new { @class = "btn btn-danger" })
+                                    <button type="submit" class="btn btn-primary">Guardar</button>
                                 </div>
                             </div>
                         </fieldset>
@@ -47,3 +50,4 @@
         </div>
     </div>
 </div>
+

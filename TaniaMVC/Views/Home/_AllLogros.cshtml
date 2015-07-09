@@ -1,14 +1,16 @@
 ﻿@model IEnumerable<AccesoDatos.Models.Logro>
 
-@{ var i = 0;
-   string[] meses = {"En", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"}; }
-
-<section id="logros" class="secPad">
+@{
+    ViewBag.Title = "Tania González Website";
+    Layout = "~/Views/Shared/_LayoutAccount.cshtml";
+    var i = 0;
+    string[] meses = { "En", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic" };
+}
+<section id="eventos" class="secPad">
     <div class="container">
         <div class="heading text-center">
             <!-- Heading -->
-            <h2>Mis Logros</h2>
-            <p>Comparto contigo cuales han sido mis logros en mi travesía del motociclismo</p>
+            <h2>Logros</h2>
         </div>
         <div id="timeline">
             <div class="row timeline-movement timeline-movement-top">
@@ -34,7 +36,7 @@
 
                         <div class="timeline-badge">
                             <span class="timeline-balloon-date-day">@item.fecha.Year</span>
-                            <span class="timeline-balloon-date-month">@meses[@item.fecha.Month-1]</span>
+                            <span class="timeline-balloon-date-month">@meses[@item.fecha.Month - 1]</span>
                         </div>
 
                         <div class="col-sm-offset-6 col-sm-6  timeline-item">
@@ -57,7 +59,7 @@
                     {
                         <div class="timeline-badge">
                             <span class="timeline-balloon-date-day">@item.fecha.Year</span>
-                            <span class="timeline-balloon-date-month">@meses[@item.fecha.Month-1]</span>
+                            <span class="timeline-balloon-date-month">@meses[@item.fecha.Month - 1]</span>
                         </div>
 
                         <div class="col-sm-6  timeline-item">
@@ -79,10 +81,6 @@
                 </div>
 
             }
-        </div>
-        <p></p>
-        <div class="text-center">
-            @Html.ActionLink("Ver más", "_AllLogros", null , new { @class = "btn btn-danger" })
         </div>
     </div>
 </section>
