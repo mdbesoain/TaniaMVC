@@ -1,6 +1,7 @@
 ﻿@model AccesoDatos.Models.Foto
 
 @{
+    ViewBag.Title = "Nueva Foto";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
@@ -17,7 +18,7 @@
 
                     
                         <fieldset>
-                            <legend>Agregar una imagen</legend>
+                            <legend>Formulario nueva Foto</legend>
                             <div class="form-group">
                                 <label for="inputNombre" class="control-label col-xs-2">Nombre:</label>
                                 <div class="col-xs-5">
@@ -32,14 +33,6 @@
                                 <div class="col-xs-5">
                                     @Html.TextBoxFor(model => model.descripcion, new { @type = "text", @class = "form-control", @placeholder = "Descripción", required = "required " })
                                     @Html.ValidationMessageFor(model => model.descripcion)
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="inputDescripcion" class="control-label col-xs-2">Sitio Web:</label>
-                                <div class="col-xs-5">
-                                    @Html.TextBoxFor(model => model.url, new { @type = "text", @class = "form-control", @placeholder = "Sitio Web del auspiciador" })
-                                    @Html.ValidationMessageFor(model => model.url)
                                 </div>
                             </div>
 

@@ -12,11 +12,10 @@ namespace AccesoDatos.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Logro
+    public partial class About
     {
-        public int id_logro { get; set; }
-        public string titulo { get; set; }
-        public System.DateTime fecha { get; set; }
+        public int Id { get; set; }
+        public string nombre { get; set; }
         public string descripcion { get; set; }
     }
 }

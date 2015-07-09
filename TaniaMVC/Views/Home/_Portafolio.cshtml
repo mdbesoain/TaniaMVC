@@ -1,4 +1,9 @@
-﻿<section id="portfolio" class="page-section section appear clearfix secPad">
+﻿@model IEnumerable<AccesoDatos.Models.Foto>
+@{
+    List<AccesoDatos.Models.Categoria> categorias = ViewBag.categorias;
+}
+
+<section id="portfolio" class="page-section section appear clearfix secPad">
     <div class="container">
 
         <div class="heading text-center">
@@ -11,212 +16,35 @@
             <nav id="filter" class="col-md-12 text-center">
                 <ul>
                     <li><a href="#" class="current btn-theme btn-small" data-filter="*">All</a></li>
-                    <li><a href="#" class="btn-theme btn-small" data-filter=".inicios">Mis Inicios</a></li>
-                    <li><a href="#" class="btn-theme btn-small" data-filter=".entrenando">Entrenado</a></li>
-                    <li><a href="#" class="btn-theme btn-small" data-filter=".motocross">Motocross</a></li>
-                    <li><a href="#" class="btn-theme btn-small" data-filter=".enduro">Enduro</a></li>
-                    <li><a href="#" class="btn-theme btn-small" data-filter=".velocidad">Velocidad</a></li>
-                    <li><a href="#" class="btn-theme btn-small" data-filter=".podios">Podios</a></li>
+                    @foreach(var categoria in categorias)
+                    {
+                        <li><a href="#" class="btn-theme btn-small" data-filter=".@categoria.nombre">@categoria.nombre</a></li>    
+                    }
                 </ul>
             </nav>
             <div class="col-md-12">
                 <div class="row">
                     <div class="portfolio-items isotopeWrapper clearfix" id="3">
                         <!-- Mis Inicios-->
-                        <article class="col-sm-4 isotopeItem inicios">
-                            <div class="portfolio-item">
-                                <img src="Images/tania17.jpg" alt="" />
-                                <div class="portfolio-desc align-center">
-                                    <div class="folio-info">
-                                        <a href="Images/tania17.jpg" class="fancybox">
-                                            <h5>Project Name</h5>
-                                            <i class="fa fa-arrows-alt fa-2x"></i>
-                                        </a>
+                        @foreach(var foto in Model)
+                        {
+                            <article class="col-sm-4 isotopeItem @foto.Categoria.nombre">
+                                <div class="portfolio-item">
+                                    <img src="@foto.url" alt="" />
+                                    <div class="portfolio-desc align-center">
+                                        <div class="folio-info">
+                                            <a href="@foto.url" class="fancybox">
+                                                <h5>@foto.descripcion</h5>
+                                                <i class="fa fa-arrows-alt fa-2x"></i>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </article>
-
-                        <article class="col-sm-4 isotopeItem inicios">
-                            <div class="portfolio-item">
-                                <img src="Images/tania24.jpg" alt="" />
-                                <div class="portfolio-desc align-center">
-                                    <div class="folio-info">
-                                        <a href="Images/tania24.jpg" class="fancybox">
-                                            <h5>Project Name</h5>
-                                            <i class="fa fa-arrows-alt fa-2x"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </article>
-
-                        <article class="col-sm-4 isotopeItem inicios">
-                            <div class="portfolio-item">
-                                <img src="Images/tania19.jpg" alt="" />
-                                <div class="portfolio-desc align-center">
-                                    <div class="folio-info">
-                                        <a href="Images/tania19.jpg" class="fancybox">
-                                            <h5>Project Name</h5>
-                                            <i class="fa fa-arrows-alt fa-2x"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </article>
-
-                        <article class="col-sm-4 isotopeItem inicios">
-                            <div class="portfolio-item">
-                                <img src="Images/tania8.jpg" alt="" />
-                                <div class="portfolio-desc align-center">
-                                    <div class="folio-info">
-                                        <a href="Images/tania8.jpg" class="fancybox">
-                                            <h5>Project Name</h5>
-                                            <i class="fa fa-arrows-alt fa-2x"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </article>
-
-                        <!-- Entrenando-->
-                        <article class="col-sm-4 isotopeItem entrenando">
-                            <div class="portfolio-item">
-                                <img src="Images/tania6.jpg" alt="" />
-                                <div class="portfolio-desc align-center">
-                                    <div class="folio-info">
-                                        <a href="Images/tania6.jpg" class="fancybox">
-                                            <h5>Project Name</h5>
-                                            <i class="fa fa-arrows-alt fa-2x"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </article>
-
-                        <article class="col-sm-4 isotopeItem motocross">
-                            <div class="portfolio-item">
-                                <img src="Images/tania23.jpg" alt="" />
-                                <div class="portfolio-desc align-center">
-                                    <div class="folio-info">
-                                        <a href="Images/tania23.jpg" class="fancybox">
-                                            <h5>Project Name</h5>
-                                            <i class="fa fa-arrows-alt fa-2x"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </article>
-
-                        <article class="col-sm-4 isotopeItem motocross">
-                            <div class="portfolio-item">
-                                <img src="Images/tania26.jpg" alt="" />
-                                <div class="portfolio-desc align-center">
-                                    <div class="folio-info">
-                                        <a href="Images/tania26.jpg" class="fancybox">
-                                            <h5>Project Name</h5>
-                                            <i class="fa fa-arrows-alt fa-2x"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </article>
-
-                        <!-- Enduro-->
-                        <article class="col-sm-4 isotopeItem enduro">
-                            <div class="portfolio-item">
-                                <img src="Images/tania20.jpg" alt="" />
-                                <div class="portfolio-desc align-center">
-                                    <div class="folio-info">
-                                        <a href="Images/tania20.jpg" class="fancybox">
-                                            <h5>Project Name</h5>
-                                            <i class="fa fa-arrows-alt fa-2x"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </article>
-
-                        <article class="col-sm-4 isotopeItem enduro">
-                            <div class="portfolio-item">
-                                <img src="Images/tania13.jpg" alt="" />
-                                <div class="portfolio-desc align-center">
-                                    <div class="folio-info">
-                                        <a href="Images/tania13.jpg" class="fancybox">
-                                            <h5>Project Name</h5>
-                                            <i class="fa fa-arrows-alt fa-2x"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </article>
-
-                        <!-- Velocidad-->
-                        <article class="col-sm-4 isotopeItem velocidad">
-                            <div class="portfolio-item">
-                                <img src="Images/tania31.jpg" alt="" />
-                                <div class="portfolio-desc align-center">
-                                    <div class="folio-info">
-                                        <a href="Images/tania31.jpg" class="fancybox">
-                                            <h5>Project Name</h5>
-                                            <i class="fa fa-arrows-alt fa-2x"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </article>
-
-                        <article class="col-sm-4 isotopeItem velocidad">
-                            <div class="portfolio-item">
-                                <img src="Images/tania34.jpg" alt="" />
-                                <div class="portfolio-desc align-center">
-                                    <div class="folio-info">
-                                        <a href="Images/tania34.jpg" class="fancybox">
-                                            <h5>Project Name</h5>
-                                            <i class="fa fa-arrows-alt fa-2x"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </article>
-
-                        <article class="col-sm-4 isotopeItem velocidad">
-                            <div class="portfolio-item">
-                                <img src="Images/tania35.jpg" alt="" />
-                                <div class="portfolio-desc align-center">
-                                    <div class="folio-info">
-                                        <a href="Images/tania35.jpg" class="fancybox">
-                                            <h5>Project Name</h5>
-                                            <i class="fa fa-arrows-alt fa-2x"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </article>
-
-                        <!-- Podios -->
-
-                        <article class="col-sm-4 isotopeItem podios">
-                            <div class="portfolio-item">
-                                <img src="Images/tania33.jpg" alt="" />
-                                <div class="portfolio-desc align-center">
-                                    <div class="folio-info">
-                                        <a href="Images/tania33.jpg" class="fancybox">
-                                            <h5>Project Name</h5>
-                                            <i class="fa fa-arrows-alt fa-2x"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </article>
-
+                            </article>
+                        }
                     </div>
-
                 </div>
-
-
             </div>
         </div>
-
     </div>
 </section>

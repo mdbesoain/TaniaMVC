@@ -5,47 +5,39 @@ using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TaniaMVC.Filters;
 
 namespace TaniaMVC.Controllers
 {
-    public class PortafolioController : Controller
+    [InitializeSimpleMembership]
+    public class AboutController : Controller
     {
         //
-        // GET: /Portafolio/
-        private TaniaEntitiesContainer db = new TaniaEntitiesContainer();
+        // GET: /About/
+        private TaniaEntitiesContainer db = new TaniaEntitiesContainer();    
 
         public ActionResult Index()
         {
-            return View(db.Fotos.ToList());
+            return View();
         }
 
         public ActionResult Agregar()
         {
-            Foto foto = new Foto();
-            ViewBag.Categorias = new SelectList(db.Categorias, "id_categoria", "nombre");
-            return View(foto);
-        }
+            About about = new About();
+            return View(about);
 
+        }
         [HttpPost]
-        public ActionResult Agregar(Foto foto, int Categorias, HttpPostedFileBase file)
+        [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrador")]
+        public ActionResult Agregar(About about)
         {
-            Categoria categoria = db.Categorias.Find(Categorias);
-            foto.Categoria = categoria;
-            foto.url = "vacia";
             try
             {
                 if (ModelState.IsValid)
                 {
-                    db.Fotos.Add(foto);
+                    db.Abouts.Add(about);
                     db.SaveChanges();
-
-                    string path = AppDomain.CurrentDomain.BaseDirectory;
-                    string filePath = path + "/Images/portafolio/" + categoria.id_categoria + ".jpg";
-                    file.SaveAs(filePath);
-                    foto.url = "/Images/portafolio/" + categoria.id_categoria + ".jpg";
-                    db.Entry(foto).State = EntityState.Modified;
-                    db.SaveChanges();
-
 
                 }
                 return RedirectToAction("Index");
@@ -56,23 +48,23 @@ namespace TaniaMVC.Controllers
                 return RedirectToAction("Index");
             }
         }
-
-
+        [Authorize(Roles = "Administrador")]
         public ActionResult Editar(int id)
         {
-            Foto foto = db.Fotos.Find(id);
-            return View(foto);
+            About about = db.Abouts.Find(id);
+            return View(about);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Editar(Foto foto)
+        [Authorize(Roles = "Administrador")]
+        public ActionResult Editar(About about)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    db.Entry(foto).State = EntityState.Modified;
+                    db.Entry(about).State = EntityState.Modified;
                     db.SaveChanges();
                 }
                 return RedirectToAction("Index");
@@ -84,12 +76,13 @@ namespace TaniaMVC.Controllers
             }
         }
 
+        [Authorize(Roles = "Administrador")]
         public ActionResult DeleteConfirmed(int id)
         {
             try
             {
-                Foto foto = db.Fotos.Find(id);
-                db.Fotos.Remove(foto);
+                About about = db.Abouts.Find(id);
+                db.Abouts.Remove(about);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
