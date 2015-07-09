@@ -1,11 +1,15 @@
 ﻿@model IEnumerable<AccesoDatos.Models.Evento>
 
+@{
+    ViewBag.Title = "Tania González Website";
+    Layout = "~/Views/Shared/_LayoutAccount.cshtml";
+}
+
 <section id="eventos" class="secPad">
     <div class="container">
         <div class="heading text-center">
             <!-- Heading -->
             <h2>Eventos</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing</p>
         </div>
         <div class="container">
             <div class="row">
@@ -16,7 +20,7 @@
                             <a data-toggle="modal" data-title="@item.nombre" data-descripcion="@item.descripcion" data-direccion="@item.direccion"
                                data-fecha="@item.fecha" data-disciplina="@item.Disciplina.nombre" data-img="@item.url_flayer"
                                data-keyboard="true" class="open-EventoModal" href="#EventoModal"><img style="min-height:516px;height:516px;min-width:338px;width:338px;" src="@item.url_flayer" alt="Flayer"></a>
-
+                            
                             <div class="caption">
                                 <h3>@item.nombre</h3>
                                 @*
@@ -36,13 +40,11 @@
                 }
             </div>
         </div>
-        <div class="text-center">
-            @Html.ActionLink("Ver más", "_AllEventos", "Evento", new { @class = "btn btn-danger" })
-        </div>
     </div>
 </section>
+
 <!-- Modal -->
-<div class="modal fade"  id="EventoModal" role="dialog">
+<div class="modal fade" tabindex="-1" id="EventoModal" role="dialog">
     <div class="modal-dialog modal-lg">
         <!-- Modal content-->
         <div class="modal-content">
@@ -55,7 +57,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <img class=" thumbnail" id="modalFlyer" src="test.png" alt="Flayer">
-                            <span class=" label label-danger" id="disciplina">Danger</span>
+                            <span class="label label-danger" id="disciplina">Danger</span>
                         </div>
                         <div class="col-md-6 col-md-4">
                             <div class="tab-pane">

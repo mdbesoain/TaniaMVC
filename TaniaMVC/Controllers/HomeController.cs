@@ -54,9 +54,9 @@ namespace TaniaMVC.Controllers
             var eventos = db.Eventos.ToList();
             int i = eventos.Count;
             List<Evento> ultimos = new List<Evento>();
-            if ( i > 3)
+            if (i > 3)
             {
-                for (int j = 1; j <= 3; j++ )
+                for (int j = 1; j <= 3; j++)
                 {
                     ultimos.Add(eventos[i - j]);
                 }
@@ -67,10 +67,12 @@ namespace TaniaMVC.Controllers
                 return View(eventos);
             }
         }
+
         [AllowAnonymous]
         public ActionResult _Auspiciadores()
         {
-            return View(db.Auspiciadores.ToList());
+            var auspiciadores = db.Auspiciadores.ToList();
+            return View(auspiciadores);
         }
         [AllowAnonymous]
         public ActionResult _Contacto()
@@ -78,6 +80,7 @@ namespace TaniaMVC.Controllers
             Correo correo = new Correo();
             return View(correo);
         }
+
 
         [HttpPost]
         [AllowAnonymous]
@@ -90,7 +93,7 @@ namespace TaniaMVC.Controllers
                 mail.From = new MailAddress(correo.From);
                 mail.Subject = correo.Subject;
                 string Body = correo.Body;
-                mail.Body = Body +". "+ Environment.NewLine +"Mail: "+ correo.From;
+                mail.Body = Body + ". " + Environment.NewLine + "Mail: " + correo.From;
                 mail.IsBodyHtml = true;
                 SmtpClient smtp = new SmtpClient();
                 smtp.Host = "smtp.gmail.com";
@@ -110,8 +113,19 @@ namespace TaniaMVC.Controllers
             //
             //
             //
-            
-        }
 
+        }
+        public ActionResult _AllEventos()
+        {
+            var eventos = db.Eventos.ToList();
+            return View(eventos);
+
+        }
+        public ActionResult _EventoModal(int id)
+        {
+            Evento evento = db.Eventos.Find(id);
+            return View(evento);
+
+        }
     }
 }

@@ -63,9 +63,9 @@
                                 <label for="inputAdjuntar" class="control-label col-xs-2">Flyer:</label>
                                 <div class="col-xs-5">
                                     <!----input id="file" type="file" name="file"> -->
-                                    <input id="file" type="file" name="file" style="display:none">
+                                    <input id="file" type="file" accept="image/*" name="file" style="display:none">
                                     <div class="input-append">
-                                        <input id="photoCover" class="input-large" type="text" readonly>
+                                        <input id="photoCover" class="input-large"  type="text" readonly>
                                         <a class="btn btn-info" onclick="$('input[id=file]').click();">Browse</a>
                                     </div>
                                 </div>
@@ -87,6 +87,11 @@
 </div>
 <script type="text/javascript">
     $('input[id=file]').change(function () {
-        $('#photoCover').val($(this).val());
+        var ext = $(this).val().split('.').pop().toLowerCase();
+        if ($.inArray(ext, ['gif', 'png', 'jpg', 'jpeg']) == -1) {
+            $('#photoCover').val("");
+            alert('Extensión no valida');
+        }
+        else { $('#photoCover').val($(this).val()); }
     });
 </script>
