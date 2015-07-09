@@ -1,24 +1,28 @@
-﻿@{
+﻿@model IEnumerable<AccesoDatos.Models.Video>
+    @{
     ViewBag.Title = "_Videos";
 
-}
-
-<h2>_Videos</h2>
-<div class="container">
-    <div class="row">
-
-        <div class="col-sm-6">
-
-            <div class="embed-responsive embed-responsive-4by3">
-                <iframe class="embed-responsive-item" src="//www.youtube.com/embed/ePbKGoIGAXY"></iframe>
+    }
+    <section id="eventos" class="secPad">
+        <div class="container" style="  background: #e3e3e3;margin-bottom: 20px; padding-bottom: 50px;">
+            <div class="heading text-center">
+                <!-- Heading -->
+                <h2>Videos</h2>
             </div>
+            <div class="container">
+                <div class="row">
+                    @foreach (var item in Model)
+                    {
+                    <div class="col-sm-5 .col-md-6">
 
-        </div>
-        <div class="col-sm-6">
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item" src="@item.url"></iframe>
+                        </div>
+                        <label>@item.nombre</label>
+                    </div>
+                    }
+                </div>
 
-            <div class="embed-responsive embed-responsive-4by3">
-                <iframe class="embed-responsive-item" src="//www.youtube.com/embed/ePbKGoIGAXY"></iframe>
             </div>
-
         </div>
-    </div>
+    </section>

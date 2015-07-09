@@ -27,7 +27,10 @@ namespace TaniaMVC.Controllers
             var userName = userRoles.GetUsersInRole("Usuario");
             ViewBag.countUser = userName.Count();
             ViewBag.carreras = db.Estadisticas.Count();
+            ViewBag.estadisticas = db.Estadisticas.ToList();
             ViewBag.evntos = db.Eventos.Count();
+            if (db.Eventos.Count() != 0)
+            { ViewBag.evento = db.Eventos.ToList().LastOrDefault(); }
             return View();
         }
     }

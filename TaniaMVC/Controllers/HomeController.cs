@@ -135,5 +135,12 @@ namespace TaniaMVC.Controllers
             return View(evento);
 
         }
+         [AllowAnonymous]
+        public ActionResult _Videos()
+        {
+            var videos= db.Videos.Take(2).ToList();
+            return View(videos);
+
+        }
     }
 }

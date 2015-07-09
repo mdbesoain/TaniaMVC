@@ -449,6 +449,7 @@
     <Content Include="Views\Video\Index.cshtml" />
     <Content Include="Views\Video\Agregar.cshtml" />
     <Content Include="Views\Video\Editar.cshtml" />
+    <Content Include="Views\Home\_Videos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
