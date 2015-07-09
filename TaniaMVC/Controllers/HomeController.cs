@@ -48,7 +48,7 @@ namespace TaniaMVC.Controllers
         [AllowAnonymous]
         public ActionResult _Logros()
         {
-            return View(db.Logros.OrderBy(m => m.fecha).Take(10).ToList());
+            return View(db.Logros.OrderBy(m => m.fecha).Take(6).ToList());
         }
         [AllowAnonymous]
         public ActionResult _Portafolio()
@@ -129,6 +129,14 @@ namespace TaniaMVC.Controllers
             return View(eventos);
 
         }
+
+        public ActionResult _AllLogros()
+        {
+            var logros = db.Logros.OrderBy(m => m.fecha).ToList();
+            return View(logros);
+
+        }
+
         public ActionResult _EventoModal(int id)
         {
             Evento evento = db.Eventos.Find(id);

@@ -13,12 +13,16 @@
                 if (item != Model.FirstOrDefault())
                 {
                     <!-- item -->
-                    <div class="col-md-4 text-center tileBox">
-                        <div class="txtHead">
-                            <h3>@item.nombre <span class="id-color"></span></h3>
+                    <div class="col-md-3 panel panel-danger" style="border: 0;padding-left: 0px;padding-right: 0px;">
+                      <!-- Default panel contents -->
+                      <div class="panel-heading"><h3>@item.nombre <span class="id-color"></span></h3></div>
+                        <div class="panel-body">
+                          <p>@item.descripcion</p>
                         </div>
-                        <p>@item.descripcion</p>
-                    </div>
+                    </div>              
+                    <div class="col-md-1">
+                        <p></p>
+                    </div>              
                     <!-- end: -->
                 }
             }
