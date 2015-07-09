@@ -182,6 +182,7 @@
     <Compile Include="Controllers\LogroController.cs" />
     <Compile Include="Controllers\PortafolioController.cs" />
     <Compile Include="Controllers\ReporteController.cs" />
+    <Compile Include="Controllers\VideoController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -445,6 +446,9 @@
     <Content Include="Views\About\Index.cshtml" />
     <Content Include="Views\About\Agregar.cshtml" />
     <Content Include="Views\About\Editar.cshtml" />
+    <Content Include="Views\Video\Index.cshtml" />
+    <Content Include="Views\Video\Agregar.cshtml" />
+    <Content Include="Views\Video\Editar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

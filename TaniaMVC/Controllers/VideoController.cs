@@ -11,35 +11,37 @@ namespace TaniaMVC.Controllers
 {
     [Authorize]
     [InitializeSimpleMembership]
-    public class AboutController : Controller
+    public class VideoController : Controller
     {
         //
-        // GET: /About/
-        private TaniaEntitiesContainer db = new TaniaEntitiesContainer();    
+        // GET: /Video/
 
+        private TaniaEntitiesContainer db = new TaniaEntitiesContainer();
+        //
+        // GET: /Logro/
+        [Authorize(Roles = "Administrador")]
         public ActionResult Index()
         {
-            return View(db.Abouts.ToList());
+            return View(db.Videos.ToList());
         }
-
+        [Authorize(Roles = "Administrador")]
         public ActionResult Agregar()
         {
-            About about = new About();
-            return View(about);
-
+            Video video = new Video();
+            return View(video);
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Administrador")]
-        public ActionResult Agregar(About about)
+        public ActionResult Agregar(Video video)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    db.Abouts.Add(about);
+                    db.Videos.Add(video);
                     db.SaveChanges();
-
                 }
                 return RedirectToAction("Index");
             }
@@ -52,20 +54,20 @@ namespace TaniaMVC.Controllers
         [Authorize(Roles = "Administrador")]
         public ActionResult Editar(int id)
         {
-            About about = db.Abouts.Find(id);
-            return View(about);
+            Video video = db.Videos.Find(id);
+            return View(video);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Administrador")]
-        public ActionResult Editar(About about)
+        public ActionResult Editar(Video video)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    db.Entry(about).State = EntityState.Modified;
+                    db.Entry(video).State = EntityState.Modified;
                     db.SaveChanges();
                 }
                 return RedirectToAction("Index");
@@ -76,14 +78,13 @@ namespace TaniaMVC.Controllers
                 return View("Error");
             }
         }
-
         [Authorize(Roles = "Administrador")]
         public ActionResult DeleteConfirmed(int id)
         {
             try
             {
-                About about = db.Abouts.Find(id);
-                db.Abouts.Remove(about);
+                Video video = db.Videos.Find(id);
+                db.Videos.Remove(video);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

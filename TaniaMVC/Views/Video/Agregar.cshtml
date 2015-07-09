@@ -1,0 +1,54 @@
+﻿@model AccesoDatos.Models.Video
+
+@{
+    ViewBag.Title = "Nuevo Video";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<div id="wrapper">
+    <div id="page-wrapper">
+        <div class="container-fluid">
+            <div class="panel panel-success">
+                <div class="panel-heading"><h4>@ViewBag.Title</h4></div>
+                <div class="panel-body">
+                    @using (Html.BeginForm("Agregar", "Video", FormMethod.Post, new { @class = "form-horizontal" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true)
+
+                        <fieldset>
+                            <legend>Formulario del logro</legend>
+                            <div class="form-group">
+                                <label for="inputTitulo" class="control-label col-xs-2">Nombre:</label>
+                                <div class="col-xs-5">
+                                    @Html.TextBoxFor(model => model.nombre, new { @type = "text", @class = "form-control", @placeholder = "Nombre para el video", required = "required " })
+                                    @Html.ValidationMessageFor(model => model.nombre)
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="inputFecha" class="control-label col-xs-2">Url:</label>
+                                <div class="col-xs-5 date">
+                                    <div class="input-group input-append date" id="datePicker">
+                                        @Html.TextBoxFor(model => model.url, new { @type = "text", @class = "form-control", @placeholder = "Url del video", @name = "date", required = "required " })
+                                        @Html.ValidationMessageFor(model => model.url)
+                                        <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class='wrapper text-center'>
+                                <div class="col-xs-5">
+                                    @Html.ActionLink("Atras", "Index", "Video", new { @class = "btn btn-danger" })
+                                    <button type="submit" class="btn btn-primary">Crear</button>
+                                </div>
+                            </div>
+                        </fieldset>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

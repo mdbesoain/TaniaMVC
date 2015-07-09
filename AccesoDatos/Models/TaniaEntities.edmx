@@ -183,6 +183,7 @@
           </AssociationSet>
           <EntitySet Name="Habilidades" EntityType="TaniaEntities.Habilidad" />
           <EntitySet Name="Abouts" EntityType="TaniaEntities.About" />
+          <EntitySet Name="Videos" EntityType="TaniaEntities.Video" />
         </EntityContainer>
         <EntityType Name="Foto">
           <Key>
@@ -307,6 +308,14 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombre" Type="String" Nullable="false" />
           <Property Name="descripcion" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Video">
+          <Key>
+            <PropertyRef Name="id_video" />
+          </Key>
+          <Property Name="id_video" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" Nullable="false" />
+          <Property Name="url" Type="String" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>

@@ -99,6 +99,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TaniaEntities.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Video.cs">
+      <DependentUpon>TaniaEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
