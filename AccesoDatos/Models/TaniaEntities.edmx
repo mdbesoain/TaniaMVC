@@ -16,6 +16,7 @@
     <EntitySet Name="Estadisticas" EntityType="TaniaEntities.Store.Estadisticas" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Habilidades" EntityType="TaniaEntities.Store.Habilidades" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Abouts" EntityType="TaniaEntities.Store.Abouts" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Videos" EntityType="TaniaEntities.Store.Videos" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="EventoDisciplina" Association="TaniaEntities.Store.EventoDisciplina">
       <End Role="Evento" EntitySet="Eventos" />
       <End Role="Disciplina" EntitySet="Disciplinas" />
@@ -119,6 +120,14 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
     <Property Name="descripcion" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Videos">
+    <Key>
+      <PropertyRef Name="id_video" />
+    </Key>
+    <Property Name="id_video" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="url" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <Association Name="EventoDisciplina">
     <End Role="Evento" Type="TaniaEntities.Store.Eventos" Multiplicity="*" />
@@ -420,6 +429,15 @@
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="nombre" ColumnName="nombre" />
           <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Videos">
+      <EntityTypeMapping TypeName="IsTypeOf(TaniaEntities.Video)">
+        <MappingFragment StoreEntitySet="Videos">
+          <ScalarProperty Name="id_video" ColumnName="id_video" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="url" ColumnName="url" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

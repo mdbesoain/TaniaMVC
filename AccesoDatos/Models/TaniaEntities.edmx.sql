@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 07/08/2015 21:53:49
+-- Date Created: 07/09/2015 14:27:28
 -- Generated from EDMX file: C:\Users\juancarlosgonzalezca\documents\visual studio 2013\Projects\TaniaMVC\AccesoDatos\Models\TaniaEntities.edmx
 -- --------------------------------------------------
 
@@ -57,6 +57,9 @@ IF OBJECT_ID(N'[dbo].[Estadisticas]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[Habilidades]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Habilidades];
+GO
+IF OBJECT_ID(N'[dbo].[Abouts]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Abouts];
 GO
 
 -- --------------------------------------------------
@@ -154,6 +157,14 @@ CREATE TABLE [dbo].[Abouts] (
 );
 GO
 
+-- Creating table 'Videos'
+CREATE TABLE [dbo].[Videos] (
+    [id_video] int IDENTITY(1,1) NOT NULL,
+    [nombre] nvarchar(max)  NOT NULL,
+    [url] nvarchar(max)  NOT NULL
+);
+GO
+
 -- --------------------------------------------------
 -- Creating all PRIMARY KEY constraints
 -- --------------------------------------------------
@@ -216,6 +227,12 @@ GO
 ALTER TABLE [dbo].[Abouts]
 ADD CONSTRAINT [PK_Abouts]
     PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [id_video] in table 'Videos'
+ALTER TABLE [dbo].[Videos]
+ADD CONSTRAINT [PK_Videos]
+    PRIMARY KEY CLUSTERED ([id_video] ASC);
 GO
 
 -- --------------------------------------------------
